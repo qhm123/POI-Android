@@ -22,13 +22,13 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.util.POILogger;
 import org.apache.poi.util.POILogFactory;
 
-import javax.imageio.ImageReader;
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
+import vajax.imageio.ImageReader;
+import vajax.imageio.ImageIO;
+import vajax.imageio.stream.ImageInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import and.awt.*;
+import and.awt.image.BufferedImage;
 import java.util.Iterator;
 
 /**
@@ -58,7 +58,7 @@ public class ImageUtils {
             case Workbook.PICTURE_TYPE_PNG:
             case Workbook.PICTURE_TYPE_DIB:
                 try {
-                    //read the image using javax.imageio.*
+                    //read the image using vajax.imageio.*
                     ImageInputStream iis = ImageIO.createImageInputStream( is );
                     Iterator i = ImageIO.getImageReaders( iis );
                     ImageReader r = (ImageReader) i.next();

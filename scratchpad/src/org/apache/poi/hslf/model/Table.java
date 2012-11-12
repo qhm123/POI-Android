@@ -22,7 +22,7 @@ import org.apache.poi.util.LittleEndian;
 
 import java.util.*;
 import java.util.List;
-import java.awt.*;
+import and.awt.*;
 
 /**
  * Represents a table in a PowerPoint presentation

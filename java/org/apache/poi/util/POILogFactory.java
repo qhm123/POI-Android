@@ -81,6 +81,9 @@ public class POILogFactory
     {
         POILogger logger = null;
         
+//        logger = new CommonsLogger();
+//        logger.initialize(cat);
+//        
         // If we haven't found out what logger to use yet,
         //  then do so now
         // Don't look it up until we're first asked, so
@@ -88,7 +91,8 @@ public class POILogFactory
         //  between class loading and first use
         if(_loggerClassName == null) {
         	try {
-        		_loggerClassName = System.getProperty("org.apache.poi.util.POILogger");
+//        		_loggerClassName = System.getProperty("org.apache.poi.util.POILogger");
+        		_loggerClassName = CommonsLogger.class.getName();
         	} catch(Exception e) {}
         	
         	// Use the default logger if none specified,

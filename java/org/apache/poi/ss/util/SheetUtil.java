@@ -20,10 +20,10 @@ package org.apache.poi.ss.util;
 import org.apache.poi.ss.usermodel.*;
 
 import java.text.AttributedString;
-import java.awt.font.TextLayout;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextAttribute;
-import java.awt.geom.AffineTransform;
+import and.awt.font.TextLayout;
+import and.awt.font.FontRenderContext;
+import and.awt.font.TextAttribute;
+import and.awt.geom.AffineTransform;
 
 
 /**

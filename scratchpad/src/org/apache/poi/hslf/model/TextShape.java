@@ -17,14 +17,14 @@
 
 package org.apache.poi.hslf.model;
 
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
+import and.awt.Font;
+import and.awt.Rectangle;
+import and.awt.font.FontRenderContext;
+import and.awt.geom.AffineTransform;
+import and.awt.geom.Rectangle2D;
 import java.io.IOException;
+
+import net.pbdavey.awt.Graphics2D;
 
 import org.apache.poi.ddf.EscherContainerRecord;
 import org.apache.poi.ddf.EscherOptRecord;
@@ -100,7 +100,8 @@ public abstract class TextShape extends SimpleShape {
     /**
      * Used to calculate text bounds
      */
-    protected static final FontRenderContext _frc = new FontRenderContext(null, true, true);
+    // XXX: DDD
+//    protected static final FontRenderContext _frc = new FontRenderContext(null, true, true);
 
     /**
      * Create a TextBox object and initialize it from the supplied Record container.
@@ -235,41 +236,47 @@ public abstract class TextShape extends SimpleShape {
      * @return a <code>Rectangle2D</code> that is the bounds of this <code>TextShape</code>.
      */
     public Rectangle2D resizeToFitText(){
-        String txt = getText();
-        if(txt == null || txt.length() == 0) return new Rectangle2D.Float();
+//        String txt = getText();
+//        if(txt == null || txt.length() == 0) return new Rectangle2D.Float();
+//
+//        RichTextRun rt = getTextRun().getRichTextRuns()[0];
+//        int size = rt.getFontSize();
+//        int style = 0;
+//        if (rt.isBold()) style |= Font.BOLD;
+//        if (rt.isItalic()) style |= Font.ITALIC;
+//        String fntname = rt.getFontName();
+//        Font font = new Font(fntname, style, size);
+//
+//        float width = 0, height = 0, leading = 0;
+//        String[] lines = txt.split("\n");
+//        for (int i = 0; i < lines.length; i++) {
+//            if(lines[i].length() == 0) continue;
+//
+//            TextLayout layout = new TextLayout(lines[i], font, _frc);
+//
+//            leading = Math.max(leading, layout.getLeading());
+//            width = Math.max(width, layout.getAdvance());
+//            height = Math.max(height, (height + (layout.getDescent() + layout.getAscent())));
+//        }
+//
+//        // add one character to width
+//        Rectangle2D charBounds = font.getMaxCharBounds(_frc);
+//        width += getMarginLeft() + getMarginRight() + charBounds.getWidth();
+//
+//        // add leading to height
+//        height += getMarginTop() + getMarginBottom() + leading;
+//
+//        Rectangle2D anchor = getAnchor2D();
+//        anchor.setRect(anchor.getX(), anchor.getY(), width, height);
+//        setAnchor(anchor);
+//
+//        return anchor;
+    	// XXX: DDD
+    	Rectangle2D anchor = getAnchor2D();
+    	anchor.setRect(anchor.getX(), anchor.getY(), 200, 100);
+    	setAnchor(anchor);
 
-        RichTextRun rt = getTextRun().getRichTextRuns()[0];
-        int size = rt.getFontSize();
-        int style = 0;
-        if (rt.isBold()) style |= Font.BOLD;
-        if (rt.isItalic()) style |= Font.ITALIC;
-        String fntname = rt.getFontName();
-        Font font = new Font(fntname, style, size);
-
-        float width = 0, height = 0, leading = 0;
-        String[] lines = txt.split("\n");
-        for (int i = 0; i < lines.length; i++) {
-            if(lines[i].length() == 0) continue;
-
-            TextLayout layout = new TextLayout(lines[i], font, _frc);
-
-            leading = Math.max(leading, layout.getLeading());
-            width = Math.max(width, layout.getAdvance());
-            height = Math.max(height, (height + (layout.getDescent() + layout.getAscent())));
-        }
-
-        // add one character to width
-        Rectangle2D charBounds = font.getMaxCharBounds(_frc);
-        width += getMarginLeft() + getMarginRight() + charBounds.getWidth();
-
-        // add leading to height
-        height += getMarginTop() + getMarginBottom() + leading;
-
-        Rectangle2D anchor = getAnchor2D();
-        anchor.setRect(anchor.getX(), anchor.getY(), width, height);
-        setAnchor(anchor);
-
-        return anchor;
+    	return anchor;
     }
 
     /**

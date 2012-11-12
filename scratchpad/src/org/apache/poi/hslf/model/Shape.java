@@ -17,14 +17,25 @@
 
 package org.apache.poi.hslf.model;
 
-import org.apache.poi.ddf.*;
-import org.apache.poi.hslf.record.ColorSchemeAtom;
-import org.apache.poi.util.POILogger;
-import org.apache.poi.util.POILogFactory;
+import java.util.Iterator;
 
-import java.util.*;
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
+import net.pbdavey.awt.Graphics2D;
+
+import org.apache.poi.ddf.EscherChildAnchorRecord;
+import org.apache.poi.ddf.EscherClientAnchorRecord;
+import org.apache.poi.ddf.EscherContainerRecord;
+import org.apache.poi.ddf.EscherOptRecord;
+import org.apache.poi.ddf.EscherProperty;
+import org.apache.poi.ddf.EscherRecord;
+import org.apache.poi.ddf.EscherSimpleProperty;
+import org.apache.poi.ddf.EscherSpRecord;
+import org.apache.poi.hslf.record.ColorSchemeAtom;
+import org.apache.poi.util.POILogFactory;
+import org.apache.poi.util.POILogger;
+
+import and.awt.Color;
+import and.awt.Rectangle;
+import and.awt.geom.Rectangle2D;
 
 /**
  *  <p>
@@ -149,7 +160,7 @@ public abstract class Shape {
      *
      * @return the anchor of this shape
      */
-    public java.awt.Rectangle getAnchor(){
+    public Rectangle getAnchor(){
         Rectangle2D anchor2d = getAnchor2D();
         return anchor2d.getBounds();
     }
@@ -166,11 +177,11 @@ public abstract class Shape {
         Rectangle2D anchor=null;
         if ((flags & EscherSpRecord.FLAG_CHILD) != 0){
             EscherChildAnchorRecord rec = (EscherChildAnchorRecord)getEscherChild(_escherContainer, EscherChildAnchorRecord.RECORD_ID);
-            anchor = new java.awt.Rectangle();
+            anchor = new Rectangle();
             if(rec == null){
                 logger.log(POILogger.WARN, "EscherSpRecord.FLAG_CHILD is set but EscherChildAnchorRecord was not found");
                 EscherClientAnchorRecord clrec = (EscherClientAnchorRecord)getEscherChild(_escherContainer, EscherClientAnchorRecord.RECORD_ID);
-                anchor = new java.awt.Rectangle();
+                anchor = new Rectangle();
                 anchor = new Rectangle2D.Float(
                     (float)clrec.getCol1()*POINT_DPI/MASTER_DPI,
                     (float)clrec.getFlag()*POINT_DPI/MASTER_DPI,
@@ -188,7 +199,7 @@ public abstract class Shape {
         }
         else {
             EscherClientAnchorRecord rec = (EscherClientAnchorRecord)getEscherChild(_escherContainer, EscherClientAnchorRecord.RECORD_ID);
-            anchor = new java.awt.Rectangle();
+            anchor = new Rectangle();
             anchor = new Rectangle2D.Float(
                 (float)rec.getCol1()*POINT_DPI/MASTER_DPI,
                 (float)rec.getFlag()*POINT_DPI/MASTER_DPI,
@@ -476,11 +487,11 @@ public abstract class Shape {
     }
 
     /**
-     * Return shape outline as a java.awt.Shape object
+     * Return shape outline as a and.awt.Shape object
      *
      * @return the shape outline
      */
-    public java.awt.Shape getOutline(){
+    public and.awt.Shape getOutline(){
         return getLogicalAnchor2D();
     }
 }

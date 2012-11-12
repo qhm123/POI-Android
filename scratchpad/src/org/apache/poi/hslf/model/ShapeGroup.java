@@ -17,12 +17,13 @@
 
 package org.apache.poi.hslf.model;
 
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
+import and.awt.geom.AffineTransform;
+import and.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import net.pbdavey.awt.Graphics2D;
 
 import org.apache.poi.ddf.EscherChildAnchorRecord;
 import org.apache.poi.ddf.EscherClientAnchorRecord;
@@ -98,7 +99,7 @@ public class ShapeGroup extends Shape{
      *
      * @param anchor new anchor
      */
-    public void setAnchor(java.awt.Rectangle anchor){
+    public void setAnchor(and.awt.Rectangle anchor){
 
         EscherContainerRecord spContainer = (EscherContainerRecord)_escherContainer.getChild(0);
 
@@ -216,7 +217,7 @@ public class ShapeGroup extends Shape{
      * @param y the y coordinate of the top left corner of the shape in new location
      */
     public void moveTo(int x, int y){
-        java.awt.Rectangle anchor = getAnchor();
+        and.awt.Rectangle anchor = getAnchor();
         int dx = x - anchor.x;
         int dy = y - anchor.y;
         anchor.translate(dx, dy);
@@ -224,7 +225,7 @@ public class ShapeGroup extends Shape{
 
         Shape[] shape = getShapes();
         for (int i = 0; i < shape.length; i++) {
-            java.awt.Rectangle chanchor = shape[i].getAnchor();
+            and.awt.Rectangle chanchor = shape[i].getAnchor();
             chanchor.translate(dx, dy);
             shape[i].setAnchor(chanchor);
         }

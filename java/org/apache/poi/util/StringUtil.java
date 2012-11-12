@@ -22,7 +22,6 @@ import java.text.FieldPosition;
 import java.text.NumberFormat;
 import java.util.Iterator;
 
-import org.apache.poi.hssf.record.RecordInputStream;
 /**
  *  Title: String Utility Description: Collection of string handling utilities<p/>
  *

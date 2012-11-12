@@ -17,19 +17,21 @@
 
 package org.apache.poi.hslf.model;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineBreakMeasurer;
+import and.awt.Color;
+import and.awt.Font;
+import and.awt.font.FontRenderContext;
+import and.awt.font.LineBreakMeasurer;
+import and.awt.font.TextLayout;
+import and.awt.geom.Point2D;
+import and.awt.geom.Rectangle2D;
+
 import java.awt.font.TextAttribute;
-import java.awt.font.TextLayout;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
+
+import net.pbdavey.awt.Graphics2D;
 
 import org.apache.poi.hslf.record.TextRulerAtom;
 import org.apache.poi.hslf.usermodel.RichTextRun;
@@ -37,7 +39,7 @@ import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
 /**
- * Paint text into java.awt.Graphics2D
+ * Paint text into and.awt.Graphics2D
  *
  * @author Yegor Kozlov
  */

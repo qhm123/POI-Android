@@ -1,20 +1,29 @@
 package net.pbdavey.awt;
 
 
-import and.awt.Rectangle;
+import java.text.AttributedCharacterIterator;
+import java.util.Map;
+
 import net.pbdavey.awt.RenderingHints.Key;
-import and.awt.Graphics;
 import and.awt.BasicStroke;
 import and.awt.Color;
+import and.awt.Graphics;
+import and.awt.Rectangle;
 import and.awt.Shape;
 import and.awt.Stroke;
+import and.awt.font.FontRenderContext;
+import and.awt.font.GlyphVector;
 import and.awt.geom.AffineTransform;
 import and.awt.geom.PathIterator;
+import and.awt.image.BufferedImage;
+import and.awt.image.BufferedImageOp;
+import and.awt.image.RenderedImage;
+import and.awt.image.renderable.RenderableImage;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.graphics.Paint.Style;
 /**
  * So far it appears that Graphics2D is roughly equivalent to a Canvas with Paint.
  * The Paint object contains information regarding Fonts and FontMetrics, while
@@ -434,5 +443,55 @@ public class Graphics2D extends Graphics {
 	public void setXORMode(Color c1) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void addRenderingHints(Map hints) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void clip(Shape s) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void drawGlyphVector(GlyphVector g, float x, float y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void drawImage(BufferedImage img, BufferedImageOp op, int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void drawRenderableImage(RenderableImage img, AffineTransform xform) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void drawString(AttributedCharacterIterator iterator, float x,
+			float y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void drawRenderedImage(RenderedImage img, AffineTransform xform) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getRenderingHint(Key hintKey) {
+		return new RenderingHints(null);
+	}
+
+	public FontRenderContext getFontRenderContext() {
+		boolean isAntiAliased = RenderingHints.VALUE_TEXT_ANTIALIAS_ON.equals(
+                getRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING));
+        boolean usesFractionalMetrics = RenderingHints.VALUE_FRACTIONALMETRICS_ON.equals(
+                getRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS));
+
+
+        return new FontRenderContext(new AffineTransform(), isAntiAliased, usesFractionalMetrics);
 	}
 }

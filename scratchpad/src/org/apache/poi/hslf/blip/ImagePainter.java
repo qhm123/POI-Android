@@ -17,16 +17,17 @@
 
 package org.apache.poi.hslf.blip;
 
+import net.pbdavey.awt.Graphics2D;
+
 import org.apache.poi.hslf.model.Picture;
 import org.apache.poi.hslf.usermodel.PictureData;
 
-import java.awt.*;
 
 /**
  * A common interface for objects that can render ppt picture data.
  * <p>
  * Subclasses can redefine it and use third-party libraries for actual rendering,
- * for example, Bitmaps can be rendered using javax.imageio.* , WMF can be rendered using Apache Batik,
+ * for example, Bitmaps can be rendered using vajax.imageio.* , WMF can be rendered using Apache Batik,
  * PICT can be rendered using Apple QuickTime API for Java, etc.
  * </p>
  *

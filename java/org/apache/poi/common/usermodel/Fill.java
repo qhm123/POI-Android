@@ -16,7 +16,7 @@
 ==================================================================== */
 package org.apache.poi.common.usermodel;
 
-import java.awt.Color;
+import and.awt.Color;
 
 public interface Fill {
 	public Color getColor();

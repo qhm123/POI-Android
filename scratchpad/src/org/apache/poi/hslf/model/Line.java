@@ -19,8 +19,8 @@ package org.apache.poi.hslf.model;
 
 import org.apache.poi.ddf.*;
 
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.Line2D;
+import and.awt.geom.Rectangle2D;
+import and.awt.geom.Line2D;
 
 /**
  * Represents a line in a PowerPoint drawing
@@ -129,7 +129,7 @@ public final class Line extends SimpleShape {
         return _escherContainer;
     }
 
-    public java.awt.Shape getOutline(){
+    public and.awt.Shape getOutline(){
         Rectangle2D anchor = getLogicalAnchor2D();
         return new Line2D.Double(anchor.getX(), anchor.getY(), anchor.getX() + anchor.getWidth(), anchor.getY() + anchor.getHeight());
     }

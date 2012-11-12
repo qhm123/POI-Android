@@ -20,8 +20,8 @@ package org.apache.poi.hslf.blip;
 import org.apache.poi.hslf.model.Picture;
 import org.apache.poi.hslf.exceptions.HSLFException;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import vajax.imageio.ImageIO;
+import and.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
@@ -37,18 +37,19 @@ public final class PNG extends Bitmap {
      */
     public byte[] getData(){
          byte[] data = super.getData();
-          try {
+//          try {
               //PNG created on MAC may have a 16-byte prefix which prevents successful reading.
               //Just cut it off!.
-              BufferedImage bi = ImageIO.read(new ByteArrayInputStream(data));
-              if (bi == null){
-                  byte[] png = new byte[data.length-16];
-                  System.arraycopy(data, 16, png, 0, png.length);
-                  data = png;
-              }
-          } catch (IOException e){
-              throw new HSLFException(e);
-          }
+        	  // XXX: DDD
+//              BufferedImage bi = ImageIO.read(new ByteArrayInputStream(data));
+//              if (bi == null){
+//                  byte[] png = new byte[data.length-16];
+//                  System.arraycopy(data, 16, png, 0, png.length);
+//                  data = png;
+//              }
+//          } catch (IOException e){
+//              throw new HSLFException(e);
+//          }
          return data;
      }
 

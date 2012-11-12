@@ -17,6 +17,8 @@
 
 package org.apache.poi.hslf.blip;
 
+import net.pbdavey.awt.Graphics2D;
+
 import org.apache.poi.hslf.usermodel.PictureData;
 import org.apache.poi.hslf.model.Picture;
 import org.apache.poi.util.POILogger;
@@ -38,13 +40,13 @@ import org.apache.poi.util.POILogFactory;
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import vajax.imageio.ImageIO;
+import and.awt.*;
+import and.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 
 /**
- * Creates BufferedImage using javax.imageio.ImageIO and draws it in the specified graphics.
+ * Creates BufferedImage using vajax.imageio.ImageIO and draws it in the specified graphics.
  *
  * @author  Yegor Kozlov.
  */
@@ -52,17 +54,18 @@ public final class BitmapPainter implements ImagePainter {
     protected POILogger logger = POILogFactory.getLogger(this.getClass());
 
     public void paint(Graphics2D graphics, PictureData pict, Picture parent) {
-        BufferedImage img;
-        try {
-               img = ImageIO.read(new ByteArrayInputStream(pict.getData()));
-        }
-        catch (Exception e){
-            logger.log(POILogger.WARN, "ImageIO failed to create image. image.type: " + pict.getType());
-            return;
-        }
-
-        Rectangle anchor = parent.getLogicalAnchor2D().getBounds();
-        graphics.drawImage(img, anchor.x, anchor.y, anchor.width, anchor.height, null);
+    	// XXX: DDD
+//        BufferedImage img;
+//        try {
+//               img = ImageIO.read(new ByteArrayInputStream(pict.getData()));
+//        }
+//        catch (Exception e){
+//            logger.log(POILogger.WARN, "ImageIO failed to create image. image.type: " + pict.getType());
+//            return;
+//        }
+//
+//        Rectangle anchor = parent.getLogicalAnchor2D().getBounds();
+//        graphics.drawImage(img, anchor.x, anchor.y, anchor.width, anchor.height, null);
     }
 
 }

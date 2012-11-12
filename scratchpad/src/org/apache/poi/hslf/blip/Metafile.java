@@ -20,7 +20,7 @@ package org.apache.poi.hslf.blip;
 import org.apache.poi.util.LittleEndian;
 import org.apache.poi.hslf.usermodel.PictureData;
 
-import java.awt.*;
+import and.awt.*;
 import java.io.*;
 import java.util.zip.DeflaterOutputStream;
 

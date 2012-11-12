@@ -22,8 +22,8 @@ import org.apache.poi.util.LittleEndian;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
+import and.awt.Dimension;
+import and.awt.Rectangle;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

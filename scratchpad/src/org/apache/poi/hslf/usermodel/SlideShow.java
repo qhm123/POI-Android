@@ -17,7 +17,6 @@
 
 package org.apache.poi.hslf.usermodel;
 
-import java.awt.Dimension;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,6 +39,8 @@ import org.apache.poi.hslf.record.*;
 import org.apache.poi.hslf.record.SlideListWithText.SlideAtomsSet;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
+
+import android.graphics.Rect;
 
 /**
  * This class is a friendly wrapper on top of the more scary HSLFSlideShow.
@@ -493,11 +494,11 @@ public final class SlideShow {
 	/**
 	 * Return the current page size
 	 */
-	public Dimension getPageSize() {
+	public Rect getPageSize() {
 		DocumentAtom docatom = _documentRecord.getDocumentAtom();
 		int pgx = (int) docatom.getSlideSizeX() * Shape.POINT_DPI / Shape.MASTER_DPI;
 		int pgy = (int) docatom.getSlideSizeY() * Shape.POINT_DPI / Shape.MASTER_DPI;
-		return new Dimension(pgx, pgy);
+		return new Rect(0, 0, pgx, pgy);
 	}
 
 	/**
@@ -506,10 +507,10 @@ public final class SlideShow {
 	 * @param pgsize
 	 *            page size (in points)
 	 */
-	public void setPageSize(Dimension pgsize) {
+	public void setPageSize(Rect pgsize) {
 		DocumentAtom docatom = _documentRecord.getDocumentAtom();
-		docatom.setSlideSizeX(pgsize.width * Shape.MASTER_DPI / Shape.POINT_DPI);
-		docatom.setSlideSizeY(pgsize.height * Shape.MASTER_DPI / Shape.POINT_DPI);
+		docatom.setSlideSizeX(pgsize.width() * Shape.MASTER_DPI / Shape.POINT_DPI);
+		docatom.setSlideSizeY(pgsize.height() * Shape.MASTER_DPI / Shape.POINT_DPI);
 	}
 
 	/**

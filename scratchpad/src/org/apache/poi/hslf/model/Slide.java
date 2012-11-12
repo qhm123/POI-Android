@@ -17,8 +17,9 @@
 
 package org.apache.poi.hslf.model;
 
-import java.awt.Graphics2D;
 import java.util.Vector;
+
+import net.pbdavey.awt.Graphics2D;
 
 import org.apache.poi.ddf.EscherContainerRecord;
 import org.apache.poi.ddf.EscherDgRecord;
@@ -179,7 +180,7 @@ public final class Slide extends Sheet
 		pl.setShapeType(ShapeTypes.Rectangle);
 		pl.getTextRun().setRunType(TextHeaderAtom.TITLE_TYPE);
 		pl.setText("Click to edit title");
-		pl.setAnchor(new java.awt.Rectangle(54, 48, 612, 90));
+		pl.setAnchor(new and.awt.Rectangle(54, 48, 612, 90));
 		addShape(pl);
 		return pl;
 	}
@@ -418,7 +419,7 @@ public final class Slide extends Sheet
     	return new Comment[0];
     }
 
-    public void draw(Graphics2D graphics){
+    public void draw(Canvas graphics){
         MasterSheet master = getMasterSheet();
         Background bg = getBackground();
         if(bg != null)bg.draw(graphics);

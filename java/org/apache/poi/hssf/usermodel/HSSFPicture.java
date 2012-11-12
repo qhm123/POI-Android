@@ -17,7 +17,7 @@
 
 package org.apache.poi.hssf.usermodel;
 
-import java.awt.Dimension;
+import and.awt.Dimension;
 import java.io.ByteArrayInputStream;
 
 import org.apache.poi.ddf.EscherBSERecord;

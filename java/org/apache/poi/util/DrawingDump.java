@@ -18,8 +18,8 @@
         
 package org.apache.poi.util;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+//import org.apache.poi.hssf.usermodel.HSSFSheet;
+//import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 import java.io.FileInputStream;
@@ -30,20 +30,20 @@ import java.io.IOException;
  */
 public class DrawingDump
 {
-    public static void main( String[] args ) throws IOException
-    {
-        POIFSFileSystem fs      =
-                new POIFSFileSystem(new FileInputStream(args[0]));
-        HSSFWorkbook wb = new HSSFWorkbook(fs);
-        System.out.println( "Drawing group:" );
-        wb.dumpDrawingGroupRecords(true);
-
-        for (int sheetNum = 1; sheetNum <= wb.getNumberOfSheets(); sheetNum++)
-        {
-            System.out.println( "Sheet " + sheetNum + ":" );
-            HSSFSheet sheet = wb.getSheetAt(sheetNum - 1);
-            sheet.dumpDrawingRecords(true);
-        }
-
-    }
+//    public static void main( String[] args ) throws IOException
+//    {
+//        POIFSFileSystem fs      =
+//                new POIFSFileSystem(new FileInputStream(args[0]));
+//        HSSFWorkbook wb = new HSSFWorkbook(fs);
+//        System.out.println( "Drawing group:" );
+//        wb.dumpDrawingGroupRecords(true);
+//
+//        for (int sheetNum = 1; sheetNum <= wb.getNumberOfSheets(); sheetNum++)
+//        {
+//            System.out.println( "Sheet " + sheetNum + ":" );
+//            HSSFSheet sheet = wb.getSheetAt(sheetNum - 1);
+//            sheet.dumpDrawingRecords(true);
+//        }
+//
+//    }
 }

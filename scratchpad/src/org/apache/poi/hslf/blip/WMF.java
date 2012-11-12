@@ -76,10 +76,10 @@ public final class WMF extends Metafile {
 
         Header header = new Header();
         header.wmfsize = data.length - aldus.getSize();
-        header.bounds = new java.awt.Rectangle((short)aldus.left, (short)aldus.top, (short)aldus.right-(short)aldus.left, (short)aldus.bottom-(short)aldus.top);
+        header.bounds = new and.awt.Rectangle((short)aldus.left, (short)aldus.top, (short)aldus.right-(short)aldus.left, (short)aldus.bottom-(short)aldus.top);
         //coefficient to translate from WMF dpi to 96pdi
         int coeff = 96*Shape.EMU_PER_POINT/aldus.inch;
-        header.size = new java.awt.Dimension(header.bounds.width*coeff, header.bounds.height*coeff);
+        header.size = new and.awt.Dimension(header.bounds.width*coeff, header.bounds.height*coeff);
         header.zipsize = compressed.length;
 
         byte[] checksum = getChecksum(data);

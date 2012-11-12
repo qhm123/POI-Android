@@ -21,8 +21,8 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
+import and.awt.*;
+import and.awt.image.ImageObserver;
 import java.text.AttributedCharacterIterator;
 
 /**
@@ -368,7 +368,7 @@ public class EscherGraphics
      * @param xPoints array of the <code>x</code> coordinates.
      * @param yPoints array of the <code>y</code> coordinates.
      * @param nPoints the total number of points in the polygon.
-     * @see   java.awt.Graphics#drawPolygon(int[], int[], int)
+     * @see   and.awt.Graphics#drawPolygon(int[], int[], int)
      */
     public void fillPolygon(int xPoints[], int yPoints[],
 				     int nPoints)

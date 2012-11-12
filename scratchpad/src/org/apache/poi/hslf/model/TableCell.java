@@ -19,7 +19,7 @@ package org.apache.poi.hslf.model;
 
 import org.apache.poi.ddf.*;
 
-import java.awt.*;
+import and.awt.*;
 
 /**
  * Represents a cell in a ppt table

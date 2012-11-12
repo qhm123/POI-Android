@@ -20,19 +20,19 @@ package org.apache.poi.hssf.usermodel;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
-import java.awt.*;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Area;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Line2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ImageObserver;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.RenderableImage;
+import and.awt.*;
+import and.awt.font.FontRenderContext;
+import and.awt.font.GlyphVector;
+import and.awt.font.TextLayout;
+import and.awt.geom.AffineTransform;
+import and.awt.geom.Area;
+import and.awt.geom.GeneralPath;
+import and.awt.geom.Line2D;
+import and.awt.image.BufferedImage;
+import and.awt.image.BufferedImageOp;
+import and.awt.image.ImageObserver;
+import and.awt.image.RenderedImage;
+import and.awt.image.renderable.RenderableImage;
 import java.text.AttributedCharacterIterator;
 import java.util.Map;
 
@@ -163,7 +163,7 @@ public final class EscherGraphics2d extends Graphics2D {
     public void drawArc(int x, int y, int width, int height,
 				 int startAngle, int arcAngle)
     {
-        draw(new java.awt.geom.Arc2D.Float(x, y, width, height, startAngle, arcAngle, 0));
+        draw(new and.awt.geom.Arc2D.Float(x, y, width, height, startAngle, arcAngle, 0));
     }
 
     public void drawGlyphVector(GlyphVector g, float x, float y)
@@ -237,13 +237,13 @@ public final class EscherGraphics2d extends Graphics2D {
             width = (int) ((BasicStroke)_stroke).getLineWidth() * 12700;
         }
         getEscherGraphics().drawLine(x1,y1,x2,y2, width);
-//        draw(new GeneralPath(new java.awt.geom.Line2D.Float(x1, y1, x2, y2)));
+//        draw(new GeneralPath(new and.awt.geom.Line2D.Float(x1, y1, x2, y2)));
     }
 
     public void drawOval(int x, int y, int width, int height)
     {
         getEscherGraphics().drawOval(x,y,width,height);
-//        draw(new java.awt.geom.Ellipse2D.Float(x, y, width, height));
+//        draw(new and.awt.geom.Ellipse2D.Float(x, y, width, height));
     }
 
     public void drawPolygon(int xPoints[], int yPoints[],
@@ -284,7 +284,7 @@ public final class EscherGraphics2d extends Graphics2D {
 
     public void drawRoundRect(int i, int j, int k, int l, int i1, int j1)
     {
-        draw(new java.awt.geom.RoundRectangle2D.Float(i, j, k, l, i1, j1));
+        draw(new and.awt.geom.RoundRectangle2D.Float(i, j, k, l, i1, j1));
     }
 
     public void drawString(String string, float x, float y)
@@ -319,7 +319,7 @@ public final class EscherGraphics2d extends Graphics2D {
 
     public void fillArc(int i, int j, int k, int l, int i1, int j1)
     {
-        fill(new java.awt.geom.Arc2D.Float(i, j, k, l, i1, j1, 2));
+        fill(new and.awt.geom.Arc2D.Float(i, j, k, l, i1, j1, 2));
     }
 
     public void fillOval(int x, int y, int width, int height)
@@ -344,7 +344,7 @@ public final class EscherGraphics2d extends Graphics2D {
      * @param xPoints array of the <code>x</code> coordinates.
      * @param yPoints array of the <code>y</code> coordinates.
      * @param nPoints the total number of points in the polygon.
-     * @see   java.awt.Graphics#drawPolygon(int[], int[], int)
+     * @see   and.awt.Graphics#drawPolygon(int[], int[], int)
      */
     public void fillPolygon(int xPoints[], int yPoints[], int nPoints)
     {
@@ -359,7 +359,7 @@ public final class EscherGraphics2d extends Graphics2D {
     public void fillRoundRect(int x, int y, int width, int height,
 				       int arcWidth, int arcHeight)
     {
-        fill(new java.awt.geom.RoundRectangle2D.Float(x, y, width, height, arcWidth, arcHeight));
+        fill(new and.awt.geom.RoundRectangle2D.Float(x, y, width, height, arcWidth, arcHeight));
     }
 
     public Color getBackground()
@@ -423,7 +423,7 @@ public final class EscherGraphics2d extends Graphics2D {
         return _paint;
     }
 
-    public Object getRenderingHint(java.awt.RenderingHints.Key key)
+    public Object getRenderingHint(and.awt.RenderingHints.Key key)
     {
         return getG2D().getRenderingHint(key);
     }
@@ -511,7 +511,7 @@ public final class EscherGraphics2d extends Graphics2D {
         getEscherGraphics().setPaintMode();
     }
 
-    public void setRenderingHint(java.awt.RenderingHints.Key key, Object obj)
+    public void setRenderingHint(and.awt.RenderingHints.Key key, Object obj)
     {
         getG2D().setRenderingHint(key, obj);
     }

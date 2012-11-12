@@ -25,7 +25,7 @@ import org.apache.poi.util.POILogger;
 import org.apache.poi.util.POILogFactory;
 import java.util.List;
 
-import java.awt.*;
+import and.awt.*;
 
 /**
  * Represents functionality provided by the 'Fill Effects' dialog in PowerPoint.

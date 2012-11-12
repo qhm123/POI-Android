@@ -20,7 +20,7 @@ package org.apache.poi.hslf.model;
 import org.apache.poi.ddf.*;
 import org.apache.poi.util.LittleEndian;
 
-import java.awt.geom.Point2D;
+import and.awt.geom.Point2D;
 
 /**
  * A simple closed polygon shape

@@ -16,7 +16,7 @@
 ==================================================================== */
 package org.apache.poi.ss.format;
 
-import java.awt.*;
+import and.awt.*;
 
 /**
  * This object contains the result of applying a cell format or cell format part

@@ -17,6 +17,8 @@
 
 package org.apache.poi.hslf.model;
 
+import net.pbdavey.awt.Graphics2D;
+
 import org.apache.poi.ddf.*;
 import org.apache.poi.hslf.usermodel.PictureData;
 import org.apache.poi.hslf.usermodel.SlideShow;
@@ -25,10 +27,10 @@ import org.apache.poi.hslf.blip.Bitmap;
 import org.apache.poi.hslf.exceptions.HSLFException;
 import org.apache.poi.util.POILogger;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
+import vajax.imageio.ImageIO;
+import and.awt.image.BufferedImage;
+import and.awt.*;
+import and.awt.geom.AffineTransform;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -145,26 +147,27 @@ public class Picture extends SimpleShape {
      * for other types sets the default size of 200x200 pixels.
      */
     public void setDefaultSize(){
-        PictureData pict = getPictureData();
-        if (pict  instanceof Bitmap){
-            BufferedImage img = null;
-            try {
-               	img = ImageIO.read(new ByteArrayInputStream(pict.getData()));
-            }
-            catch (IOException e){}
-            catch (NegativeArraySizeException ne) {}
-
-            if(img != null) {
-                // Valid image, set anchor from it
-                setAnchor(new java.awt.Rectangle(0, 0, img.getWidth()*POINT_DPI/PIXEL_DPI, img.getHeight()*POINT_DPI/PIXEL_DPI));
-            } else {
-                // Invalid image, go with the default metafile size
-                setAnchor(new java.awt.Rectangle(0, 0, 200, 200));
-            }
-        } else {
-            //default size of a metafile picture is 200x200
-            setAnchor(new java.awt.Rectangle(50, 50, 200, 200));
-        }
+    	// XXX: DDD
+//        PictureData pict = getPictureData();
+//        if (pict  instanceof Bitmap){
+//            BufferedImage img = null;
+//            try {
+//               	img = ImageIO.read(new ByteArrayInputStream(pict.getData()));
+//            }
+//            catch (IOException e){}
+//            catch (NegativeArraySizeException ne) {}
+//
+//            if(img != null) {
+//                // Valid image, set anchor from it
+//                setAnchor(new and.awt.Rectangle(0, 0, img.getWidth()*POINT_DPI/PIXEL_DPI, img.getHeight()*POINT_DPI/PIXEL_DPI));
+//            } else {
+//                // Invalid image, go with the default metafile size
+//                setAnchor(new and.awt.Rectangle(0, 0, 200, 200));
+//            }
+//        } else {
+//            //default size of a metafile picture is 200x200
+//            setAnchor(new and.awt.Rectangle(50, 50, 200, 200));
+//        }
     }
 
     /**
@@ -254,8 +257,8 @@ public class Picture extends SimpleShape {
         EscherBSERecord bse = getEscherBSERecord();
         bse.setRef(bse.getRef() + 1);
 
-        java.awt.Rectangle anchor = getAnchor();
-        if (anchor.equals(new java.awt.Rectangle())){
+        and.awt.Rectangle anchor = getAnchor();
+        if (anchor.equals(new and.awt.Rectangle())){
             setDefaultSize();
         }
     }

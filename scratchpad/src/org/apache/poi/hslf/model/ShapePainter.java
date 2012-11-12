@@ -18,14 +18,16 @@
 package org.apache.poi.hslf.model;
 
 
+import net.pbdavey.awt.Graphics2D;
+
 import org.apache.poi.util.POILogger;
 import org.apache.poi.util.POILogFactory;
 
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
+import and.awt.*;
+import and.awt.geom.Rectangle2D;
 
 /**
- * Paint a shape into java.awt.Graphics2D
+ * Paint a shape into and.awt.Graphics2D
  *
  * @author Yegor Kozlov
  */
@@ -34,7 +36,7 @@ public final class ShapePainter {
 
     public static void paint(SimpleShape shape, Graphics2D graphics){
         Rectangle2D anchor = shape.getLogicalAnchor2D();
-        java.awt.Shape outline = shape.getOutline();
+        and.awt.Shape outline = shape.getOutline();
 
         //flip vertical
         if(shape.getFlipVertical()){

@@ -18,17 +18,20 @@
 
 package org.apache.poi.hssf.usermodel;
 
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ImageObserver;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.RenderableImage;
-import java.awt.font.GlyphVector;
-import java.awt.font.FontRenderContext;
+import and.awt.*;
+import and.awt.geom.AffineTransform;
+import and.awt.image.BufferedImage;
+import and.awt.image.BufferedImageOp;
+import and.awt.image.ImageObserver;
+import and.awt.image.RenderedImage;
+import and.awt.image.renderable.RenderableImage;
+import and.awt.font.GlyphVector;
+import and.awt.font.FontRenderContext;
 import java.util.Map;
 import java.text.AttributedCharacterIterator;
+
+import net.pbdavey.awt.Graphics2D;
+import net.pbdavey.awt.RenderingHints;
 
 public class DummyGraphics2d
         extends Graphics2D

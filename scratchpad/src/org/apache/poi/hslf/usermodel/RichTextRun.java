@@ -17,7 +17,7 @@
 
 package org.apache.poi.hslf.usermodel;
 
-import java.awt.Color;
+import and.awt.Color;
 
 import org.apache.poi.hslf.model.MasterSheet;
 import org.apache.poi.hslf.model.Shape;
@@ -508,7 +508,7 @@ public final class RichTextRun {
 
 	/**
 	 * @return font color as RGB value
-	 * @see java.awt.Color
+	 * @see and.awt.Color
 	 */
 	public Color getFontColor() {
 		int rgb = getCharTextPropVal("font.color");
@@ -526,14 +526,14 @@ public final class RichTextRun {
 	 * Sets color of the text, as a int bgr.
 	 * (PowerPoint stores as BlueGreenRed, not the more
 	 *  usual RedGreenBlue)
-	 * @see java.awt.Color
+	 * @see and.awt.Color
 	 */
 	public void setFontColor(int bgr) {
 		setCharTextPropVal("font.color", bgr);
 	}
 
 	/**
-	 * Sets color of the text, as a java.awt.Color
+	 * Sets color of the text, as a and.awt.Color
 	 */
 	public void setFontColor(Color color) {
 		// In PowerPont RGB bytes are swapped, as BGR

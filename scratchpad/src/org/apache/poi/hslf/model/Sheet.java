@@ -17,6 +17,8 @@
 
 package org.apache.poi.hslf.model;
 
+import net.pbdavey.awt.Graphics2D;
+
 import org.apache.poi.ddf.*;
 import org.apache.poi.hslf.record.*;
 import org.apache.poi.hslf.usermodel.SlideShow;
@@ -24,7 +26,7 @@ import org.apache.poi.hslf.usermodel.SlideShow;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.awt.*;
+import and.awt.*;
 
 /**
  * This class defines the common format of "Sheets" in a powerpoint

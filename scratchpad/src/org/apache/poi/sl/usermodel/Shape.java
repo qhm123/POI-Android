@@ -17,7 +17,7 @@
 
 package org.apache.poi.sl.usermodel;
 
-import java.awt.geom.Rectangle2D;
+import and.awt.geom.Rectangle2D;
 
 public interface Shape {
 	public int getShapeType();

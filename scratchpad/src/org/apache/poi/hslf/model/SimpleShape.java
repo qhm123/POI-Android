@@ -17,21 +17,31 @@
 
 package org.apache.poi.hslf.model;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.poi.ddf.*;
+import net.pbdavey.awt.Graphics2D;
+
+import org.apache.poi.ddf.DefaultEscherRecordFactory;
+import org.apache.poi.ddf.EscherChildAnchorRecord;
+import org.apache.poi.ddf.EscherClientAnchorRecord;
+import org.apache.poi.ddf.EscherClientDataRecord;
+import org.apache.poi.ddf.EscherContainerRecord;
+import org.apache.poi.ddf.EscherOptRecord;
+import org.apache.poi.ddf.EscherProperties;
+import org.apache.poi.ddf.EscherRecord;
+import org.apache.poi.ddf.EscherSimpleProperty;
 import org.apache.poi.ddf.EscherSpRecord;
 import org.apache.poi.hslf.exceptions.HSLFException;
 import org.apache.poi.hslf.record.InteractiveInfo;
 import org.apache.poi.hslf.record.InteractiveInfoAtom;
 import org.apache.poi.hslf.record.Record;
 import org.apache.poi.util.LittleEndian;
+
+import and.awt.Color;
+import and.awt.geom.AffineTransform;
+import and.awt.geom.Rectangle2D;
 
 /**
  *  An abstract simple (non-group) shape.
@@ -134,7 +144,7 @@ public abstract class SimpleShape extends Shape {
     }
 
     /**
-     * @return color of the line. If color is not set returns <code>java.awt.Color.black</code>
+     * @return color of the line. If color is not set returns <code>and.awt.Color.black</code>
      */
     public Color getLineColor(){
         EscherOptRecord opt = (EscherOptRecord)getEscherChild(_escherContainer, EscherOptRecord.RECORD_ID);

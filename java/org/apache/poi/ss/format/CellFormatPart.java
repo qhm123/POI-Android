@@ -19,7 +19,7 @@ package org.apache.poi.ss.format;
 import org.apache.poi.hssf.util.HSSFColor;
 
 import javax.swing.*;
-import java.awt.*;
+import and.awt.*;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.regex.Matcher;

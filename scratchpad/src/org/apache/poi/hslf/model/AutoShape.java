@@ -17,10 +17,11 @@
 
 package org.apache.poi.hslf.model;
 
-import org.apache.poi.ddf.*;
+import org.apache.poi.ddf.EscherContainerRecord;
+import org.apache.poi.ddf.EscherProperties;
 import org.apache.poi.util.POILogger;
 
-import java.awt.geom.Rectangle2D;
+import and.awt.geom.Rectangle2D;
 
 /**
  * Represents an AutoShape.
@@ -106,14 +107,14 @@ public class AutoShape extends TextShape {
         setEscherProperty((short)(EscherProperties.GEOMETRY__ADJUSTVALUE + idx), val);
     }
 
-    public java.awt.Shape getOutline(){
+    public and.awt.Shape getOutline(){
         ShapeOutline outline = AutoShapes.getShapeOutline(getShapeType());
         Rectangle2D anchor = getLogicalAnchor2D();
         if(outline == null){
             logger.log(POILogger.WARN, "Outline not found for " + ShapeTypes.typeName(getShapeType()));
             return anchor;
         }
-        java.awt.Shape shape = outline.getOutline(this);
+        and.awt.Shape shape = outline.getOutline(this);
         return AutoShapes.transform(shape, anchor);
     }
 

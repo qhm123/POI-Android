@@ -17,6 +17,8 @@
 
 package org.apache.poi.hslf.usermodel;
 
+import net.pbdavey.awt.Graphics2D;
+
 import org.apache.poi.util.LittleEndian;
 import org.apache.poi.util.POILogger;
 import org.apache.poi.util.POILogFactory;
@@ -28,7 +30,7 @@ import java.io.OutputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.awt.*;
+import and.awt.*;
 
 /**
  * A class that represents image data contained in a slide show.

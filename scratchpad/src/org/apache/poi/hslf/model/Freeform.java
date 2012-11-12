@@ -17,11 +17,11 @@
 
 package org.apache.poi.hslf.model;
 
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import and.awt.geom.AffineTransform;
+import and.awt.geom.GeneralPath;
+import and.awt.geom.PathIterator;
+import and.awt.geom.Point2D;
+import and.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +39,7 @@ import org.apache.poi.util.POILogger;
  *
  * <p>
  * Shapes drawn with the "Freeform" tool have cubic bezier curve segments in the smooth sections
- * and straight-line segments in the straight sections. This object closely corresponds to <code>java.awt.geom.GeneralPath</code>.
+ * and straight-line segments in the straight sections. This object closely corresponds to <code>and.awt.geom.GeneralPath</code>.
  * </p>
  * @author Yegor Kozlov
  */
@@ -242,7 +242,7 @@ public final class Freeform extends AutoShape {
         return path;
     }
 
-    public java.awt.Shape getOutline(){
+    public and.awt.Shape getOutline(){
         GeneralPath path =  getPath();
         Rectangle2D anchor = getAnchor2D();
         Rectangle2D bounds = path.getBounds2D();
