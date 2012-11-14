@@ -419,7 +419,7 @@ public final class Slide extends Sheet
     	return new Comment[0];
     }
 
-    public void draw(Canvas graphics){
+    public void draw(Graphics2D graphics){
         MasterSheet master = getMasterSheet();
         Background bg = getBackground();
         if(bg != null)bg.draw(graphics);

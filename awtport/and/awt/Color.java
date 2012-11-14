@@ -26,8 +26,6 @@
 package and.awt;
 
 //import and.awt.image.ColorModel;
-import net.pbdavey.awt.GraphicsEnvironment;
-import net.pbdavey.awt.Toolkit;
 import and.awt.geom.AffineTransform;
 import and.awt.geom.Rectangle2D;
 import and.awt.color.ColorSpace;
@@ -278,10 +276,10 @@ public class Color implements Paint, java.io.Serializable {
          **/
 
         /* ensure that the necessary native libraries are loaded */
-        Toolkit.loadLibraries();
-        if (!GraphicsEnvironment.isHeadless()) {
-            initIDs();
-        }
+//        Toolkit.loadLibraries();
+//        if (!GraphicsEnvironment.isHeadless()) {
+//            initIDs();
+//        }
     }
 
     /**

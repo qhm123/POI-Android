@@ -27,8 +27,6 @@ import org.apache.poi.hslf.blip.Bitmap;
 import org.apache.poi.hslf.exceptions.HSLFException;
 import org.apache.poi.util.POILogger;
 
-import vajax.imageio.ImageIO;
-import and.awt.image.BufferedImage;
 import and.awt.*;
 import and.awt.geom.AffineTransform;
 import java.io.ByteArrayInputStream;
@@ -147,27 +145,25 @@ public class Picture extends SimpleShape {
      * for other types sets the default size of 200x200 pixels.
      */
     public void setDefaultSize(){
-    	// XXX: DDD
-//        PictureData pict = getPictureData();
-//        if (pict  instanceof Bitmap){
-//            BufferedImage img = null;
-//            try {
-//               	img = ImageIO.read(new ByteArrayInputStream(pict.getData()));
-//            }
-//            catch (IOException e){}
-//            catch (NegativeArraySizeException ne) {}
-//
-//            if(img != null) {
-//                // Valid image, set anchor from it
-//                setAnchor(new and.awt.Rectangle(0, 0, img.getWidth()*POINT_DPI/PIXEL_DPI, img.getHeight()*POINT_DPI/PIXEL_DPI));
-//            } else {
-//                // Invalid image, go with the default metafile size
-//                setAnchor(new and.awt.Rectangle(0, 0, 200, 200));
-//            }
-//        } else {
-//            //default size of a metafile picture is 200x200
-//            setAnchor(new and.awt.Rectangle(50, 50, 200, 200));
-//        }
+        PictureData pict = getPictureData();
+        if (pict  instanceof Bitmap){
+            BufferedImage img = null;
+            try {
+               	img = ImageIO.read(new ByteArrayInputStream(pict.getData()));
+            }
+            catch (NegativeArraySizeException ne) {}
+
+            if(img != null) {
+                // Valid image, set anchor from it
+                setAnchor(new and.awt.Rectangle(0, 0, img.getWidth()*POINT_DPI/PIXEL_DPI, img.getHeight()*POINT_DPI/PIXEL_DPI));
+            } else {
+                // Invalid image, go with the default metafile size
+                setAnchor(new and.awt.Rectangle(0, 0, 200, 200));
+            }
+        } else {
+            //default size of a metafile picture is 200x200
+            setAnchor(new and.awt.Rectangle(50, 50, 200, 200));
+        }
     }
 
     /**

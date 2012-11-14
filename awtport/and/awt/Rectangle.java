@@ -26,8 +26,8 @@
 package and.awt;
 
 import and.awt.geom.Rectangle2D;
-import net.pbdavey.awt.GraphicsEnvironment;
-import net.pbdavey.awt.Toolkit;
+//import net.pbdavey.awt.GraphicsEnvironment;
+//import net.pbdavey.awt.Toolkit;
 
 /**
  * A <code>Rectangle</code> specifies an area in a coordinate space that is
@@ -172,10 +172,10 @@ public class Rectangle extends Rectangle2D
 
     static {
         /* ensure that the necessary native libraries are loaded */
-        Toolkit.loadLibraries();
-        if (!GraphicsEnvironment.isHeadless()) {
-            initIDs();
-        }
+//        Toolkit.loadLibraries();
+//        if (!GraphicsEnvironment.isHeadless()) {
+//            initIDs();
+//        }
     }
 
     /**

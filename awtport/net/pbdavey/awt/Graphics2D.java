@@ -4,25 +4,21 @@ package net.pbdavey.awt;
 import java.text.AttributedCharacterIterator;
 import java.util.Map;
 
-import net.pbdavey.awt.RenderingHints.Key;
 import and.awt.BasicStroke;
+import and.awt.BufferedImage;
 import and.awt.Color;
 import and.awt.Graphics;
+import and.awt.Image;
 import and.awt.Rectangle;
 import and.awt.Shape;
 import and.awt.Stroke;
-import and.awt.font.FontRenderContext;
-import and.awt.font.GlyphVector;
 import and.awt.geom.AffineTransform;
 import and.awt.geom.PathIterator;
-import and.awt.image.BufferedImage;
-import and.awt.image.BufferedImageOp;
-import and.awt.image.RenderedImage;
-import and.awt.image.renderable.RenderableImage;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.RectF;
 /**
  * So far it appears that Graphics2D is roughly equivalent to a Canvas with Paint.
@@ -459,9 +455,16 @@ public class Graphics2D extends Graphics {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void drawImage(Image img, int x, int y, Object o) {
+		canvas.drawBitmap(img.bm, x, y, paint);
+	}
+	
+	public void drawImage(BufferedImage img, int x, int y, int width, int height, Object o) {
+		canvas.drawBitmap(img.bm, new Rect(0, 0, img.getWidth(), img.getHeight()), new Rect(x, y, width, height), paint);
+	}
 
 	public void drawImage(BufferedImage img, BufferedImageOp op, int x, int y) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -26,8 +26,8 @@
 package and.awt;
 
 import and.awt.geom.Dimension2D;
-import net.pbdavey.awt.GraphicsEnvironment;
-import net.pbdavey.awt.Toolkit;
+//import net.pbdavey.awt.GraphicsEnvironment;
+//import net.pbdavey.awt.Toolkit;
 
 /**
  * The <code>Dimension</code> class encapsulates the width and
@@ -86,10 +86,10 @@ public class Dimension extends Dimension2D implements java.io.Serializable {
 
     static {
         /* ensure that the necessary native libraries are loaded */
-        Toolkit.loadLibraries();
-        if (!GraphicsEnvironment.isHeadless()) {
-            initIDs();
-        }
+//        Toolkit.loadLibraries();
+//        if (!GraphicsEnvironment.isHeadless()) {
+//            initIDs();
+//        }
     }
 
     /**

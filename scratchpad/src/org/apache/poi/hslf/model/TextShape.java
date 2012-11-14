@@ -19,7 +19,6 @@ package org.apache.poi.hslf.model;
 
 import and.awt.Font;
 import and.awt.Rectangle;
-import and.awt.font.FontRenderContext;
 import and.awt.geom.AffineTransform;
 import and.awt.geom.Rectangle2D;
 import java.io.IOException;

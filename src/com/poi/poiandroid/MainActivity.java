@@ -7,18 +7,14 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.pbdavey.awt.Graphics2D;
-import net.pbdavey.awt.RenderingHints;
 
 import org.apache.poi.hslf.model.Slide;
 import org.apache.poi.hslf.usermodel.SlideShow;
 
-import vajax.imageio.ImageIO;
 
 import and.awt.Color;
 import and.awt.Dimension;
 import and.awt.geom.Rectangle2D;
-import and.awt.image.BufferedImage;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;

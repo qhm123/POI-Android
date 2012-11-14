@@ -40,6 +40,9 @@ import org.apache.poi.hslf.record.SlideListWithText.SlideAtomsSet;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
+import and.awt.Dimension;
+import and.awt.Rectangle;
+import and.awt.geom.Rectangle2D;
 import android.graphics.Rect;
 
 /**
@@ -494,11 +497,11 @@ public final class SlideShow {
 	/**
 	 * Return the current page size
 	 */
-	public Rect getPageSize() {
+	public Dimension getPageSize() {
 		DocumentAtom docatom = _documentRecord.getDocumentAtom();
 		int pgx = (int) docatom.getSlideSizeX() * Shape.POINT_DPI / Shape.MASTER_DPI;
 		int pgy = (int) docatom.getSlideSizeY() * Shape.POINT_DPI / Shape.MASTER_DPI;
-		return new Rect(0, 0, pgx, pgy);
+		return new Dimension(pgx, pgy);
 	}
 
 	/**
@@ -507,10 +510,10 @@ public final class SlideShow {
 	 * @param pgsize
 	 *            page size (in points)
 	 */
-	public void setPageSize(Rect pgsize) {
+	public void setPageSize(Dimension pgsize) {
 		DocumentAtom docatom = _documentRecord.getDocumentAtom();
-		docatom.setSlideSizeX(pgsize.width() * Shape.MASTER_DPI / Shape.POINT_DPI);
-		docatom.setSlideSizeY(pgsize.height() * Shape.MASTER_DPI / Shape.POINT_DPI);
+		docatom.setSlideSizeX(pgsize.width * Shape.MASTER_DPI / Shape.POINT_DPI);
+		docatom.setSlideSizeY(pgsize.height * Shape.MASTER_DPI / Shape.POINT_DPI);
 	}
 
 	/**

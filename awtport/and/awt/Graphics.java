@@ -28,8 +28,8 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
-import net.pbdavey.awt.Font;
-import net.pbdavey.awt.FontMetrics;
+//import net.pbdavey.awt.Font;
+//import net.pbdavey.awt.FontMetrics;
 
 import and.awt.Color;
 import and.awt.Polygon;
