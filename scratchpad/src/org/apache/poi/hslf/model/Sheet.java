@@ -168,8 +168,12 @@ public abstract class Sheet {
                     TextCharsAtom tca = (TextCharsAtom) records[i + 1];
                     trun = new TextRun(tha, tca, stpa);
                 } else if (records[i + 1] instanceof TextBytesAtom) {
-                    TextBytesAtom tba = (TextBytesAtom) records[i + 1];
-                    trun = new TextRun(tha, tba, stpa);
+					try {
+						TextBytesAtom tba = (TextBytesAtom) records[i + 1];
+						trun = new TextRun(tha, tba, stpa);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
                 } else if (records[i + 1].getRecordType() == 4001l) {
                     // StyleTextPropAtom - Safe to ignore
                 } else if (records[i + 1].getRecordType() == 4010l) {

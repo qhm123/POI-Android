@@ -67,14 +67,14 @@ public final class ShapePainter {
         Color fillColor = shape.getFill().getForegroundColor();
         if (fillColor != null) {
             //TODO: implement gradient and texture fill patterns
-            graphics.setPaint(fillColor);
+            graphics.setColor(fillColor);
             graphics.fill(outline);
         }
 
         //border
         Color lineColor = shape.getLineColor();
         if (lineColor != null){
-            graphics.setPaint(lineColor);
+            graphics.setColor(lineColor);
             float width = (float)shape.getLineWidth();
 
             int dashing = shape.getLineDashing();
@@ -95,7 +95,19 @@ public final class ShapePainter {
                     dashptrn = new float[]{width, width};
                     break;
             }
-
+            
+            // XXX: fixallzero
+            boolean allzero = true;
+            for (int i = 0; dashptrn != null && i < dashptrn.length; i++) {
+            	if (dashptrn[i] > 0.0) {
+            		allzero = false;
+            		break;
+            	}
+            }
+            if (allzero) {
+            	dashptrn = null;
+            }
+            
             Stroke stroke = new BasicStroke(width, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dashptrn, 0.0f);
             graphics.setStroke(stroke);
             graphics.draw(outline);

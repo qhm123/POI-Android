@@ -271,8 +271,9 @@ public abstract class TextShape extends SimpleShape {
 //
 //        return anchor;
     	// XXX: DDD
+    	System.out.println("resizeToFitText");
     	Rectangle2D anchor = getAnchor2D();
-    	anchor.setRect(anchor.getX(), anchor.getY(), 200, 100);
+//    	anchor.setRect(anchor.getX(), anchor.getY(), 200, 100);
     	setAnchor(anchor);
 
     	return anchor;

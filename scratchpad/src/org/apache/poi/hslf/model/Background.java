@@ -49,7 +49,7 @@ public final class Background extends Shape {
         switch (f.getFillType()) {
             case Fill.FILL_SOLID:
                 Color color = f.getForegroundColor();
-                graphics.setPaint(color);
+                graphics.setColor(color);
                 graphics.fill(anchor);
                 break;
             case Fill.FILL_PICTURE:
@@ -64,7 +64,13 @@ public final class Background extends Shape {
                     }
                     Image scaledImg = img.getScaledInstance(anchor.width, anchor.height, Image.SCALE_SMOOTH);
                     graphics.drawImage(scaledImg, anchor.x, anchor.y, null);
-
+                    
+                    if (img != null) {
+                    	img.bm.recycle();
+                    }
+                    if (scaledImg != null) {
+                    	scaledImg.bm.recycle();
+                    }
                 }
                 break;
             default:

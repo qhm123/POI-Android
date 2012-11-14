@@ -63,6 +63,10 @@ public final class BitmapPainter implements ImagePainter {
 
         Rectangle anchor = parent.getLogicalAnchor2D().getBounds();
         graphics.drawImage(img, anchor.x, anchor.y, anchor.width, anchor.height, null);
+        
+        if (img != null) {
+        	img.bm.recycle();
+        }
     }
 
 }

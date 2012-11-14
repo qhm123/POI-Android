@@ -46,6 +46,9 @@ public final class PNG extends Bitmap {
 		      System.arraycopy(data, 16, png, 0, png.length);
 		      data = png;
 		  }
+		  if (bi != null) {
+			  bi.bm.recycle();
+		  }
          return data;
      }
 

@@ -12,14 +12,17 @@ import org.apache.poi.hslf.usermodel.SlideShow;
 
 import and.awt.Dimension;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -27,7 +30,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
-	// ImageView mImageView;
+	private static final String TAG = MainActivity.class.getSimpleName();
 
 	ViewPager mViewPager;
 	PagerAdapter mPagerAdapter;
@@ -39,18 +42,28 @@ public class MainActivity extends Activity {
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setPageMargin(10);
+		mViewPager.setOffscreenPageLimit(1);
 
 		Logger.getLogger("org.teleal.cling").setLevel(Level.FINEST);
 
+		String path = "/sdcard/socket.ppt";
+		Intent i = getIntent();
+		if (i != null) {
+			Uri uri = i.getData();
+			if (uri != null) {
+				Log.d(TAG, "uri.getPath: " + uri.getPath());
+				path = uri.getPath();
+			}
+		}
 		try {
-			ppt2png();
+			ppt2png(path);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void ppt2png() throws IOException {
-		FileInputStream is = new FileInputStream("/sdcard/socket.ppt");
+	private void ppt2png(String path) throws IOException {
+		FileInputStream is = new FileInputStream(path);
 		SlideShow ppt = new SlideShow(is);
 		is.close();
 
@@ -64,7 +77,7 @@ public class MainActivity extends Activity {
 			public void destroyItem(ViewGroup container, int position,
 					Object object) {
 				ImageView view = (ImageView) object;
-				
+
 				container.removeView(view);
 
 				BitmapDrawable bitmapDrawable = (BitmapDrawable) view
@@ -119,39 +132,5 @@ public class MainActivity extends Activity {
 		};
 
 		mViewPager.setAdapter(mPagerAdapter);
-
-		// for (int i = 0; i < slide.length; i++) {
-		//
-		// String title = slide[i].getTitle();
-		// System.out.println("Rendering slide " + (i + 1) + (title == null ? ""
-		// : ": " + title));
-		// System.out.println("pgsize.width: " + pgsize.getWidth() +
-		// ", pgsize.height: " + pgsize.getHeight());
-		//
-		// Bitmap bmp = Bitmap.createBitmap((int)pgsize.getWidth(),
-		// (int)pgsize.getHeight(), Config.RGB_565);
-		// Canvas canvas = new Canvas(bmp);
-		// Paint paint = new Paint();
-		// paint.setColor(android.graphics.Color.WHITE);
-		// paint.setFlags(Paint.ANTI_ALIAS_FLAG);
-		// canvas.drawPaint(paint);
-		//
-		//
-		// Graphics2D graphics2d = new Graphics2D(canvas);
-		//
-		// // render
-		// slide[i].draw(graphics2d);
-		//
-		// // mImageView.setImageBitmap(bmp);
-		//
-		// FileOutputStream out = new FileOutputStream("/sdcard/slide-" + (i +
-		// 1)
-		// + ".png");
-		// bmp.compress(CompressFormat.PNG, 80, out);
-		// out.close();
-		// bmp.recycle();
-		//
-		// System.out.println("end");
-		// }
 	}
 }

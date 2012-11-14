@@ -1,15 +1,11 @@
 package net.pbdavey.awt;
 
 
-import java.text.AttributedCharacterIterator;
-import java.util.Map;
-
 import and.awt.BasicStroke;
 import and.awt.BufferedImage;
 import and.awt.Color;
 import and.awt.Graphics;
 import and.awt.Image;
-import and.awt.Rectangle;
 import and.awt.Shape;
 import and.awt.Stroke;
 import and.awt.geom.AffineTransform;
@@ -32,7 +28,6 @@ public class Graphics2D extends Graphics {
 	public Canvas canvas;
 	
 	Font font = new Font();
-	and.awt.Paint awtPaint;
 	Stroke stroke;
 
 	Color color = Color.white;
@@ -46,14 +41,6 @@ public class Graphics2D extends Graphics {
 		paint.setAntiAlias(true);
 	}
 	
-	public void setPaint(and.awt.Paint p) {
-		this.awtPaint = p;
-	}
-	
-	public and.awt.Paint getPaint() {
-		return awtPaint;
-	}
-
 	public void setColor(Color color) {
 		this.color = color;
 		paint.setColor(this.color.getRGB());
@@ -63,14 +50,6 @@ public class Graphics2D extends Graphics {
 		return this.color;
 	}
 
-	public void setBackground(Color color) {
-		this.bgColor = color;
-	}
-	
-	public Color getBackground() {
-		return this.bgColor;
-	}
-	
 	/**
 	 * TODO: This shouldn't accept BasicStroke, rather a generic Stroke
 	 * The issue here has to do with actually stroking the Shape, which
@@ -117,33 +96,6 @@ public class Graphics2D extends Graphics {
 	public Stroke getStroke() {
 		return this.stroke;
 	}
-
-	public FontMetrics getFontMetrics() {
-		return new FontMetrics(this.paint);
-	}
-
-	public void setFont(Font font) {
-		paint.setTypeface(font.typeFace);
-		this.font = font;
-	}
-
-	public void drawString(String string, int x, int y) {
-		paint.setStyle(Style.STROKE);
-		canvas.drawText(string, x, y, paint);
-	}
-
-	public void drawString(String string, float x, float y) {
-		paint.setStyle(Style.STROKE);
-		canvas.drawText(string, x, y, paint);
-	}
-	
-	public boolean hit(Rectangle rect,
-            Shape s,
-            boolean onStroke) {
-		return true;
-	}
-	
-	
 	
 	public void draw(Shape s) {
 		PathIterator pi = s.getPathIterator(null);
@@ -151,14 +103,26 @@ public class Graphics2D extends Graphics {
 		// Draw the outline, don't fill
 		paint.setStyle(Style.STROKE);
 		canvas.drawPath(path, paint);
+		
+		RectF rf = new RectF();
+		path.computeBounds(rf, true);
+		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
 	}
 	
 	public void fill(Shape s) {
+		System.out.println("sShape: " + s.getClass().getName());
 		PathIterator pi = s.getPathIterator(null);
 		Path path = convertAwtPathToAndroid(pi);
 		// Draw the outline and fill
 		paint.setStyle(Style.FILL_AND_STROKE);
+		RectF rf = new RectF();
+		path.computeBounds(rf, true);
+		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
 		canvas.drawPath(path, paint);
+//		canvas.drawRect(rf, paint);
+//		canvas.drawRect(new Rect(0, 0, 300, 150), paint);
+//		paint.setColor(android.graphics.Color.BLACK);
+//		canvas.drawText("haha", 0, 130, paint);
 	}
 
 	private Path convertAwtPathToAndroid(PathIterator pi) {
@@ -171,7 +135,7 @@ public class Graphics2D extends Graphics {
 				path.setFillType(Path.FillType.EVEN_ODD);
 			}
 			else {
-				path.setFillType(Path.FillType.INVERSE_EVEN_ODD);
+				path.setFillType(Path.FillType.WINDING);
 			}
 			
 			int pathType = pi.currentSegment(coords);
@@ -221,10 +185,6 @@ public class Graphics2D extends Graphics {
 	
 	public void shear(double shx, double shy) {
 		this.transform.shear(shx, shy);
-	}
-	
-	public void transform(AffineTransform Tx) {
-		//TODO: AffineTransform doesn't have a similar call, so leave for now
 	}
 	
 	public void setTransform(AffineTransform Tx) {
