@@ -139,7 +139,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTColorMappingOverride)get_store().add_element_user(CLRMAPOVR$2);
             }
-//            target.set(clrMapOvr);
+            target.set(clrMapOvr);
         }
     }
     
@@ -213,7 +213,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideTransition)get_store().add_element_user(TRANSITION$4);
             }
-//            target.set(transition);
+            target.set(transition);
         }
     }
     
@@ -287,7 +287,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideTiming)get_store().add_element_user(TIMING$6);
             }
-//            target.set(timing);
+            target.set(timing);
         }
     }
     
@@ -361,7 +361,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTHeaderFooter)get_store().add_element_user(HF$8);
             }
-//            target.set(hf);
+            target.set(hf);
         }
     }
     
@@ -435,7 +435,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$10);
             }
-//            target.set(extLst);
+            target.set(extLst);
         }
     }
     
@@ -783,8 +783,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 return null;
             }
-//            return (org.openxmlformats.schemas.presentationml.x2006.main.STSlideLayoutType.Enum)target.getEnumValue();
-            return null;
+            return (org.openxmlformats.schemas.presentationml.x2006.main.STSlideLayoutType.Enum)target.getEnumValue();
         }
     }
     
@@ -832,7 +831,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(TYPE$18);
             }
-//            target.setEnumValue(type);
+            target.setEnumValue(type);
         }
     }
     
@@ -850,7 +849,7 @@ public class CTSlideLayoutImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.STSlideLayoutType)get_store().add_attribute_user(TYPE$18);
             }
-//            target.set(type);
+            target.set(type);
         }
     }
     

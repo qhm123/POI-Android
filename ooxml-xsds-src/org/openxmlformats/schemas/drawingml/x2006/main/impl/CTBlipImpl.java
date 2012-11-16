@@ -311,7 +311,7 @@ public class CTBlipImpl extends org.apache.xmlbeans.impl.values.XmlComplexConten
         synchronized (monitor())
         {
             check_orphaned();
-//            arraySetterHelper(alphaCeilingArray, ALPHACEILING$2);
+            arraySetterHelper(alphaCeilingArray, ALPHACEILING$2);
         }
     }
     

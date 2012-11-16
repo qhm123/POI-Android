@@ -77,7 +77,7 @@ public class CTPlaceholderImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$0);
             }
-//            target.set(extLst);
+            target.set(extLst);
         }
     }
     
@@ -212,22 +212,21 @@ public class CTPlaceholderImpl extends org.apache.xmlbeans.impl.values.XmlComple
      */
     public org.openxmlformats.schemas.presentationml.x2006.main.STDirection.Enum getOrient()
     {
-//        synchronized (monitor())
-//        {
-//            check_orphaned();
-//            org.apache.xmlbeans.SimpleValue target = null;
-//            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(ORIENT$4);
-//            if (target == null)
-//            {
-//                target = (org.apache.xmlbeans.SimpleValue)get_default_attribute_value(ORIENT$4);
-//            }
-//            if (target == null)
-//            {
-//                return null;
-//            }
-//            return (org.openxmlformats.schemas.presentationml.x2006.main.STDirection.Enum)target.getEnumValue();
-//        }
-    	return null;
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.apache.xmlbeans.SimpleValue target = null;
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(ORIENT$4);
+            if (target == null)
+            {
+                target = (org.apache.xmlbeans.SimpleValue)get_default_attribute_value(ORIENT$4);
+            }
+            if (target == null)
+            {
+                return null;
+            }
+            return (org.openxmlformats.schemas.presentationml.x2006.main.STDirection.Enum)target.getEnumValue();
+        }
     }
     
     /**
@@ -274,7 +273,7 @@ public class CTPlaceholderImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(ORIENT$4);
             }
-//            target.setEnumValue(orient);
+            target.setEnumValue(orient);
         }
     }
     
@@ -292,7 +291,7 @@ public class CTPlaceholderImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.STDirection)get_store().add_attribute_user(ORIENT$4);
             }
-//            target.set(orient);
+            target.set(orient);
         }
     }
     
@@ -326,8 +325,7 @@ public class CTPlaceholderImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 return null;
             }
-//            return (org.openxmlformats.schemas.presentationml.x2006.main.STPlaceholderSize.Enum)target.getEnumValue();
-            return null;
+            return (org.openxmlformats.schemas.presentationml.x2006.main.STPlaceholderSize.Enum)target.getEnumValue();
         }
     }
     
@@ -375,7 +373,7 @@ public class CTPlaceholderImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(SZ$6);
             }
-//            target.setEnumValue(sz);
+            target.setEnumValue(sz);
         }
     }
     
@@ -393,7 +391,7 @@ public class CTPlaceholderImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.STPlaceholderSize)get_store().add_attribute_user(SZ$6);
             }
-//            target.set(sz);
+            target.set(sz);
         }
     }
     

@@ -162,7 +162,6 @@ public interface CTCustomGeometry2D extends org.apache.xmlbeans.XmlObject
      * A factory class with static methods for creating instances
      * of this type.
      */
-    
     public static final class Factory
     {
         public static org.openxmlformats.schemas.drawingml.x2006.main.CTCustomGeometry2D newInstance() {

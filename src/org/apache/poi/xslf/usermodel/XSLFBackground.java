@@ -20,6 +20,7 @@ package org.apache.poi.xslf.usermodel;
 import net.pbdavey.awt.Graphics2D;
 
 import org.apache.xmlbeans.XmlObject;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTBackgroundFillStyleList;
 //import org.openxmlformats.schemas.drawingml.x2006.main.CTBackgroundFillStyleList;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTSchemeColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTStyleMatrixReference;
@@ -75,11 +76,11 @@ public class XSLFBackground extends XSLFSimpleShape {
 
             int idx = (int)bgRef.getIdx() - 1001;
             XSLFTheme theme = getSheet().getTheme();
-//            CTBackgroundFillStyleList bgStyles =
-//                    theme.getXmlObject().getThemeElements().getFmtScheme().getBgFillStyleLst();
+            CTBackgroundFillStyleList bgStyles =
+                    theme.getXmlObject().getThemeElements().getFmtScheme().getBgFillStyleLst();
 
-//            XmlObject bgStyle = bgStyles.selectPath("*")[idx];
-//            fill = rShape.selectPaint(graphics, bgStyle, phClr, theme.getPackagePart());
+            XmlObject bgStyle = bgStyles.selectPath("*")[idx];
+            fill = rShape.selectPaint(graphics, bgStyle, phClr, theme.getPackagePart());
         }
 
         return fill;

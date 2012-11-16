@@ -59,7 +59,7 @@ public class CTShapeNonVisualImpl extends org.apache.xmlbeans.impl.values.XmlCom
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps)get_store().add_element_user(CNVPR$0);
             }
-//            target.set(cNvPr);
+            target.set(cNvPr);
         }
     }
     

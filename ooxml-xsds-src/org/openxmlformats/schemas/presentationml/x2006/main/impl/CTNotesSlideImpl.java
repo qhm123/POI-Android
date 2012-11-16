@@ -125,7 +125,7 @@ public class CTNotesSlideImpl extends org.apache.xmlbeans.impl.values.XmlComplex
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTColorMappingOverride)get_store().add_element_user(CLRMAPOVR$2);
             }
-//            target.set(clrMapOvr);
+            target.set(clrMapOvr);
         }
     }
     
@@ -199,7 +199,7 @@ public class CTNotesSlideImpl extends org.apache.xmlbeans.impl.values.XmlComplex
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$4);
             }
-//            target.set(extLst);
+            target.set(extLst);
         }
     }
     

@@ -25,7 +25,7 @@ import org.apache.xmlbeans.XmlObject;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTAdjPoint2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTCustomGeometry2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTGeomRect;
-//import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPath2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPath2DClose;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPath2DCubicBezierTo;
