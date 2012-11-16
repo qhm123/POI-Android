@@ -97,8 +97,8 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
             } else if (ch instanceof CTPicture){
                 shapes.add(new XSLFPictureShape((CTPicture)ch, this));
             } else if (ch instanceof CTGraphicalObjectFrame){
-                XSLFGraphicFrame shape = XSLFGraphicFrame.create((CTGraphicalObjectFrame)ch, this);
-                shapes.add(shape);
+//                XSLFGraphicFrame shape = XSLFGraphicFrame.create((CTGraphicalObjectFrame)ch, this);
+//                shapes.add(shape);
             }
         }
         return shapes;
@@ -194,12 +194,12 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
         return sh;
     }
 
-    public XSLFTable createTable(){
-        List<XSLFShape> shapes = getShapeList();
-        XSLFTable sh = getDrawing().createTable();
-        shapes.add(sh);
-        return sh;
-    }
+//    public XSLFTable createTable(){
+//        List<XSLFShape> shapes = getShapeList();
+//        XSLFTable sh = getDrawing().createTable();
+//        shapes.add(sh);
+//        return sh;
+//    }
 
     /**
      * Returns an array containing all of the shapes in this sheet

@@ -35,7 +35,7 @@ import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBody;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBodyProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextParagraph;
 import org.openxmlformats.schemas.drawingml.x2006.main.STTextAnchoringType;
-import org.openxmlformats.schemas.drawingml.x2006.main.STTextVerticalType;
+//import org.openxmlformats.schemas.drawingml.x2006.main.STTextVerticalType;
 import org.openxmlformats.schemas.drawingml.x2006.main.STTextWrappingType;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTApplicationNonVisualDrawingProps;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTPlaceholder;
@@ -172,7 +172,7 @@ public abstract class XSLFTextShape extends XSLFSimpleShape implements Iterable<
             if(orientation == null) {
                 if(bodyPr.isSetVert()) bodyPr.unsetVert();
             } else {
-                bodyPr.setVert(STTextVerticalType.Enum.forInt(orientation.ordinal() + 1));
+//                bodyPr.setVert(STTextVerticalType.Enum.forInt(orientation.ordinal() + 1));
             }
         }
     }
@@ -183,10 +183,10 @@ public abstract class XSLFTextShape extends XSLFSimpleShape implements Iterable<
     public TextDirection getTextDirection(){
         CTTextBodyProperties bodyPr = getTextBodyPr();
         if (bodyPr != null) {
-            STTextVerticalType.Enum val = bodyPr.getVert();
-            if(val != null){
-                return TextDirection.values()[val.intValue() - 1];
-            }
+//            STTextVerticalType.Enum val = bodyPr.getVert();
+//            if(val != null){
+//                return TextDirection.values()[val.intValue() - 1];
+//            }
         }
         return TextDirection.HORIZONTAL;
     }
@@ -382,9 +382,9 @@ public abstract class XSLFTextShape extends XSLFSimpleShape implements Iterable<
             if(bodyPr.isSetNormAutofit()) bodyPr.unsetNormAutofit();
 
             switch(value){
-                case NONE: bodyPr.addNewNoAutofit(); break;
+//                case NONE: bodyPr.addNewNoAutofit(); break;
                 case NORMAL: bodyPr.addNewNormAutofit(); break;
-                case SHAPE: bodyPr.addNewSpAutoFit(); break;
+//                case SHAPE: bodyPr.addNewSpAutoFit(); break;
             }
         }
     }

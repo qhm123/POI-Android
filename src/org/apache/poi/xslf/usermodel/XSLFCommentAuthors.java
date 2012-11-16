@@ -22,23 +22,23 @@ import org.apache.poi.openxml4j.opc.PackagePart;
 import org.apache.poi.openxml4j.opc.PackageRelationship;
 import org.apache.poi.util.Beta;
 import org.apache.xmlbeans.XmlException;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentAuthor;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentAuthorList;
-import org.openxmlformats.schemas.presentationml.x2006.main.CmAuthorLstDocument;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentAuthor;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentAuthorList;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CmAuthorLstDocument;
 
 import java.io.IOException;
 
 @Beta
 public class XSLFCommentAuthors extends POIXMLDocumentPart {
-    private final CTCommentAuthorList _authors;
+//    private final CTCommentAuthorList _authors;
     
     /**
      * Create a new set of slide comments
      */
     XSLFCommentAuthors() {
        super();
-       CmAuthorLstDocument doc = CmAuthorLstDocument.Factory.newInstance();
-       _authors = doc.addNewCmAuthorLst();
+//       CmAuthorLstDocument doc = CmAuthorLstDocument.Factory.newInstance();
+//       _authors = doc.addNewCmAuthorLst();
     }
 
     /**
@@ -52,22 +52,22 @@ public class XSLFCommentAuthors extends POIXMLDocumentPart {
     XSLFCommentAuthors(PackagePart part, PackageRelationship rel) throws IOException, XmlException {
         super(part, rel);
 
-        CmAuthorLstDocument doc =
-           CmAuthorLstDocument.Factory.parse(getPackagePart().getInputStream());
-        _authors = doc.getCmAuthorLst();
+//        CmAuthorLstDocument doc =
+//           CmAuthorLstDocument.Factory.parse(getPackagePart().getInputStream());
+//        _authors = doc.getCmAuthorLst();
     }
     
-    public CTCommentAuthorList getCTCommentAuthorsList() {
-       return _authors;
-    }
-    
-    public CTCommentAuthor getAuthorById(long id) {
-       // TODO Have a map
-       for (CTCommentAuthor author : _authors.getCmAuthorList()) {
-          if (author.getId() == id) {
-             return author;
-          }
-       }
-       return null;
-    }
+//    public CTCommentAuthorList getCTCommentAuthorsList() {
+//       return _authors;
+//    }
+//    
+//    public CTCommentAuthor getAuthorById(long id) {
+//       // TODO Have a map
+//       for (CTCommentAuthor author : _authors.getCmAuthorList()) {
+//          if (author.getId() == id) {
+//             return author;
+//          }
+//       }
+//       return null;
+//    }
 }

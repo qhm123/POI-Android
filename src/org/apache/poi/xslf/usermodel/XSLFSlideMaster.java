@@ -108,11 +108,11 @@ import java.util.Map;
     }
 
     public XSLFSlideLayout getLayout(SlideLayout type){
-        for(XSLFSlideLayout layout : getLayouts().values()){
-            if(layout.getType() == type) {
-                return layout;
-            }
-        }
+//        for(XSLFSlideLayout layout : getLayouts().values()){
+//            if(layout.getType() == type) {
+//                return layout;
+//            }
+//        }
         return null;
     }
 

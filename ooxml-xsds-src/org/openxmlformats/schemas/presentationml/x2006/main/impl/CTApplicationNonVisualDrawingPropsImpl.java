@@ -446,17 +446,17 @@ public class CTApplicationNonVisualDrawingPropsImpl extends org.apache.xmlbeans.
      */
     public void setQuickTimeFile(org.openxmlformats.schemas.drawingml.x2006.main.CTQuickTimeFile quickTimeFile)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.drawingml.x2006.main.CTQuickTimeFile target = null;
-            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTQuickTimeFile)get_store().find_element_user(QUICKTIMEFILE$10, 0);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTQuickTimeFile)get_store().add_element_user(QUICKTIMEFILE$10);
-            }
-            target.set(quickTimeFile);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.drawingml.x2006.main.CTQuickTimeFile target = null;
+//            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTQuickTimeFile)get_store().find_element_user(QUICKTIMEFILE$10, 0);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTQuickTimeFile)get_store().add_element_user(QUICKTIMEFILE$10);
+//            }
+//            target.set(quickTimeFile);
+//        }
     }
     
     /**
@@ -520,17 +520,17 @@ public class CTApplicationNonVisualDrawingPropsImpl extends org.apache.xmlbeans.
      */
     public void setCustDataLst(org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList custDataLst)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList target = null;
-            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().find_element_user(CUSTDATALST$12, 0);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().add_element_user(CUSTDATALST$12);
-            }
-            target.set(custDataLst);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList target = null;
+//            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().find_element_user(CUSTDATALST$12, 0);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().add_element_user(CUSTDATALST$12);
+//            }
+//            target.set(custDataLst);
+//        }
     }
     
     /**
@@ -594,17 +594,17 @@ public class CTApplicationNonVisualDrawingPropsImpl extends org.apache.xmlbeans.
      */
     public void setExtLst(org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList extLst)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList target = null;
-            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().find_element_user(EXTLST$14, 0);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().add_element_user(EXTLST$14);
-            }
-            target.set(extLst);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList target = null;
+//            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().find_element_user(EXTLST$14, 0);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().add_element_user(EXTLST$14);
+//            }
+//            target.set(extLst);
+//        }
     }
     
     /**

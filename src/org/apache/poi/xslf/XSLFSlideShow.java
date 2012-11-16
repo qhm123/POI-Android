@@ -27,16 +27,16 @@ import org.apache.poi.util.Internal;
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFRelation;
 import org.apache.xmlbeans.XmlException;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentList;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentList;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTNotesSlide;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTPresentation;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTSlide;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTSlideIdList;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTSlideIdListEntry;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTSlideMaster;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTSlideMasterIdList;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTSlideMasterIdListEntry;
-import org.openxmlformats.schemas.presentationml.x2006.main.CmLstDocument;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTSlideMasterIdList;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTSlideMasterIdListEntry;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CmLstDocument;
 import org.openxmlformats.schemas.presentationml.x2006.main.NotesDocument;
 import org.openxmlformats.schemas.presentationml.x2006.main.PresentationDocument;
 import org.openxmlformats.schemas.presentationml.x2006.main.SldDocument;
@@ -117,38 +117,38 @@ public class XSLFSlideShow extends POIXMLDocument {
        return getPresentation().getSldIdLst();
 	}
     
-	/**
-	 * Returns the references from the presentation to its
-	 *  slide masters.
-	 * You'll need these to get at the actual slide 
-	 *  masters themselves
-	 */
-    @Internal
-	public CTSlideMasterIdList getSlideMasterReferences() {
-		return getPresentation().getSldMasterIdLst();
-	}
+//	/**
+//	 * Returns the references from the presentation to its
+//	 *  slide masters.
+//	 * You'll need these to get at the actual slide 
+//	 *  masters themselves
+//	 */
+//    @Internal
+//	public CTSlideMasterIdList getSlideMasterReferences() {
+//		return getPresentation().getSldMasterIdLst();
+//	}
 	
-	public PackagePart getSlideMasterPart(CTSlideMasterIdListEntry master) throws IOException, XmlException {
-		try {
-		   PackagePart corePart = getCorePart(); 
-			return corePart.getRelatedPart(
-				corePart.getRelationship(master.getId2())
-			);
-		} catch(InvalidFormatException e) {
-			throw new XmlException(e);
-		}
-	}
+//	public PackagePart getSlideMasterPart(CTSlideMasterIdListEntry master) throws IOException, XmlException {
+//		try {
+//		   PackagePart corePart = getCorePart(); 
+//			return corePart.getRelatedPart(
+//				corePart.getRelationship(master.getId2())
+//			);
+//		} catch(InvalidFormatException e) {
+//			throw new XmlException(e);
+//		}
+//	}
 	/**
 	 * Returns the low level slide master object from
 	 *  the supplied slide master reference
 	 */
-    @Internal
-	public CTSlideMaster getSlideMaster(CTSlideMasterIdListEntry master) throws IOException, XmlException {
-		PackagePart masterPart = getSlideMasterPart(master);
-		SldMasterDocument masterDoc =
-			SldMasterDocument.Factory.parse(masterPart.getInputStream());
-		return masterDoc.getSldMaster();
-	}
+//    @Internal
+//	public CTSlideMaster getSlideMaster(CTSlideMasterIdListEntry master) throws IOException, XmlException {
+//		PackagePart masterPart = getSlideMasterPart(master);
+//		SldMasterDocument masterDoc =
+//			SldMasterDocument.Factory.parse(masterPart.getInputStream());
+//		return masterDoc.getSldMaster();
+//	}
 
 	public PackagePart getSlidePart(CTSlideIdListEntry slide) throws IOException, XmlException {
 		try {
@@ -216,39 +216,39 @@ public class XSLFSlideShow extends POIXMLDocument {
 		return notesDoc.getNotes();
 	}
 	
-	/**
-	 * Returns all the comments for the given slide
-	 */
-    @Internal
-	public CTCommentList getSlideComments(CTSlideIdListEntry slide) throws IOException, XmlException {
-		PackageRelationshipCollection commentRels;
-		PackagePart slidePart = getSlidePart(slide);
-		
-		try {
-			commentRels = slidePart.getRelationshipsByType(XSLFRelation.COMMENTS.getRelation());
-		} catch(InvalidFormatException e) {
-			throw new IllegalStateException(e);
-		}
-		
-		if(commentRels.size() == 0) {
-			// No comments for this slide
-			return null;
-		}
-		if(commentRels.size() > 1) {
-			throw new IllegalStateException("Expecting 0 or 1 comments for a slide, but found " + commentRels.size());
-		}
-		
-		try {
-			PackagePart cPart = slidePart.getRelatedPart(
-					commentRels.getRelationship(0)
-			);
-			CmLstDocument commDoc = 
-				CmLstDocument.Factory.parse(cPart.getInputStream());
-			return commDoc.getCmLst();
-		} catch(InvalidFormatException e) {
-			throw new IllegalStateException(e);
-		}
-	}
+//	/**
+//	 * Returns all the comments for the given slide
+//	 */
+//    @Internal
+//	public CTCommentList getSlideComments(CTSlideIdListEntry slide) throws IOException, XmlException {
+//		PackageRelationshipCollection commentRels;
+//		PackagePart slidePart = getSlidePart(slide);
+//		
+//		try {
+//			commentRels = slidePart.getRelationshipsByType(XSLFRelation.COMMENTS.getRelation());
+//		} catch(InvalidFormatException e) {
+//			throw new IllegalStateException(e);
+//		}
+//		
+//		if(commentRels.size() == 0) {
+//			// No comments for this slide
+//			return null;
+//		}
+//		if(commentRels.size() > 1) {
+//			throw new IllegalStateException("Expecting 0 or 1 comments for a slide, but found " + commentRels.size());
+//		}
+//		
+//		try {
+//			PackagePart cPart = slidePart.getRelatedPart(
+//					commentRels.getRelationship(0)
+//			);
+//			CmLstDocument commDoc = 
+//				CmLstDocument.Factory.parse(cPart.getInputStream());
+//			return commDoc.getCmLst();
+//		} catch(InvalidFormatException e) {
+//			throw new IllegalStateException(e);
+//		}
+//	}
 
     /**
      * Get the document's embedded files.

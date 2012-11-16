@@ -41,19 +41,19 @@ public class XSLFTextBox extends XSLFAutoShape {
      */
     static CTShape prototype(int shapeId){
         CTShape ct = CTShape.Factory.newInstance();
-        CTShapeNonVisual nvSpPr = ct.addNewNvSpPr();
-        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
-        cnv.setName("TextBox " + shapeId);
-        cnv.setId(shapeId + 1);
-        nvSpPr.addNewCNvSpPr().setTxBox(true);
-        nvSpPr.addNewNvPr();
-        CTShapeProperties spPr = ct.addNewSpPr();
-        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
-        prst.setPrst(STShapeType.RECT);
-        prst.addNewAvLst();
-        CTTextBody txBody = ct.addNewTxBody();
-        txBody.addNewBodyPr();
-        txBody.addNewLstStyle();
+//        CTShapeNonVisual nvSpPr = ct.addNewNvSpPr();
+//        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
+//        cnv.setName("TextBox " + shapeId);
+//        cnv.setId(shapeId + 1);
+//        nvSpPr.addNewCNvSpPr().setTxBox(true);
+//        nvSpPr.addNewNvPr();
+//        CTShapeProperties spPr = ct.addNewSpPr();
+//        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
+//        prst.setPrst(STShapeType.RECT);
+//        prst.addNewAvLst();
+//        CTTextBody txBody = ct.addNewTxBody();
+//        txBody.addNewBodyPr();
+//        txBody.addNewLstStyle();
 
         return ct;
     }

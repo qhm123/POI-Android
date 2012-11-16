@@ -1,9 +1,13 @@
 package com.example.poipptxnew;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.XMLEvent;
 
 import net.pbdavey.awt.Graphics2D;
 
@@ -12,16 +16,14 @@ import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
 
-import and.awt.BufferedImage;
-import and.awt.Color;
 import and.awt.Dimension;
-import and.awt.ImageIO;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Bitmap.Config;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.ImageView;
 
@@ -41,6 +43,18 @@ public class MainActivity extends Activity {
 		
 		Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
     
+		try {
+			XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+			XMLEventReader reader = inputFactory
+					.createXMLEventReader(new StringReader(
+							"<doc att=\"value\">some text</doc>"));
+			while (reader.hasNext()) {
+				XMLEvent e = reader.nextEvent();
+				Log.e("HelloStax", "Event:[" + e + "]");
+			}
+		} catch (XMLStreamException e) {
+			Log.e("HelloStax", "Error parsing XML", e);
+		}
     	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

@@ -269,6 +269,7 @@
                 <path path="${out.dex.input.absolute.dir}"/>
                 <path refid="out.dex.jar.input.ref" />
                 -->
+                <path path="${jar.libs.absolute.dir}/dom4j-1.6.1.jar"/>
                 <path path="${out.absolute.dir}/repackagedclasses.jar"/>
                 <external-libs />
             </dex>
@@ -857,7 +858,7 @@
                  classpath="buildtools/jarjar-1.0.jar"/>
         <jarjar jarfile="${out.absolute.dir}/repackagedclasses.jar">
             <fileset dir="${out.classes.absolute.dir}" />
-            <zipgroupfileset dir="${jar.libs.absolute.dir}" includes="*.jar" />
+            <zipgroupfileset dir="${jar.libs.absolute.dir}" includes="*.jar" excludes="dom4j-1.6.1.jar" />
             <rule pattern="javax.xml.**" result="com.mycompany.@1"/>
         </jarjar>
     </target>

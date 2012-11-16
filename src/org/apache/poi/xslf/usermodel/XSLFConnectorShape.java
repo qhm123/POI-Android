@@ -21,12 +21,12 @@ package org.apache.poi.xslf.usermodel;
 
 import org.apache.poi.util.Beta;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTLineProperties;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPresetGeometry2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTShapeProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.STShapeType;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTConnector;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTConnectorNonVisual;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTConnectorNonVisual;
 
 /**
  * Specifies a connection shape.
@@ -45,17 +45,17 @@ public class XSLFConnectorShape extends XSLFSimpleShape {
      */
     static CTConnector prototype(int shapeId) {
         CTConnector ct = CTConnector.Factory.newInstance();
-        CTConnectorNonVisual nvSpPr = ct.addNewNvCxnSpPr();
-        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
-        cnv.setName("Connector " + shapeId);
-        cnv.setId(shapeId + 1);
-        nvSpPr.addNewCNvCxnSpPr();
-        nvSpPr.addNewNvPr();
-        CTShapeProperties spPr = ct.addNewSpPr();
-        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
-        prst.setPrst(STShapeType.LINE);
-        prst.addNewAvLst();
-        CTLineProperties ln = spPr.addNewLn();
+//        CTConnectorNonVisual nvSpPr = ct.addNewNvCxnSpPr();
+//        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
+//        cnv.setName("Connector " + shapeId);
+//        cnv.setId(shapeId + 1);
+//        nvSpPr.addNewCNvCxnSpPr();
+//        nvSpPr.addNewNvPr();
+//        CTShapeProperties spPr = ct.addNewSpPr();
+//        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
+//        prst.setPrst(STShapeType.LINE);
+//        prst.addNewAvLst();
+//        CTLineProperties ln = spPr.addNewLn();
         return ct;
     }
 
@@ -67,5 +67,17 @@ public class XSLFConnectorShape extends XSLFSimpleShape {
     public XSLFShadow getShadow() {
         return null;
     }
+
+	@Override
+	public String getShapeName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getShapeId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

@@ -29,7 +29,7 @@ import org.apache.poi.openxml4j.opc.PackageRelationship;
 import org.apache.poi.util.Beta;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTBlip;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTBlipFillProperties;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPresetGeometry2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTShapeProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.STShapeType;
@@ -61,22 +61,22 @@ public class XSLFPictureShape extends XSLFSimpleShape {
      */
     static CTPicture prototype(int shapeId, String rel) {
         CTPicture ct = CTPicture.Factory.newInstance();
-        CTPictureNonVisual nvSpPr = ct.addNewNvPicPr();
-        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
-        cnv.setName("Picture " + shapeId);
-        cnv.setId(shapeId + 1);
-        nvSpPr.addNewCNvPicPr().addNewPicLocks().setNoChangeAspect(true);
-        nvSpPr.addNewNvPr();
-
-        CTBlipFillProperties blipFill = ct.addNewBlipFill();
-        CTBlip blip = blipFill.addNewBlip();
-        blip.setEmbed(rel);
-        blipFill.addNewStretch().addNewFillRect();
-
-        CTShapeProperties spPr = ct.addNewSpPr();
-        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
-        prst.setPrst(STShapeType.RECT);
-        prst.addNewAvLst();
+//        CTPictureNonVisual nvSpPr = ct.addNewNvPicPr();
+//        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
+//        cnv.setName("Picture " + shapeId);
+//        cnv.setId(shapeId + 1);
+//        nvSpPr.addNewCNvPicPr().addNewPicLocks().setNoChangeAspect(true);
+//        nvSpPr.addNewNvPr();
+//
+//        CTBlipFillProperties blipFill = ct.addNewBlipFill();
+//        CTBlip blip = blipFill.addNewBlip();
+//        blip.setEmbed(rel);
+//        blipFill.addNewStretch().addNewFillRect();
+//
+//        CTShapeProperties spPr = ct.addNewSpPr();
+//        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
+//        prst.setPrst(STShapeType.RECT);
+//        prst.addNewAvLst();
         return ct;
     }
 
@@ -159,4 +159,18 @@ public class XSLFPictureShape extends XSLFSimpleShape {
         }
 
     }
+
+
+	@Override
+	public String getShapeName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int getShapeId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

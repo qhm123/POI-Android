@@ -35,7 +35,7 @@ import org.apache.xmlbeans.XmlObject;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTBlip;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTLineEndProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTLineProperties;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTOuterShadowEffect;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPoint2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPositiveSize2D;
@@ -77,7 +77,7 @@ public abstract class XSLFSimpleShape extends XSLFShape {
     private final XSLFSheet _sheet;
     private CTShapeProperties _spPr;
     private CTShapeStyle _spStyle;
-    private CTNonVisualDrawingProps _nvPr;
+//    private CTNonVisualDrawingProps _nvPr;
     private CTPlaceholder _ph;
 
     /* package */XSLFSimpleShape(XmlObject shape, XSLFSheet sheet) {
@@ -114,26 +114,26 @@ public abstract class XSLFSimpleShape extends XSLFShape {
         return XSLFShapeType.forInt(geom.intValue());
     }
 
-    @Override
-    public String getShapeName() {
-        return getNvPr().getName();
-    }
-
-    @Override
-    public int getShapeId() {
-        return (int) getNvPr().getId();
-    }
-
-    protected CTNonVisualDrawingProps getNvPr() {
-        if (_nvPr == null) {
-            XmlObject[] rs = _shape
-                    .selectPath("declare namespace p='http://schemas.openxmlformats.org/presentationml/2006/main' .//*/p:cNvPr");
-            if (rs.length != 0) {
-                _nvPr = (CTNonVisualDrawingProps) rs[0];
-            }
-        }
-        return _nvPr;
-    }
+//    @Override
+//    public String getShapeName() {
+//        return getNvPr().getName();
+//    }
+//
+//    @Override
+//    public int getShapeId() {
+//        return (int) getNvPr().getId();
+//    }
+//
+//    protected CTNonVisualDrawingProps getNvPr() {
+//        if (_nvPr == null) {
+//            XmlObject[] rs = _shape
+//                    .selectPath("declare namespace p='http://schemas.openxmlformats.org/presentationml/2006/main' .//*/p:cNvPr");
+//            if (rs.length != 0) {
+//                _nvPr = (CTNonVisualDrawingProps) rs[0];
+//            }
+//        }
+//        return _nvPr;
+//    }
 
     protected CTShapeProperties getSpPr() {
         if (_spPr == null) {

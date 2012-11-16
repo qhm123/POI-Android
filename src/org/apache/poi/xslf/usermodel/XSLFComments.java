@@ -22,23 +22,23 @@ import org.apache.poi.openxml4j.opc.PackagePart;
 import org.apache.poi.openxml4j.opc.PackageRelationship;
 import org.apache.poi.util.Beta;
 import org.apache.xmlbeans.XmlException;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTComment;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentList;
-import org.openxmlformats.schemas.presentationml.x2006.main.CmLstDocument;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTComment;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CTCommentList;
+//import org.openxmlformats.schemas.presentationml.x2006.main.CmLstDocument;
 
 import java.io.IOException;
 
 @Beta
 public class XSLFComments extends POIXMLDocumentPart {
-    private final CTCommentList _comments;
+//    private final CTCommentList _comments;
     
     /**
      * Create a new set of slide comments
      */
     XSLFComments() {
        super();
-       CmLstDocument doc = CmLstDocument.Factory.newInstance();
-       _comments = doc.addNewCmLst();
+//       CmLstDocument doc = CmLstDocument.Factory.newInstance();
+//       _comments = doc.addNewCmLst();
     }
 
     /**
@@ -52,20 +52,20 @@ public class XSLFComments extends POIXMLDocumentPart {
     XSLFComments(PackagePart part, PackageRelationship rel) throws IOException, XmlException {
         super(part, rel);
 
-        CmLstDocument doc =
-           CmLstDocument.Factory.parse(getPackagePart().getInputStream());
-        _comments = doc.getCmLst();
+//        CmLstDocument doc =
+//           CmLstDocument.Factory.parse(getPackagePart().getInputStream());
+//        _comments = doc.getCmLst();
     }
     
-    public CTCommentList getCTCommentsList() {
-       return _comments;
-    }
-    
-    public int getNumberOfComments() {
-       return _comments.sizeOfCmArray();
-    }
-    
-    public CTComment getCommentAt(int pos) {
-       return _comments.getCmList().get(pos);
-    }
+//    public CTCommentList getCTCommentsList() {
+//       return _comments;
+//    }
+//    
+//    public int getNumberOfComments() {
+//       return _comments.sizeOfCmArray();
+//    }
+//    
+//    public CTComment getCommentAt(int pos) {
+//       return _comments.getCmList().get(pos);
+//    }
 }

@@ -180,21 +180,22 @@ public class CTBackgroundImpl extends org.apache.xmlbeans.impl.values.XmlComplex
      */
     public org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode.Enum getBwMode()
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(BWMODE$4);
-            if (target == null)
-            {
-                target = (org.apache.xmlbeans.SimpleValue)get_default_attribute_value(BWMODE$4);
-            }
-            if (target == null)
-            {
-                return null;
-            }
-            return (org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode.Enum)target.getEnumValue();
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.apache.xmlbeans.SimpleValue target = null;
+//            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(BWMODE$4);
+//            if (target == null)
+//            {
+//                target = (org.apache.xmlbeans.SimpleValue)get_default_attribute_value(BWMODE$4);
+//            }
+//            if (target == null)
+//            {
+//                return null;
+//            }
+//            return (org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode.Enum)target.getEnumValue();
+//        }
+    	return null;
     }
     
     /**
@@ -232,17 +233,17 @@ public class CTBackgroundImpl extends org.apache.xmlbeans.impl.values.XmlComplex
      */
     public void setBwMode(org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode.Enum bwMode)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(BWMODE$4);
-            if (target == null)
-            {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(BWMODE$4);
-            }
-            target.setEnumValue(bwMode);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.apache.xmlbeans.SimpleValue target = null;
+//            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(BWMODE$4);
+//            if (target == null)
+//            {
+//                target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(BWMODE$4);
+//            }
+//            target.setEnumValue(bwMode);
+//        }
     }
     
     /**
@@ -250,17 +251,17 @@ public class CTBackgroundImpl extends org.apache.xmlbeans.impl.values.XmlComplex
      */
     public void xsetBwMode(org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode bwMode)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode target = null;
-            target = (org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode)get_store().find_attribute_user(BWMODE$4);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode)get_store().add_attribute_user(BWMODE$4);
-            }
-            target.set(bwMode);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode target = null;
+//            target = (org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode)get_store().find_attribute_user(BWMODE$4);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.drawingml.x2006.main.STBlackWhiteMode)get_store().add_attribute_user(BWMODE$4);
+//            }
+//            target.set(bwMode);
+//        }
     }
     
     /**

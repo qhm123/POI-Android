@@ -20,7 +20,7 @@
 package org.apache.poi.xslf.usermodel;
 
 import org.apache.poi.util.Beta;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPresetGeometry2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTShapeProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBody;
@@ -58,15 +58,15 @@ public class XSLFAutoShape extends XSLFTextShape {
     static CTShape prototype(int shapeId) {
         CTShape ct = CTShape.Factory.newInstance();
         CTShapeNonVisual nvSpPr = ct.addNewNvSpPr();
-        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
-        cnv.setName("AutoShape " + shapeId);
-        cnv.setId(shapeId + 1);
-        nvSpPr.addNewCNvSpPr();
-        nvSpPr.addNewNvPr();
-        CTShapeProperties spPr = ct.addNewSpPr();
-        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
-        prst.setPrst(STShapeType.RECT);
-        prst.addNewAvLst();
+//        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
+//        cnv.setName("AutoShape " + shapeId);
+//        cnv.setId(shapeId + 1);
+//        nvSpPr.addNewCNvSpPr();
+//        nvSpPr.addNewNvPr();
+//        CTShapeProperties spPr = ct.addNewSpPr();
+//        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
+//        prst.setPrst(STShapeType.RECT);
+//        prst.addNewAvLst();
         return ct;
     }
 
@@ -85,5 +85,17 @@ public class XSLFAutoShape extends XSLFTextShape {
     public String toString(){
         return "[" + getClass().getSimpleName() + "] " + getShapeName();
     }
+
+	@Override
+	public String getShapeName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getShapeId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

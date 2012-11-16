@@ -28,7 +28,7 @@ import org.apache.xmlbeans.XmlException;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTBlip;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTGroupShapeProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTGroupTransform2D;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPoint2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPositiveSize2D;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTBackground;
@@ -78,27 +78,27 @@ public final class XSLFSlide extends XSLFSheet {
         CTGroupShape spTree = cSld.addNewSpTree();
 
         CTGroupShapeNonVisual nvGrpSpPr = spTree.addNewNvGrpSpPr();
-        CTNonVisualDrawingProps cnvPr = nvGrpSpPr.addNewCNvPr();
-        cnvPr.setId(1);
-        cnvPr.setName("");
-        nvGrpSpPr.addNewCNvGrpSpPr();
-        nvGrpSpPr.addNewNvPr();
-
-        CTGroupShapeProperties grpSpr = spTree.addNewGrpSpPr();
-        CTGroupTransform2D xfrm = grpSpr.addNewXfrm();
-        CTPoint2D off = xfrm.addNewOff();
-        off.setX(0);
-        off.setY(0);
-        CTPositiveSize2D ext = xfrm.addNewExt();
-        ext.setCx(0);
-        ext.setCy(0);
-        CTPoint2D choff = xfrm.addNewChOff();
-        choff.setX(0);
-        choff.setY(0);
-        CTPositiveSize2D chExt = xfrm.addNewChExt();
-        chExt.setCx(0);
-        chExt.setCy(0);
-        ctSlide.addNewClrMapOvr().addNewMasterClrMapping();
+//        CTNonVisualDrawingProps cnvPr = nvGrpSpPr.addNewCNvPr();
+//        cnvPr.setId(1);
+//        cnvPr.setName("");
+//        nvGrpSpPr.addNewCNvGrpSpPr();
+//        nvGrpSpPr.addNewNvPr();
+//
+//        CTGroupShapeProperties grpSpr = spTree.addNewGrpSpPr();
+//        CTGroupTransform2D xfrm = grpSpr.addNewXfrm();
+//        CTPoint2D off = xfrm.addNewOff();
+//        off.setX(0);
+//        off.setY(0);
+//        CTPositiveSize2D ext = xfrm.addNewExt();
+//        ext.setCx(0);
+//        ext.setCy(0);
+//        CTPoint2D choff = xfrm.addNewChOff();
+//        choff.setX(0);
+//        choff.setY(0);
+//        CTPositiveSize2D chExt = xfrm.addNewChExt();
+//        chExt.setCx(0);
+//        chExt.setCy(0);
+//        ctSlide.addNewClrMapOvr().addNewMasterClrMapping();
         return ctSlide;
     }
 

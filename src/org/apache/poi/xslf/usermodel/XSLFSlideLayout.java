@@ -156,8 +156,8 @@ public class XSLFSlideLayout extends XSLFSheet {
      *
      * @return type of this layout
      */
-    public SlideLayout getType(){
-        int ordinal = _layout.getType().intValue() - 1;
-        return SlideLayout.values()[ordinal];
-    }
+//    public SlideLayout getType(){
+//        int ordinal = _layout.getType().intValue() - 1;
+//        return SlideLayout.values()[ordinal];
+//    }
 }

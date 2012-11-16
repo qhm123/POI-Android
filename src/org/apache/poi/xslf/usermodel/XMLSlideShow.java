@@ -70,7 +70,7 @@ public class XMLSlideShow  extends POIXMLDocument {
     private List<XSLFSlide> _slides;
     private Map<String, XSLFSlideMaster> _masters;
     private List<XSLFPictureData> _pictures;
-    private XSLFTableStyles _tableStyles;
+//    private XSLFTableStyles _tableStyles;
     private XSLFNotesMaster _notesMaster;
     private XSLFCommentAuthors _commentAuthors;
 
@@ -130,8 +130,8 @@ public class XMLSlideShow  extends POIXMLDocument {
                 } else if (p instanceof XSLFSlideMaster) {
                     XSLFSlideMaster master = (XSLFSlideMaster)p;
                     _masters.put(p.getPackageRelationship().getId(), master);
-                }else if (p instanceof XSLFTableStyles){
-                    _tableStyles = (XSLFTableStyles)p;
+//                }else if (p instanceof XSLFTableStyles){
+//                    _tableStyles = (XSLFTableStyles)p;
                 } else if (p instanceof XSLFNotesMaster) {
                     _notesMaster = (XSLFNotesMaster)p;
                 } else if (p instanceof XSLFCommentAuthors) {
@@ -235,10 +235,11 @@ public class XMLSlideShow  extends POIXMLDocument {
      * Create a blank slide.
      */
     public XSLFSlide createSlide() {
-        String masterId = _presentation.getSldMasterIdLst().getSldMasterIdArray(0).getId2();
-        XSLFSlideMaster master = _masters.get(masterId);
+//        String masterId = _presentation.getSldMasterIdLst().getSldMasterIdArray(0).getId2();
+//        XSLFSlideMaster master = _masters.get(masterId);
 
-        XSLFSlideLayout layout = master.getLayout(SlideLayout.BLANK);
+//        XSLFSlideLayout layout = master.getLayout(SlideLayout.BLANK);
+    	XSLFSlideLayout layout = null;
         if(layout == null) throw new IllegalArgumentException("Blank layout was not found");
 
         return createSlide(layout);
@@ -375,9 +376,9 @@ public class XMLSlideShow  extends POIXMLDocument {
         return null;
     }
 
-    public XSLFTableStyles getTableStyles(){
-        return _tableStyles;
-    }
+//    public XSLFTableStyles getTableStyles(){
+//        return _tableStyles;
+//    }
 
     CTTextParagraphProperties getDefaultParagraphStyle(int level) {
         XmlObject[] o = _presentation.selectPath(

@@ -192,17 +192,17 @@ public class CTCommonSlideDataImpl extends org.apache.xmlbeans.impl.values.XmlCo
      */
     public void setCustDataLst(org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList custDataLst)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList target = null;
-            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().find_element_user(CUSTDATALST$4, 0);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().add_element_user(CUSTDATALST$4);
-            }
-            target.set(custDataLst);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList target = null;
+//            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().find_element_user(CUSTDATALST$4, 0);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomerDataList)get_store().add_element_user(CUSTDATALST$4);
+//            }
+//            target.set(custDataLst);
+//        }
     }
     
     /**
@@ -266,17 +266,17 @@ public class CTCommonSlideDataImpl extends org.apache.xmlbeans.impl.values.XmlCo
      */
     public void setControls(org.openxmlformats.schemas.presentationml.x2006.main.CTControlList controls)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.presentationml.x2006.main.CTControlList target = null;
-            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTControlList)get_store().find_element_user(CONTROLS$6, 0);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTControlList)get_store().add_element_user(CONTROLS$6);
-            }
-            target.set(controls);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.presentationml.x2006.main.CTControlList target = null;
+//            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTControlList)get_store().find_element_user(CONTROLS$6, 0);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTControlList)get_store().add_element_user(CONTROLS$6);
+//            }
+//            target.set(controls);
+//        }
     }
     
     /**
@@ -340,17 +340,17 @@ public class CTCommonSlideDataImpl extends org.apache.xmlbeans.impl.values.XmlCo
      */
     public void setExtLst(org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList extLst)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList target = null;
-            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().find_element_user(EXTLST$8, 0);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().add_element_user(EXTLST$8);
-            }
-            target.set(extLst);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList target = null;
+//            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().find_element_user(EXTLST$8, 0);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().add_element_user(EXTLST$8);
+//            }
+//            target.set(extLst);
+//        }
     }
     
     /**

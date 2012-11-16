@@ -33,7 +33,7 @@ import org.apache.poi.util.Units;
 import org.apache.xmlbeans.XmlObject;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTGroupShapeProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTGroupTransform2D;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPoint2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPositiveSize2D;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTConnector;
@@ -172,29 +172,29 @@ public class XSLFGroupShape extends XSLFShape implements XSLFShapeContainer {
         return _shapes.remove(xShape);
     }
 
-    @Override
-    public String getShapeName(){
-        return _shape.getNvGrpSpPr().getCNvPr().getName();
-    }
-
-    @Override
-    public int getShapeId(){
-        return (int)_shape.getNvGrpSpPr().getCNvPr().getId();
-    }
+//    @Override
+//    public String getShapeName(){
+//        return _shape.getNvGrpSpPr().getCNvPr().getName();
+//    }
+//
+//    @Override
+//    public int getShapeId(){
+//        return (int)_shape.getNvGrpSpPr().getCNvPr().getId();
+//    }
 
     /**
      * @param shapeId 1-based shapeId
      */
     static CTGroupShape prototype(int shapeId) {
         CTGroupShape ct = CTGroupShape.Factory.newInstance();
-        CTGroupShapeNonVisual nvSpPr = ct.addNewNvGrpSpPr();
-        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
-        cnv.setName("Group " + shapeId);
-        cnv.setId(shapeId + 1);
-
-        nvSpPr.addNewCNvGrpSpPr();
-        nvSpPr.addNewNvPr();
-        ct.addNewGrpSpPr();
+//        CTGroupShapeNonVisual nvSpPr = ct.addNewNvGrpSpPr();
+//        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
+//        cnv.setName("Group " + shapeId);
+//        cnv.setId(shapeId + 1);
+//
+//        nvSpPr.addNewCNvGrpSpPr();
+//        nvSpPr.addNewNvPr();
+//        ct.addNewGrpSpPr();
         return ct;
     }
 
@@ -346,5 +346,17 @@ public class XSLFGroupShape extends XSLFShape implements XSLFShapeContainer {
             removeShape(shape);
         }
     }
+
+	@Override
+	public String getShapeName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getShapeId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

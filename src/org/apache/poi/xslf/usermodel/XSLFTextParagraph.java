@@ -31,7 +31,7 @@ import org.openxmlformats.schemas.drawingml.x2006.main.CTColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTRegularTextRun;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTSRgbColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBulletSizePercent;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBulletSizePoint;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBulletSizePoint;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextCharBullet;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextCharacterProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextField;
@@ -310,7 +310,7 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
                     return true;
                 }
                 if(props.isSetBuSzPts()){
-                    setValue( - props.getBuSzPts().getVal() * 0.01);
+//                    setValue( - props.getBuSzPts().getVal() * 0.01);
                     return true;
                 }
                 return false;
@@ -338,8 +338,8 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
             pt.setVal((int)(bulletSize*1000));
             if(pr.isSetBuSzPts()) pr.unsetBuSzPts();
         } else {
-            CTTextBulletSizePoint pt = pr.isSetBuSzPts() ? pr.getBuSzPts() : pr.addNewBuSzPts();
-            pt.setVal((int)(-bulletSize*100));
+//            CTTextBulletSizePoint pt = pr.isSetBuSzPts() ? pr.getBuSzPts() : pr.addNewBuSzPts();
+//            pt.setVal((int)(-bulletSize*100));
             if(pr.isSetBuSzPct()) pr.unsetBuSzPct();
         }
    }
@@ -685,7 +685,7 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
 
         CTTextParagraphProperties pr = _p.isSetPPr() ? _p.getPPr() : _p.addNewPPr();
         if(!flag) {
-            pr.addNewBuNone();
+//            pr.addNewBuNone();
         } else {
             pr.addNewBuFont().setTypeface("Arial");
             pr.addNewBuChar().setChar("\u2022");

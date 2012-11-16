@@ -30,7 +30,7 @@ import org.openxmlformats.schemas.drawingml.x2006.main.CTPresetColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTSRgbColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTScRgbColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTSchemeColor;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTSystemColor;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTSystemColor;
 import org.w3c.dom.Node;
 
 import and.awt.Color;
@@ -134,16 +134,16 @@ public class XSLFColor {
                 CTSRgbColor srgb = (CTSRgbColor)ch;
                 byte[] val = srgb.getVal();
                 color = new Color(0xFF & val[0], 0xFF & val[1], 0xFF & val[2]);
-            } else if (ch instanceof CTSystemColor) {
-                CTSystemColor sys = (CTSystemColor)ch;
-                if(sys.isSetLastClr()) {
-                    byte[] val = sys.getLastClr();
-                    color = new Color(0xFF & val[0], 0xFF & val[1], 0xFF & val[2]);
-                } else {
-                    // YK: color is a string like "menuText" or "windowText", we return black for such cases
-//                    String colorName = sys.getVal().toString();
-//                    color = Color.black;
-                }
+//            } else if (ch instanceof CTSystemColor) {
+//                CTSystemColor sys = (CTSystemColor)ch;
+//                if(sys.isSetLastClr()) {
+//                    byte[] val = sys.getLastClr();
+//                    color = new Color(0xFF & val[0], 0xFF & val[1], 0xFF & val[2]);
+//                } else {
+//                    // YK: color is a string like "menuText" or "windowText", we return black for such cases
+////                    String colorName = sys.getVal().toString();
+////                    color = Color.black;
+//                }
             } else {
                 throw new IllegalArgumentException("Unexpected color choice: " + ch.getClass());
             }

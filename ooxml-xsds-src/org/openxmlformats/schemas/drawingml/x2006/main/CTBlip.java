@@ -18,21 +18,21 @@ public interface CTBlip extends org.apache.xmlbeans.XmlObject
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
         org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(CTBlip.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sE130CAA0A01A7CDE5A2B4FEB8B311707").resolveHandle("ctblip034ctype");
     
-    /**
-     * Gets a List of "alphaBiLevel" elements
-     */
-    java.util.List<org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect> getAlphaBiLevelList();
-    
-    /**
-     * Gets array of all "alphaBiLevel" elements
-     * @deprecated
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect[] getAlphaBiLevelArray();
-    
-    /**
-     * Gets ith "alphaBiLevel" element
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect getAlphaBiLevelArray(int i);
+//    /**
+//     * Gets a List of "alphaBiLevel" elements
+//     */
+//    java.util.List<org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect> getAlphaBiLevelList();
+//    
+//    /**
+//     * Gets array of all "alphaBiLevel" elements
+//     * @deprecated
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect[] getAlphaBiLevelArray();
+//    
+//    /**
+//     * Gets ith "alphaBiLevel" element
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect getAlphaBiLevelArray(int i);
     
     /**
      * Returns number of "alphaBiLevel" element
@@ -42,22 +42,22 @@ public interface CTBlip extends org.apache.xmlbeans.XmlObject
     /**
      * Sets array of all "alphaBiLevel" element
      */
-    void setAlphaBiLevelArray(org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect[] alphaBiLevelArray);
-    
-    /**
-     * Sets ith "alphaBiLevel" element
-     */
-    void setAlphaBiLevelArray(int i, org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect alphaBiLevel);
-    
+//    void setAlphaBiLevelArray(org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect[] alphaBiLevelArray);
+//    
+//    /**
+//     * Sets ith "alphaBiLevel" element
+//     */
+//    void setAlphaBiLevelArray(int i, org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect alphaBiLevel);
+//    
     /**
      * Inserts and returns a new empty value (as xml) as the ith "alphaBiLevel" element
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect insertNewAlphaBiLevel(int i);
-    
-    /**
-     * Appends and returns a new empty value (as xml) as the last "alphaBiLevel" element
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect addNewAlphaBiLevel();
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect insertNewAlphaBiLevel(int i);
+//    
+//    /**
+//     * Appends and returns a new empty value (as xml) as the last "alphaBiLevel" element
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaBiLevelEffect addNewAlphaBiLevel();
     
     /**
      * Removes the ith "alphaBiLevel" element
@@ -66,19 +66,19 @@ public interface CTBlip extends org.apache.xmlbeans.XmlObject
     
     /**
      * Gets a List of "alphaCeiling" elements
-     */
-    java.util.List<org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect> getAlphaCeilingList();
-    
-    /**
-     * Gets array of all "alphaCeiling" elements
-     * @deprecated
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect[] getAlphaCeilingArray();
-    
-    /**
-     * Gets ith "alphaCeiling" element
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect getAlphaCeilingArray(int i);
+//     */
+//    java.util.List<org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect> getAlphaCeilingList();
+//    
+//    /**
+//     * Gets array of all "alphaCeiling" elements
+//     * @deprecated
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect[] getAlphaCeilingArray();
+//    
+//    /**
+//     * Gets ith "alphaCeiling" element
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect getAlphaCeilingArray(int i);
     
     /**
      * Returns number of "alphaCeiling" element
@@ -88,22 +88,22 @@ public interface CTBlip extends org.apache.xmlbeans.XmlObject
     /**
      * Sets array of all "alphaCeiling" element
      */
-    void setAlphaCeilingArray(org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect[] alphaCeilingArray);
-    
-    /**
-     * Sets ith "alphaCeiling" element
-     */
-    void setAlphaCeilingArray(int i, org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect alphaCeiling);
-    
-    /**
-     * Inserts and returns a new empty value (as xml) as the ith "alphaCeiling" element
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect insertNewAlphaCeiling(int i);
-    
-    /**
-     * Appends and returns a new empty value (as xml) as the last "alphaCeiling" element
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect addNewAlphaCeiling();
+//    void setAlphaCeilingArray(org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect[] alphaCeilingArray);
+//    
+//    /**
+//     * Sets ith "alphaCeiling" element
+//     */
+//    void setAlphaCeilingArray(int i, org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect alphaCeiling);
+//    
+//    /**
+//     * Inserts and returns a new empty value (as xml) as the ith "alphaCeiling" element
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect insertNewAlphaCeiling(int i);
+//    
+//    /**
+//     * Appends and returns a new empty value (as xml) as the last "alphaCeiling" element
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaCeilingEffect addNewAlphaCeiling();
     
     /**
      * Removes the ith "alphaCeiling" element
@@ -113,18 +113,18 @@ public interface CTBlip extends org.apache.xmlbeans.XmlObject
     /**
      * Gets a List of "alphaFloor" elements
      */
-    java.util.List<org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaFloorEffect> getAlphaFloorList();
-    
-    /**
-     * Gets array of all "alphaFloor" elements
-     * @deprecated
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaFloorEffect[] getAlphaFloorArray();
-    
-    /**
-     * Gets ith "alphaFloor" element
-     */
-    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaFloorEffect getAlphaFloorArray(int i);
+//    java.util.List<org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaFloorEffect> getAlphaFloorList();
+//    
+//    /**
+//     * Gets array of all "alphaFloor" elements
+//     * @deprecated
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaFloorEffect[] getAlphaFloorArray();
+//    
+//    /**
+//     * Gets ith "alphaFloor" element
+//     */
+//    org.openxmlformats.schemas.drawingml.x2006.main.CTAlphaFloorEffect getAlphaFloorArray(int i);
     
     /**
      * Returns number of "alphaFloor" element

@@ -20,7 +20,7 @@ package org.apache.poi.xslf.usermodel;
 import net.pbdavey.awt.Graphics2D;
 
 import org.apache.xmlbeans.XmlObject;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTBackgroundFillStyleList;
+//import org.openxmlformats.schemas.drawingml.x2006.main.CTBackgroundFillStyleList;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTSchemeColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTStyleMatrixReference;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTransform2D;
@@ -75,11 +75,11 @@ public class XSLFBackground extends XSLFSimpleShape {
 
             int idx = (int)bgRef.getIdx() - 1001;
             XSLFTheme theme = getSheet().getTheme();
-            CTBackgroundFillStyleList bgStyles =
-                    theme.getXmlObject().getThemeElements().getFmtScheme().getBgFillStyleLst();
+//            CTBackgroundFillStyleList bgStyles =
+//                    theme.getXmlObject().getThemeElements().getFmtScheme().getBgFillStyleLst();
 
-            XmlObject bgStyle = bgStyles.selectPath("*")[idx];
-            fill = rShape.selectPaint(graphics, bgStyle, phClr, theme.getPackagePart());
+//            XmlObject bgStyle = bgStyles.selectPath("*")[idx];
+//            fill = rShape.selectPaint(graphics, bgStyle, phClr, theme.getPackagePart());
         }
 
         return fill;
@@ -104,4 +104,16 @@ public class XSLFBackground extends XSLFSimpleShape {
     CTTransform2D getXfrm() {
         return CTTransform2D.Factory.newInstance();
     }
+
+	@Override
+	public String getShapeName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getShapeId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
