@@ -947,17 +947,17 @@ public class CTGroupShapeImpl extends org.apache.xmlbeans.impl.values.XmlComplex
      */
     public void setExtLst(org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify extLst)
     {
-        synchronized (monitor())
-        {
-            check_orphaned();
-            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify target = null;
-            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().find_element_user(EXTLST$14, 0);
-            if (target == null)
-            {
-                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$14);
-            }
-            target.set(extLst);
-        }
+//        synchronized (monitor())
+//        {
+//            check_orphaned();
+//            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify target = null;
+//            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().find_element_user(EXTLST$14, 0);
+//            if (target == null)
+//            {
+//                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$14);
+//            }
+//            target.set(extLst);
+//        }
     }
     
     /**

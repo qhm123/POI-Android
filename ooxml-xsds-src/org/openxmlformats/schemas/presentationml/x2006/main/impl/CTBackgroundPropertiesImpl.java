@@ -372,17 +372,17 @@ public class CTBackgroundPropertiesImpl extends org.apache.xmlbeans.impl.values.
      */
     public void setPattFill(org.openxmlformats.schemas.drawingml.x2006.main.CTPatternFillProperties pattFill)
     {
-//        synchronized (monitor())
-//        {
-//            check_orphaned();
-//            org.openxmlformats.schemas.drawingml.x2006.main.CTPatternFillProperties target = null;
-//            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTPatternFillProperties)get_store().find_element_user(PATTFILL$8, 0);
-//            if (target == null)
-//            {
-//                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTPatternFillProperties)get_store().add_element_user(PATTFILL$8);
-//            }
-//            target.set(pattFill);
-//        }
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.openxmlformats.schemas.drawingml.x2006.main.CTPatternFillProperties target = null;
+            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTPatternFillProperties)get_store().find_element_user(PATTFILL$8, 0);
+            if (target == null)
+            {
+                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTPatternFillProperties)get_store().add_element_user(PATTFILL$8);
+            }
+            target.set(pattFill);
+        }
     }
     
     /**
@@ -446,17 +446,17 @@ public class CTBackgroundPropertiesImpl extends org.apache.xmlbeans.impl.values.
      */
     public void setGrpFill(org.openxmlformats.schemas.drawingml.x2006.main.CTGroupFillProperties grpFill)
     {
-//        synchronized (monitor())
-//        {
-//            check_orphaned();
-//            org.openxmlformats.schemas.drawingml.x2006.main.CTGroupFillProperties target = null;
-//            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTGroupFillProperties)get_store().find_element_user(GRPFILL$10, 0);
-//            if (target == null)
-//            {
-//                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTGroupFillProperties)get_store().add_element_user(GRPFILL$10);
-//            }
-//            target.set(grpFill);
-//        }
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.openxmlformats.schemas.drawingml.x2006.main.CTGroupFillProperties target = null;
+            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTGroupFillProperties)get_store().find_element_user(GRPFILL$10, 0);
+            if (target == null)
+            {
+                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTGroupFillProperties)get_store().add_element_user(GRPFILL$10);
+            }
+            target.set(grpFill);
+        }
     }
     
     /**
@@ -594,17 +594,17 @@ public class CTBackgroundPropertiesImpl extends org.apache.xmlbeans.impl.values.
      */
     public void setEffectDag(org.openxmlformats.schemas.drawingml.x2006.main.CTEffectContainer effectDag)
     {
-//        synchronized (monitor())
-//        {
-//            check_orphaned();
-//            org.openxmlformats.schemas.drawingml.x2006.main.CTEffectContainer target = null;
-//            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTEffectContainer)get_store().find_element_user(EFFECTDAG$14, 0);
-//            if (target == null)
-//            {
-//                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTEffectContainer)get_store().add_element_user(EFFECTDAG$14);
-//            }
-//            target.set(effectDag);
-//        }
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.openxmlformats.schemas.drawingml.x2006.main.CTEffectContainer target = null;
+            target = (org.openxmlformats.schemas.drawingml.x2006.main.CTEffectContainer)get_store().find_element_user(EFFECTDAG$14, 0);
+            if (target == null)
+            {
+                target = (org.openxmlformats.schemas.drawingml.x2006.main.CTEffectContainer)get_store().add_element_user(EFFECTDAG$14);
+            }
+            target.set(effectDag);
+        }
     }
     
     /**
@@ -668,17 +668,17 @@ public class CTBackgroundPropertiesImpl extends org.apache.xmlbeans.impl.values.
      */
     public void setExtLst(org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList extLst)
     {
-//        synchronized (monitor())
-//        {
-//            check_orphaned();
-//            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList target = null;
-//            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().find_element_user(EXTLST$16, 0);
-//            if (target == null)
-//            {
-//                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().add_element_user(EXTLST$16);
-//            }
-//            target.set(extLst);
-//        }
+        synchronized (monitor())
+        {
+            check_orphaned();
+            org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList target = null;
+            target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().find_element_user(EXTLST$16, 0);
+            if (target == null)
+            {
+                target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionList)get_store().add_element_user(EXTLST$16);
+            }
+            target.set(extLst);
+        }
     }
     
     /**

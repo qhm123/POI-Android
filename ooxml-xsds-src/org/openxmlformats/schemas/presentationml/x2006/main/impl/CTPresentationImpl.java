@@ -117,7 +117,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideMasterIdList)get_store().add_element_user(SLDMASTERIDLST$0);
             }
-            target.set(sldMasterIdLst);
+//            target.set(sldMasterIdLst);
         }
     }
     
@@ -191,7 +191,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTNotesMasterIdList)get_store().add_element_user(NOTESMASTERIDLST$2);
             }
-            target.set(notesMasterIdLst);
+//            target.set(notesMasterIdLst);
         }
     }
     
@@ -265,7 +265,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTHandoutMasterIdList)get_store().add_element_user(HANDOUTMASTERIDLST$4);
             }
-            target.set(handoutMasterIdLst);
+//            target.set(handoutMasterIdLst);
         }
     }
     
@@ -537,7 +537,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSmartTags)get_store().add_element_user(SMARTTAGS$12);
             }
-            target.set(smartTags);
+//            target.set(smartTags);
         }
     }
     
@@ -611,7 +611,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTEmbeddedFontList)get_store().add_element_user(EMBEDDEDFONTLST$14);
             }
-            target.set(embeddedFontLst);
+//            target.set(embeddedFontLst);
         }
     }
     
@@ -685,7 +685,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTCustomShowList)get_store().add_element_user(CUSTSHOWLST$16);
             }
-            target.set(custShowLst);
+//            target.set(custShowLst);
         }
     }
     
@@ -759,7 +759,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTPhotoAlbum)get_store().add_element_user(PHOTOALBUM$18);
             }
-            target.set(photoAlbum);
+//            target.set(photoAlbum);
         }
     }
     
@@ -907,7 +907,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTKinsoku)get_store().add_element_user(KINSOKU$22);
             }
-            target.set(kinsoku);
+//            target.set(kinsoku);
         }
     }
     
@@ -1055,7 +1055,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTModifyVerifier)get_store().add_element_user(MODIFYVERIFIER$26);
             }
-            target.set(modifyVerifier);
+//            target.set(modifyVerifier);
         }
     }
     
@@ -2243,7 +2243,7 @@ public class CTPresentationImpl extends org.apache.xmlbeans.impl.values.XmlCompl
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.STBookmarkIdSeed)get_store().add_attribute_user(BOOKMARKIDSEED$50);
             }
-            target.set(bookmarkIdSeed);
+//            target.set(bookmarkIdSeed);
         }
     }
     

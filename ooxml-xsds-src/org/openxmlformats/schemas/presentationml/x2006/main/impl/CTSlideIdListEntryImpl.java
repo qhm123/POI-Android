@@ -165,7 +165,7 @@ public class CTSlideIdListEntryImpl extends org.apache.xmlbeans.impl.values.XmlC
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.STSlideId)get_store().add_attribute_user(ID$2);
             }
-            target.set(id);
+//            target.set(id);
         }
     }
     

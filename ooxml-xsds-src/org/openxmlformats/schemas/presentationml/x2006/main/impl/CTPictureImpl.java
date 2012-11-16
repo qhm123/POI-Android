@@ -299,7 +299,7 @@ public class CTPictureImpl extends org.apache.xmlbeans.impl.values.XmlComplexCon
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$8);
             }
-            target.set(extLst);
+//            target.set(extLst);
         }
     }
     

@@ -175,7 +175,7 @@ public class CTNotesMasterImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTHeaderFooter)get_store().add_element_user(HF$4);
             }
-            target.set(hf);
+//            target.set(hf);
         }
     }
     
@@ -323,7 +323,7 @@ public class CTNotesMasterImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$8);
             }
-            target.set(extLst);
+//            target.set(extLst);
         }
     }
     

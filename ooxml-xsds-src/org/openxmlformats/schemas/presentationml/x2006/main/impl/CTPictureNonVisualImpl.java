@@ -59,7 +59,7 @@ public class CTPictureNonVisualImpl extends org.apache.xmlbeans.impl.values.XmlC
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps)get_store().add_element_user(CNVPR$0);
             }
-            target.set(cNvPr);
+//            target.set(cNvPr);
         }
     }
     
@@ -109,7 +109,7 @@ public class CTPictureNonVisualImpl extends org.apache.xmlbeans.impl.values.XmlC
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualPictureProperties)get_store().add_element_user(CNVPICPR$2);
             }
-            target.set(cNvPicPr);
+//            target.set(cNvPicPr);
         }
     }
     

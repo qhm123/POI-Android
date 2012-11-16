@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="org/apache/poi/xslf/usermodel/DrawingTable.java|org/apache/poi/xslf/usermodel/DrawingTableCell.java|org/apache/poi/xslf/usermodel/DrawingTableRow.java|org/apache/poi/xslf/usermodel/XSLFTable.java|org/apache/poi/xslf/usermodel/XSLFTableCell.java|org/apache/poi/xslf/usermodel/XSLFTableRow.java|org/apache/poi/xslf/usermodel/XSLFTableStyle.java|org/apache/poi/xslf/usermodel/XSLFTableStyles.java|org/apache/poi/xslf/usermodel/XSLFGraphicFrame.java|org/apache/poi/xslf/usermodel/XSLFHyperlink.java" kind="src" path="src"/>
+	<classpathentry excluding="org/apache/poi/xslf/usermodel/DrawingTable.java|org/apache/poi/xslf/usermodel/DrawingTableCell.java|org/apache/poi/xslf/usermodel/DrawingTableRow.java|org/apache/poi/xslf/usermodel/XSLFGraphicFrame.java|org/apache/poi/xslf/usermodel/XSLFHyperlink.java|org/apache/poi/xslf/usermodel/XSLFTable.java|org/apache/poi/xslf/usermodel/XSLFTableCell.java|org/apache/poi/xslf/usermodel/XSLFTableRow.java|org/apache/poi/xslf/usermodel/XSLFTableStyle.java|org/apache/poi/xslf/usermodel/XSLFTableStyles.java" kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path="ooxml-xsds-src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>

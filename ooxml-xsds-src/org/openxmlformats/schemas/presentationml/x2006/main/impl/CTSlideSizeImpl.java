@@ -181,7 +181,8 @@ public class CTSlideSizeImpl extends org.apache.xmlbeans.impl.values.XmlComplexC
             {
                 return null;
             }
-            return (org.openxmlformats.schemas.presentationml.x2006.main.STSlideSizeType.Enum)target.getEnumValue();
+//            return (org.openxmlformats.schemas.presentationml.x2006.main.STSlideSizeType.Enum)target.getEnumValue();
+            return null;
         }
     }
     
@@ -229,7 +230,7 @@ public class CTSlideSizeImpl extends org.apache.xmlbeans.impl.values.XmlComplexC
             {
                 target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(TYPE$4);
             }
-            target.setEnumValue(type);
+//            target.setEnumValue(type);
         }
     }
     
@@ -247,7 +248,7 @@ public class CTSlideSizeImpl extends org.apache.xmlbeans.impl.values.XmlComplexC
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.STSlideSizeType)get_store().add_attribute_user(TYPE$4);
             }
-            target.set(type);
+//            target.set(type);
         }
     }
     

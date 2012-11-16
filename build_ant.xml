@@ -699,6 +699,7 @@
                     fork="${need.javac.fork}">
                 <src path="${source.absolute.dir}" />
                 <src path="${gen.absolute.dir}" />
+                <src path="ooxml-xsds-src" />
                 <compilerarg line="${java.compilerargs}" />
             </javac>
 

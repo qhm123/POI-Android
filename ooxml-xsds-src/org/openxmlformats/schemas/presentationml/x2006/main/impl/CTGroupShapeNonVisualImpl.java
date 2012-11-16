@@ -59,7 +59,7 @@ public class CTGroupShapeNonVisualImpl extends org.apache.xmlbeans.impl.values.X
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualDrawingProps)get_store().add_element_user(CNVPR$0);
             }
-            target.set(cNvPr);
+//            target.set(cNvPr);
         }
     }
     
@@ -109,7 +109,7 @@ public class CTGroupShapeNonVisualImpl extends org.apache.xmlbeans.impl.values.X
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTNonVisualGroupDrawingShapeProps)get_store().add_element_user(CNVGRPSPPR$2);
             }
-            target.set(cNvGrpSpPr);
+//            target.set(cNvGrpSpPr);
         }
     }
     

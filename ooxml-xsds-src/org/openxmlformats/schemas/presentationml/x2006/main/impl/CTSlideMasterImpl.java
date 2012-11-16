@@ -183,7 +183,7 @@ public class CTSlideMasterImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideLayoutIdList)get_store().add_element_user(SLDLAYOUTIDLST$4);
             }
-            target.set(sldLayoutIdLst);
+//            target.set(sldLayoutIdLst);
         }
     }
     
@@ -257,7 +257,7 @@ public class CTSlideMasterImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideTransition)get_store().add_element_user(TRANSITION$6);
             }
-            target.set(transition);
+//            target.set(transition);
         }
     }
     
@@ -331,7 +331,7 @@ public class CTSlideMasterImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideTiming)get_store().add_element_user(TIMING$8);
             }
-            target.set(timing);
+//            target.set(timing);
         }
     }
     
@@ -405,7 +405,7 @@ public class CTSlideMasterImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTHeaderFooter)get_store().add_element_user(HF$10);
             }
-            target.set(hf);
+//            target.set(hf);
         }
     }
     
@@ -553,7 +553,7 @@ public class CTSlideMasterImpl extends org.apache.xmlbeans.impl.values.XmlComple
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$14);
             }
-            target.set(extLst);
+//            target.set(extLst);
         }
     }
     

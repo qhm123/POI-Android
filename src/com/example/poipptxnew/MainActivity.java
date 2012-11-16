@@ -1,5 +1,8 @@
 package com.example.poipptxnew;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +22,7 @@ import org.apache.poi.xslf.usermodel.XSLFSlide;
 import and.awt.Dimension;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -67,6 +71,8 @@ public class MainActivity extends Activity {
 			pptx2png();
 		} catch (InvalidFormatException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
     }
 
@@ -76,22 +82,16 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    private void pptx2png() throws InvalidFormatException {
+    private void pptx2png() throws InvalidFormatException, IOException {
     	String file = "/sdcard/PhoneGap.pptx";
-		int scale = 1;
-		int slidenum = -1;
 		
 		System.out.println("Processing " + file);
         XMLSlideShow ppt = new XMLSlideShow(OPCPackage.open(file));
 
         Dimension pgsize = ppt.getPageSize();
-        int width = (int) (pgsize.width * scale);
-        int height = (int) (pgsize.height * scale);
 
         XSLFSlide[] slide = ppt.getSlides();
         for (int i = 0; i < slide.length; i++) {
-            if (slidenum != -1 && slidenum != (i + 1)) continue;
-
             String title = slide[i].getTitle();
             System.out.println("Rendering slide " + (i + 1) + (title == null ? "" : ": " + title));
 
@@ -105,30 +105,17 @@ public class MainActivity extends Activity {
 
 			Graphics2D graphics2d = new Graphics2D(canvas);
             
-//            BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-//            Graphics2D graphics = img.createGraphics();
-
-            // default rendering options
-//            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//            graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-//            graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-//            graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-
-//            graphics.setColor(Color.white);
-//            graphics.clearRect(0, 0, width, height);
-//
-//            graphics.scale(scale, scale);
-
             // draw stuff
             slide[i].draw(graphics2d);
 
-//            // save the result
-//            int sep = file.lastIndexOf(".");
-//            String fname = file.substring(0, sep == -1 ? file.length() : sep) + "-" + (i + 1) +".png";
-//            FileOutputStream out = new FileOutputStream(fname);
-//            ImageIO.write(img, "png", out);
-//            out.close();
-            mImageView.setImageBitmap(bmp);
+//          mImageView.setImageBitmap(bmp);
+            
+            // save the result
+            int sep = file.lastIndexOf(".");
+            String fname = file.substring(0, sep == -1 ? file.length() : sep) + "-" + (i + 1) +".png";
+            FileOutputStream out = new FileOutputStream(fname);
+            bmp.compress(CompressFormat.PNG, 80, out);
+            out.close();
         }
         System.out.println("Done");
     }

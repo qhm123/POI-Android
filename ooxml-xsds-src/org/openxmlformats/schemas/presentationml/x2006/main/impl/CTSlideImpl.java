@@ -131,7 +131,7 @@ public class CTSlideImpl extends org.apache.xmlbeans.impl.values.XmlComplexConte
             {
                 target = (org.openxmlformats.schemas.drawingml.x2006.main.CTColorMappingOverride)get_store().add_element_user(CLRMAPOVR$2);
             }
-            target.set(clrMapOvr);
+//            target.set(clrMapOvr);
         }
     }
     
@@ -205,7 +205,7 @@ public class CTSlideImpl extends org.apache.xmlbeans.impl.values.XmlComplexConte
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideTransition)get_store().add_element_user(TRANSITION$4);
             }
-            target.set(transition);
+//            target.set(transition);
         }
     }
     
@@ -279,7 +279,7 @@ public class CTSlideImpl extends org.apache.xmlbeans.impl.values.XmlComplexConte
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTSlideTiming)get_store().add_element_user(TIMING$6);
             }
-            target.set(timing);
+//            target.set(timing);
         }
     }
     
@@ -353,7 +353,7 @@ public class CTSlideImpl extends org.apache.xmlbeans.impl.values.XmlComplexConte
             {
                 target = (org.openxmlformats.schemas.presentationml.x2006.main.CTExtensionListModify)get_store().add_element_user(EXTLST$8);
             }
-            target.set(extLst);
+//            target.set(extLst);
         }
     }
     
