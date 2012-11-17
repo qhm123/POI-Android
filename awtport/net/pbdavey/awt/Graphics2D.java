@@ -200,6 +200,6 @@ public class Graphics2D extends Graphics {
 	}
 	
 	public void drawImage(BufferedImage img, int x, int y, int width, int height, Object o) {
-		canvas.drawBitmap(img.bm, new Rect(0, 0, img.getWidth(), img.getHeight()), new Rect(x, y, width, height), paint);
+		canvas.drawBitmap(img.bm, new Rect(0, 0, img.getWidth(), img.getHeight()), new Rect(x, y, x + width, y + height), paint);
 	}
 }

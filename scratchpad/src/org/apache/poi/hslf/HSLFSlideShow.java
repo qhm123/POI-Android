@@ -31,6 +31,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 import org.apache.poi.POIDocument;
+import org.apache.poi.hpsf.Util;
 import org.apache.poi.hslf.exceptions.CorruptPowerPointFileException;
 import org.apache.poi.hslf.exceptions.EncryptedPowerPointFileException;
 import org.apache.poi.hslf.exceptions.HSLFException;
@@ -51,6 +52,13 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.util.LittleEndian;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
+
+import com.poi.poiandroid.Utils;
+
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 
 /**
  * This class contains the main functionality for the Powerpoint file
@@ -375,11 +383,46 @@ public final class HSLFSlideShow extends POIDocument {
 				// Build the PictureData object from the data
 				try {
 					PictureData pict = PictureData.create(type - 0xF018);
-
-                    // Copy the data, ready to pass to PictureData
-                    byte[] imgdata = new byte[imgsize];
-                    System.arraycopy(pictstream, pos, imgdata, 0, imgdata.length);
-                    pict.setRawData(imgdata);
+					
+					Log.d("PictureData", "PictureData imgsize: " + Utils.fileBytesShow(imgsize));
+//					int bmpOffset = 17;
+//					
+//					final BitmapFactory.Options options = new BitmapFactory.Options();
+//			        options.inJustDecodeBounds = true;
+//					BitmapFactory.decodeByteArray(pictstream, pos + bmpOffset, imgsize, options);
+//					
+//					int height = options.outHeight;
+//			        int width = options.outWidth;
+//			        Log.d("PictureData", "PictureData height: " + height + ", height: " + height);
+//			        
+//			        if (height == -1 && width == -1) {
+//			        	bmpOffset += 16;
+//			        	BitmapFactory.decodeByteArray(pictstream, pos + bmpOffset, imgsize, options);
+//			        }
+//			        
+//			        height = options.outHeight;
+//			        width = options.outWidth;
+//			        
+//			        Log.d("PictureData", "+16 PictureData height: " + height + ", height: " + height);
+//					
+//					options.inSampleSize = Utils.calculateInSampleSize(options, 480, 800);
+//					options.inJustDecodeBounds = false;
+//					Bitmap bm = BitmapFactory.decodeByteArray(pictstream, pos + bmpOffset, imgsize, options);
+//					
+//					if (bm != null) {
+//						ByteArrayOutputStream bais = new ByteArrayOutputStream();
+//						bm.compress(CompressFormat.PNG, 80, bais);
+//						byte[] newimgdata = bais.toByteArray();
+//
+//						Log.d("PictureData", "PictureData new imgsize: "
+//								+ newimgdata.length);
+//
+//						pict.setRawData(newimgdata);
+//					}
+					
+					byte[] imgdata = new byte[imgsize];
+					System.arraycopy(pictstream, pos, imgdata, 0, imgdata.length);
+					pict.setRawData(imgdata);
 
                     pict.setOffset(offset);
 					_pictures.add(pict);

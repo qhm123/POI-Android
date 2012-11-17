@@ -1,5 +1,6 @@
 package com.poi.poiandroid;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -42,7 +43,7 @@ public class MainActivity extends Activity {
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setPageMargin(10);
-		mViewPager.setOffscreenPageLimit(1);
+		mViewPager.setOffscreenPageLimit(0);
 
 		Logger.getLogger("org.teleal.cling").setLevel(Level.FINEST);
 
@@ -63,9 +64,11 @@ public class MainActivity extends Activity {
 	}
 
 	private void ppt2png(String path) throws IOException {
-		FileInputStream is = new FileInputStream(path);
-		SlideShow ppt = new SlideShow(is);
-		is.close();
+//		FileInputStream is = new FileInputStream(path);
+//		SlideShow ppt = new SlideShow(is);
+//		is.close();
+		
+		SlideShow ppt = new SlideShow(new File(path));
 
 		final Dimension pgsize = ppt.getPageSize();
 

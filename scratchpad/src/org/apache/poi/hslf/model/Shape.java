@@ -36,6 +36,7 @@ import org.apache.poi.util.POILogger;
 import and.awt.Color;
 import and.awt.Rectangle;
 import and.awt.geom.Rectangle2D;
+import android.util.Log;
 
 /**
  *  <p>
@@ -261,8 +262,10 @@ public abstract class Shape {
         for ( Iterator<EscherRecord> iterator = owner.getChildIterator(); iterator.hasNext(); )
         {
             EscherRecord escherRecord = iterator.next();
-            if (escherRecord.getRecordId() == recordId)
+            if (escherRecord.getRecordId() == recordId) {
+            	Log.d("escherRecord", "escherRecord: " + escherRecord.getClass().getName());
                 return escherRecord;
+            }
         }
         return null;
     }

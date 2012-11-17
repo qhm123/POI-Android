@@ -29,6 +29,8 @@ import org.apache.poi.util.POILogger;
 
 import and.awt.*;
 import and.awt.geom.AffineTransform;
+import android.util.Log;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -263,8 +265,10 @@ public class Picture extends SimpleShape {
     public void draw(Graphics2D graphics){
         AffineTransform at = graphics.getTransform();
         ShapePainter.paint(this, graphics);
-
+        
         PictureData data = getPictureData();
+        Log.d("Picture", "draw: getType: " + data.getType());
+        
         if(data != null) data.draw(graphics, this);
 
         graphics.setTransform(at);

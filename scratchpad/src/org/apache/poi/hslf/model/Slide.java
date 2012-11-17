@@ -435,7 +435,7 @@ public final class Slide extends Sheet
 
         Shape[] sh = getShapes();
         for (int i = 0; i < sh.length; i++) {
-        	System.out.println("shape: " + sh.getClass().getName());
+        	System.out.println("shape: " + sh[i].getClass().getName());
             sh[i].draw(graphics);
         }
     }

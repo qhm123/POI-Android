@@ -41,6 +41,8 @@ import org.apache.poi.util.POILogFactory;
    limitations under the License.
 ==================================================================== */
 import and.awt.*;
+import android.util.Log;
+
 import java.io.ByteArrayInputStream;
 
 /**
@@ -62,6 +64,7 @@ public final class BitmapPainter implements ImagePainter {
         }
 
         Rectangle anchor = parent.getLogicalAnchor2D().getBounds();
+        Log.d("anchor", "anchor: " + anchor.toString());
         graphics.drawImage(img, anchor.x, anchor.y, anchor.width, anchor.height, null);
         
         if (img != null) {

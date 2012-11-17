@@ -22,6 +22,7 @@ import org.apache.poi.ddf.EscherProperties;
 import org.apache.poi.util.POILogger;
 
 import and.awt.geom.Rectangle2D;
+import android.util.Log;
 
 /**
  * Represents an AutoShape.
@@ -108,6 +109,9 @@ public class AutoShape extends TextShape {
     }
 
     public and.awt.Shape getOutline(){
+    	
+    	Log.d("getOutline", "getOutline: " + getText() + ", type: " + ShapeTypes.typeName(getShapeType()));
+    	
         ShapeOutline outline = AutoShapes.getShapeOutline(getShapeType());
         Rectangle2D anchor = getLogicalAnchor2D();
         if(outline == null){

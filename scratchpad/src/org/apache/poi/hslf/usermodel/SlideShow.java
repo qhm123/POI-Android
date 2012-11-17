@@ -37,6 +37,7 @@ import org.apache.poi.hslf.model.Notes;
 import org.apache.poi.hslf.model.Slide;
 import org.apache.poi.hslf.record.*;
 import org.apache.poi.hslf.record.SlideListWithText.SlideAtomsSet;
+import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
@@ -125,6 +126,10 @@ public final class SlideShow {
 	 */
 	public SlideShow(InputStream inputStream) throws IOException {
 		this(new HSLFSlideShow(inputStream));
+	}
+	
+	public SlideShow(File file) throws IOException {
+		this(new HSLFSlideShow(new NPOIFSFileSystem(file)));
 	}
 
 	/**
