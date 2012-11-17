@@ -58,15 +58,15 @@ public class XSLFAutoShape extends XSLFTextShape {
     static CTShape prototype(int shapeId) {
         CTShape ct = CTShape.Factory.newInstance();
         CTShapeNonVisual nvSpPr = ct.addNewNvSpPr();
-//        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
-//        cnv.setName("AutoShape " + shapeId);
-//        cnv.setId(shapeId + 1);
-//        nvSpPr.addNewCNvSpPr();
-//        nvSpPr.addNewNvPr();
-//        CTShapeProperties spPr = ct.addNewSpPr();
-//        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
-//        prst.setPrst(STShapeType.RECT);
-//        prst.addNewAvLst();
+        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
+        cnv.setName("AutoShape " + shapeId);
+        cnv.setId(shapeId + 1);
+        nvSpPr.addNewCNvSpPr();
+        nvSpPr.addNewNvPr();
+        CTShapeProperties spPr = ct.addNewSpPr();
+        CTPresetGeometry2D prst = spPr.addNewPrstGeom();
+        prst.setPrst(STShapeType.RECT);
+        prst.addNewAvLst();
         return ct;
     }
 
@@ -97,5 +97,4 @@ public class XSLFAutoShape extends XSLFTextShape {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
