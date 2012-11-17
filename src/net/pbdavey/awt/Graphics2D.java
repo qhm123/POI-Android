@@ -13,9 +13,11 @@ import and.awt.geom.PathIterator;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.util.Log;
 /**
  * So far it appears that Graphics2D is roughly equivalent to a Canvas with Paint.
  * The Paint object contains information regarding Fonts and FontMetrics, while
@@ -204,14 +206,35 @@ public class Graphics2D extends Graphics {
 	}
 
 	public void setPaint(Color lineColor) {
-		
+		paint.setColor(lineColor.getRGB());
 	}
 
 	public void drawRenderedImage(BufferedImage img, AffineTransform at) {
 		
+		Log.d("drawRenderedImage", "sx: " + at.getScaleX() + ", sy: " + at.getScaleY() + 
+				", tx: " + at.getTranslateX() + ", ty: " + at.getTranslateY());
+		
+		Matrix m = new Matrix();
+//        m.setScale((float)at.getScaleX(), (float)at.getScaleY());
+//        m.setTranslate((float)at.getTranslateX(), (float)at.getTranslateY());
+////        m.setSkew((float)at.getShearX(), (float)at.getShearY());
+		float[] values = new float[9];
+		values[Matrix.MSCALE_X] = (float) at.getScaleX();
+		values[Matrix.MSCALE_Y] = (float)at.getScaleY();
+		values[Matrix.MTRANS_X] = (float)at.getTranslateX();
+		values[Matrix.MTRANS_Y] = (float)at.getTranslateY();
+		values[Matrix.MSKEW_X] = (float)at.getShearX();
+		values[Matrix.MSKEW_Y] = (float)at.getShearY();
+		values[Matrix.MPERSP_2] = 1;
+		m.setValues(values);
+        
+        canvas.drawBitmap(img.bm, m, paint);
 	}
 
 	public void setPaint(and.awt.Paint fill) {
-		
+		if (fill instanceof Color) {
+			Color c = (Color) fill;
+			paint.setColor(c.getRGB());
+		}
 	}
 }

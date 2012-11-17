@@ -49,6 +49,7 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTPlaceholder;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTShape;
 
 import and.awt.geom.AffineTransform;
+import android.util.Log;
 
 @Beta
 public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeContainer {
@@ -89,6 +90,7 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
         for(XmlObject ch : spTree.selectPath("*")){
             if(ch instanceof CTShape){ // simple shape
                 XSLFAutoShape shape = XSLFAutoShape.create((CTShape)ch, this);
+                Log.d("textInset", "buildShapes: " + shape.getText() + ", x: " + shape.getAnchor().getX());
                 shapes.add(shape);
             } else if (ch instanceof CTGroupShape){
                 shapes.add(new XSLFGroupShape((CTGroupShape)ch, this));
@@ -97,8 +99,8 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
             } else if (ch instanceof CTPicture){
                 shapes.add(new XSLFPictureShape((CTPicture)ch, this));
             } else if (ch instanceof CTGraphicalObjectFrame){
-//                XSLFGraphicFrame shape = XSLFGraphicFrame.create((CTGraphicalObjectFrame)ch, this);
-//                shapes.add(shape);
+                XSLFGraphicFrame shape = XSLFGraphicFrame.create((CTGraphicalObjectFrame)ch, this);
+                shapes.add(shape);
             }
         }
         return shapes;
@@ -194,12 +196,12 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
         return sh;
     }
 
-//    public XSLFTable createTable(){
-//        List<XSLFShape> shapes = getShapeList();
-//        XSLFTable sh = getDrawing().createTable();
-//        shapes.add(sh);
-//        return sh;
-//    }
+    public XSLFTable createTable(){
+        List<XSLFShape> shapes = getShapeList();
+        XSLFTable sh = getDrawing().createTable();
+        shapes.add(sh);
+        return sh;
+    }
 
     /**
      * Returns an array containing all of the shapes in this sheet

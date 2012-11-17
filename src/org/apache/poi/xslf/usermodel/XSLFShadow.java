@@ -136,18 +136,4 @@ public class XSLFShadow extends XSLFSimpleShape {
             return new XSLFColor(ct, theme, phClr).getColor();
         }
     }
-
-
-	@Override
-	public String getShapeName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public int getShapeId() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

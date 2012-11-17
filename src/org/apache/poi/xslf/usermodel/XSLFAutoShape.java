@@ -85,16 +85,4 @@ public class XSLFAutoShape extends XSLFTextShape {
     public String toString(){
         return "[" + getClass().getSimpleName() + "] " + getShapeName();
     }
-
-	@Override
-	public String getShapeName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getShapeId() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

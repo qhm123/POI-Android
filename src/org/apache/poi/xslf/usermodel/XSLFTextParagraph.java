@@ -60,6 +60,7 @@ import android.text.style.SubscriptSpan;
 import android.text.style.SuperscriptSpan;
 import android.text.style.TextAppearanceSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 
 /**
  * Represents a paragraph of text within the containing text body.
@@ -760,11 +761,13 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
         double rightInset = _shape.getRightInset();
         RenderableShape rShape = new RenderableShape(_shape);
         Rectangle2D anchor = rShape.getAnchor(graphics);
-        double penY = y;
+        float penY = (float) y;
+        float leftMargin = (float) getLeftMargin();
+        float indent = (float) getIndent();
+        float penX = (float) (x + leftMargin + indent);
         
         graphics.canvas.save();
-        graphics.canvas.translate((float)anchor.getX() + (float)_shape.getLeftInset(), 
-        		(float)anchor.getY() + (float)_shape.getTopInset());
+		graphics.canvas.translate(penX, penY);
         
         if (sl != null) {
         	sl.draw(graphics.canvas);
@@ -845,7 +848,8 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
 
 //        XSLFFontManager fontHandler = (XSLFFontManager)graphics.getRenderingHint(XSLFRenderingHint.FONT_HANDLER);
 
-        System.out.println("text: " + text);
+//        System.out.println("text: " + text);
+        Log.d("textInset", "text: " + text);
         SpannableStringBuilder at = new SpannableStringBuilder(text);
         
         int startIndex = 0;
@@ -856,7 +860,6 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
                 continue;
             }
             int endIndex = startIndex + length;
-            
             
 //            string.addAttribute(TextAttribute.FOREGROUND, run.getFontColor(), startIndex, endIndex);
             

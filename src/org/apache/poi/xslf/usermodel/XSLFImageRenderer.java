@@ -30,6 +30,8 @@ import and.awt.BufferedImage;
 import and.awt.ImageIO;
 import and.awt.geom.AffineTransform;
 import and.awt.geom.Rectangle2D;
+import android.graphics.Matrix;
+import android.util.Log;
 
 /**
  * For now this class renders only images supported by the javax.imageio.ImageIO
@@ -84,7 +86,11 @@ public class XSLFImageRenderer {
             double ty = anchor.getY();
             AffineTransform at = new AffineTransform(sx, 0, 0, sy, tx, ty) ;
 
+            Log.d("drawRenderedImage", "anchor: " + anchor.getX() + ", y: " + anchor.getY());
+            
             graphics.drawRenderedImage(img, at);
+            
+            img.bm.recycle();
 
 			return true;
 		} catch (Exception e) {

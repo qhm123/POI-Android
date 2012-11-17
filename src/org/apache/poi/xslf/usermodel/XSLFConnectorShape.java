@@ -68,16 +68,4 @@ public class XSLFConnectorShape extends XSLFSimpleShape {
         return null;
     }
 
-	@Override
-	public String getShapeName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getShapeId() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

@@ -168,24 +168,24 @@ public class XSLFFreeformShape extends XSLFAutoShape {
      */
     static CTShape prototype(int shapeId) {
         CTShape ct = CTShape.Factory.newInstance();
-//        CTShapeNonVisual nvSpPr = ct.addNewNvSpPr();
-//        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
-//        cnv.setName("Freeform " + shapeId);
-//        cnv.setId(shapeId + 1);
-//        nvSpPr.addNewCNvSpPr();
-//        nvSpPr.addNewNvPr();
-//        CTShapeProperties spPr = ct.addNewSpPr();
-//        CTCustomGeometry2D geom = spPr.addNewCustGeom();
-//        geom.addNewAvLst();
-//        geom.addNewGdLst();
-//        geom.addNewAhLst();
-//        geom.addNewCxnLst();
-//        CTGeomRect rect = geom.addNewRect();
-//        rect.setR("r");
-//        rect.setB("b");
-//        rect.setT("t");
-//        rect.setL("l");
-//        geom.addNewPathLst();
+        CTShapeNonVisual nvSpPr = ct.addNewNvSpPr();
+        CTNonVisualDrawingProps cnv = nvSpPr.addNewCNvPr();
+        cnv.setName("Freeform " + shapeId);
+        cnv.setId(shapeId + 1);
+        nvSpPr.addNewCNvSpPr();
+        nvSpPr.addNewNvPr();
+        CTShapeProperties spPr = ct.addNewSpPr();
+        CTCustomGeometry2D geom = spPr.addNewCustGeom();
+        geom.addNewAvLst();
+        geom.addNewGdLst();
+        geom.addNewAhLst();
+        geom.addNewCxnLst();
+        CTGeomRect rect = geom.addNewRect();
+        rect.setR("r");
+        rect.setB("b");
+        rect.setT("t");
+        rect.setL("l");
+        geom.addNewPathLst();
         return ct;
     }
 }

@@ -91,7 +91,8 @@ public class MainActivity extends Activity {
         Dimension pgsize = ppt.getPageSize();
 
         XSLFSlide[] slide = ppt.getSlides();
-        for (int i = 0; i < slide.length; i++) {
+//        for (int i = 0; i < slide.length; i++) {
+        int i = 1;
             String title = slide[i].getTitle();
             System.out.println("Rendering slide " + (i + 1) + (title == null ? "" : ": " + title));
 
@@ -116,7 +117,7 @@ public class MainActivity extends Activity {
             FileOutputStream out = new FileOutputStream(fname);
             bmp.compress(CompressFormat.PNG, 80, out);
             out.close();
-        }
+//        }
         System.out.println("Done");
     }
 }

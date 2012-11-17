@@ -105,16 +105,4 @@ public class XSLFBackground extends XSLFSimpleShape {
     CTTransform2D getXfrm() {
         return CTTransform2D.Factory.newInstance();
     }
-
-	@Override
-	public String getShapeName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getShapeId() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

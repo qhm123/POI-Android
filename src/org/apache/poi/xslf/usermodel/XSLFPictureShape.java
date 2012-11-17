@@ -91,6 +91,7 @@ public class XSLFPictureShape extends XSLFSimpleShape {
         try {
             BufferedImage img = ImageIO.read(new ByteArrayInputStream(pict.getData()));
             setAnchor(new Rectangle2D.Double(0, 0, img.getWidth(), img.getHeight()));
+            img.bm.recycle();
         }
         catch (Exception e) {
             //default size is 200x200
@@ -128,8 +129,6 @@ public class XSLFPictureShape extends XSLFSimpleShape {
         XSLFPictureData data = getPictureData();
     	if(data == null) return;
 
-    	// XXX: DD
-//        XSLFImageRenderer renderer = (XSLFImageRenderer)graphics.getRenderingHint(XSLFRenderingHint.IMAGE_RENDERER);
         XSLFImageRenderer renderer = null;
         if(renderer == null) renderer = new XSLFImageRenderer();
 
@@ -159,18 +158,4 @@ public class XSLFPictureShape extends XSLFSimpleShape {
         }
 
     }
-
-
-	@Override
-	public String getShapeName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public int getShapeId() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

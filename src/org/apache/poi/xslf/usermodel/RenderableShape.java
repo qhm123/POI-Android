@@ -46,6 +46,8 @@ import org.openxmlformats.schemas.drawingml.x2006.main.CTGradientFillProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTGradientStop;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTLineProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTNoFillProperties;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTPathShadeProperties;
+import org.openxmlformats.schemas.drawingml.x2006.main.STPathShadeType;
 //import org.openxmlformats.schemas.drawingml.x2006.main.CTPathShadeProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTPresetGeometry2D;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTSchemeColor;
@@ -122,12 +124,12 @@ class RenderableShape {
             if (gradFill.isSetLin()) {
                  paint = createLinearGradientPaint(graphics, gradFill, anchor, theme, phClr);
             } else if (gradFill.isSetPath()){
-//                CTPathShadeProperties ps = gradFill.getPath();
-//                if(ps.getPath() ==  STPathShadeType.CIRCLE){
-//                    paint = createRadialGradientPaint(gradFill, anchor, theme, phClr);
-//                } else if (ps.getPath() ==  STPathShadeType.SHAPE){
-//                    paint = toRadialGradientPaint(gradFill, anchor, theme, phClr);
-//                }
+                CTPathShadeProperties ps = gradFill.getPath();
+                if(ps.getPath() ==  STPathShadeType.CIRCLE){
+                    paint = createRadialGradientPaint(gradFill, anchor, theme, phClr);
+                } else if (ps.getPath() ==  STPathShadeType.SHAPE){
+                    paint = toRadialGradientPaint(gradFill, anchor, theme, phClr);
+                }
             }
         }
 
@@ -383,11 +385,11 @@ class RenderableShape {
                 XSLFTheme theme = sheet.getTheme();
                 XmlObject fillProps = null;
                 if(idx >= 1 && idx <= 999){
-//                    fillProps = theme.getXmlObject().
-//                            getThemeElements().getFmtScheme().getFillStyleLst().selectPath("*")[idx - 1];
+                    fillProps = theme.getXmlObject().
+                            getThemeElements().getFmtScheme().getFillStyleLst().selectPath("*")[idx - 1];
                 } else if (idx >= 1001 ){
-//                    fillProps = theme.getXmlObject().
-//                            getThemeElements().getFmtScheme().getBgFillStyleLst().selectPath("*")[idx - 1001];
+                    fillProps = theme.getXmlObject().
+                            getThemeElements().getFmtScheme().getBgFillStyleLst().selectPath("*")[idx - 1001];
                 }
                 if(fillProps != null) {
                     paint = selectPaint(graphics, fillProps, phClr, sheet.getPackagePart());
