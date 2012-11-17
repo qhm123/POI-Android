@@ -134,7 +134,7 @@ public abstract class XSLFShape {
     protected void applyTransform(Graphics2D graphics) {
         Rectangle2D anchor = getAnchor();
         // XXX: DD
-        AffineTransform tx = null;//(AffineTransform)graphics.getRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM);
+        AffineTransform tx = (AffineTransform)graphics.getRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM);
         if(tx != null) {
             anchor = tx.createTransformedShape(anchor).getBounds2D();
         }

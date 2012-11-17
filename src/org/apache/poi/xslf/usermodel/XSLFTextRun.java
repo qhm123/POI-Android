@@ -27,6 +27,8 @@ import org.openxmlformats.schemas.drawingml.x2006.main.CTTextCharacterProperties
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextFont;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextNormalAutofit;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextParagraphProperties;
+import org.openxmlformats.schemas.drawingml.x2006.main.STTextStrikeType;
+import org.openxmlformats.schemas.drawingml.x2006.main.STTextUnderlineType;
 //import org.openxmlformats.schemas.drawingml.x2006.main.STTextStrikeType;
 //import org.openxmlformats.schemas.drawingml.x2006.main.STTextUnderlineType;
 import org.openxmlformats.schemas.drawingml.x2006.main.STSchemeColorVal;
@@ -314,7 +316,7 @@ public class XSLFTextRun {
      * @param strike whether a run of text will be formatted as strikethrough text.
      */
     public void setStrikethrough(boolean strike) {
-//        getRPr().setStrike(strike ? STTextStrikeType.SNG_STRIKE : STTextStrikeType.NO_STRIKE);
+        getRPr().setStrike(strike ? STTextStrikeType.SNG_STRIKE : STTextStrikeType.NO_STRIKE);
     }
 
     /**
@@ -324,7 +326,7 @@ public class XSLFTextRun {
         CharacterPropertyFetcher<Boolean> fetcher = new CharacterPropertyFetcher<Boolean>(_p.getLevel()){
             public boolean fetch(CTTextCharacterProperties props){
                 if(props.isSetStrike()){
-//                    setValue(props.getStrike() != STTextStrikeType.NO_STRIKE);
+                    setValue(props.getStrike() != STTextStrikeType.NO_STRIKE);
                     return true;
                 }
                 return false;
@@ -440,7 +442,7 @@ public class XSLFTextRun {
      * @param underline whether this run of text is formatted as underlined text
      */
     public void setUnderline(boolean underline) {
-//        getRPr().setU(underline ? STTextUnderlineType.SNG : STTextUnderlineType.NONE);
+        getRPr().setU(underline ? STTextUnderlineType.SNG : STTextUnderlineType.NONE);
     }
 
     /**
@@ -450,7 +452,7 @@ public class XSLFTextRun {
         CharacterPropertyFetcher<Boolean> fetcher = new CharacterPropertyFetcher<Boolean>(_p.getLevel()){
             public boolean fetch(CTTextCharacterProperties props){
                 if(props.isSetU()){
-//                    setValue(props.getU() != STTextUnderlineType.NONE);
+                    setValue(props.getU() != STTextUnderlineType.NONE);
                     return true;
                 }
                 return false;

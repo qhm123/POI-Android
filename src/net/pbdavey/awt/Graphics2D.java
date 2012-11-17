@@ -1,6 +1,10 @@
 package net.pbdavey.awt;
 
 
+import java.util.HashMap;
+
+import org.apache.poi.xslf.usermodel.XSLFRenderingHint;
+
 import and.awt.BasicStroke;
 import and.awt.BufferedImage;
 import and.awt.Color;
@@ -215,9 +219,6 @@ public class Graphics2D extends Graphics {
 				", tx: " + at.getTranslateX() + ", ty: " + at.getTranslateY());
 		
 		Matrix m = new Matrix();
-//        m.setScale((float)at.getScaleX(), (float)at.getScaleY());
-//        m.setTranslate((float)at.getTranslateX(), (float)at.getTranslateY());
-////        m.setSkew((float)at.getShearX(), (float)at.getShearY());
 		float[] values = new float[9];
 		values[Matrix.MSCALE_X] = (float) at.getScaleX();
 		values[Matrix.MSCALE_Y] = (float)at.getScaleY();
@@ -236,5 +237,24 @@ public class Graphics2D extends Graphics {
 			Color c = (Color) fill;
 			paint.setColor(c.getRGB());
 		}
+	}
+
+	public AffineTransform getRenderingHint(XSLFRenderingHint groupTransform) {
+		return affineTransformHintMap.get(groupTransform);
+	}
+	
+	HashMap<XSLFRenderingHint, AffineTransform> affineTransformHintMap = new HashMap<XSLFRenderingHint, AffineTransform>();
+
+	public void setRenderingHint(XSLFRenderingHint hint, boolean b) {
+		if (hint == XSLFRenderingHint.GSAVE) {
+			canvas.save();
+		} else if (hint == XSLFRenderingHint.GRESTORE) {
+			canvas.restore();
+		}
+	}
+
+	public void setRenderingHint(XSLFRenderingHint groupTransform,
+			AffineTransform tx0) {
+		affineTransformHintMap.put(groupTransform, tx0);
 	}
 }

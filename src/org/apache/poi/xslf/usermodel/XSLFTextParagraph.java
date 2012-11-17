@@ -31,6 +31,8 @@ import org.openxmlformats.schemas.drawingml.x2006.main.CTColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTRegularTextRun;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTSRgbColor;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBulletSizePercent;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTTextAutonumberBullet;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBulletSizePoint;
 //import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBulletSizePoint;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextCharBullet;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextCharacterProperties;
@@ -41,7 +43,10 @@ import org.openxmlformats.schemas.drawingml.x2006.main.CTTextNormalAutofit;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextParagraph;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextParagraphProperties;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTTextSpacing;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTTextTabStop;
+import org.openxmlformats.schemas.drawingml.x2006.main.CTTextTabStopList;
 import org.openxmlformats.schemas.drawingml.x2006.main.STTextAlignType;
+import org.openxmlformats.schemas.drawingml.x2006.main.STTextAutonumberScheme;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTPlaceholder;
 import org.openxmlformats.schemas.presentationml.x2006.main.STPlaceholderType;
 
@@ -311,7 +316,7 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
                     return true;
                 }
                 if(props.isSetBuSzPts()){
-//                    setValue( - props.getBuSzPts().getVal() * 0.01);
+                    setValue( - props.getBuSzPts().getVal() * 0.01);
                     return true;
                 }
                 return false;
@@ -339,8 +344,8 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
             pt.setVal((int)(bulletSize*1000));
             if(pr.isSetBuSzPts()) pr.unsetBuSzPts();
         } else {
-//            CTTextBulletSizePoint pt = pr.isSetBuSzPts() ? pr.getBuSzPts() : pr.addNewBuSzPts();
-//            pt.setVal((int)(-bulletSize*100));
+            CTTextBulletSizePoint pt = pr.isSetBuSzPts() ? pr.getBuSzPts() : pr.addNewBuSzPts();
+            pt.setVal((int)(-bulletSize*100));
             if(pr.isSetBuSzPct()) pr.unsetBuSzPct();
         }
    }
@@ -438,15 +443,15 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
     public double getTabStop(final int idx){
         ParagraphPropertyFetcher<Double> fetcher = new ParagraphPropertyFetcher<Double>(getLevel()){
             public boolean fetch(CTTextParagraphProperties props){
-//                if(props.isSetTabLst()){
-//                    CTTextTabStopList tabStops = props.getTabLst();
-//                    if(idx < tabStops.sizeOfTabArray() ) {
-//                        CTTextTabStop ts = tabStops.getTabArray(idx);
-//                        double val = Units.toPoints(ts.getPos());
-//                        setValue(val);
-//                        return true;
-//                    }
-//                }
+                if(props.isSetTabLst()){
+                    CTTextTabStopList tabStops = props.getTabLst();
+                    if(idx < tabStops.sizeOfTabArray() ) {
+                        CTTextTabStop ts = tabStops.getTabArray(idx);
+                        double val = Units.toPoints(ts.getPos());
+                        setValue(val);
+                        return true;
+                    }
+                }
                 return false;
             }
         };
@@ -686,7 +691,7 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
 
         CTTextParagraphProperties pr = _p.isSetPPr() ? _p.getPPr() : _p.addNewPPr();
         if(!flag) {
-//            pr.addNewBuNone();
+            pr.addNewBuNone();
         } else {
             pr.addNewBuFont().setTypeface("Arial");
             pr.addNewBuChar().setChar("\u2022");
@@ -703,9 +708,9 @@ public class XSLFTextParagraph implements Iterable<XSLFTextRun>{
     public void setBulletAutoNumber(ListAutoNumber scheme, int startAt) {
         if(startAt < 1) throw new IllegalArgumentException("Start Number must be greater or equal that 1") ;
         CTTextParagraphProperties pr = _p.isSetPPr() ? _p.getPPr() : _p.addNewPPr();
-//        CTTextAutonumberBullet lst = pr.isSetBuAutoNum() ? pr.getBuAutoNum() : pr.addNewBuAutoNum();
-//        lst.setType(STTextAutonumberScheme.Enum.forInt(scheme.ordinal() + 1));
-//        lst.setStartAt(startAt);
+        CTTextAutonumberBullet lst = pr.isSetBuAutoNum() ? pr.getBuAutoNum() : pr.addNewBuAutoNum();
+        lst.setType(STTextAutonumberScheme.Enum.forInt(scheme.ordinal() + 1));
+        lst.setStartAt(startAt);
     }
 
     @Override

@@ -624,10 +624,10 @@ class RenderableShape {
             return anchor;
         }
 
-//        AffineTransform tx = (AffineTransform)graphics.getRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM);
-//        if(tx != null) {
-//            anchor = tx.createTransformedShape(anchor).getBounds2D();
-//        }
+        AffineTransform tx = (AffineTransform)graphics.getRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM);
+        if(tx != null) {
+            anchor = tx.createTransformedShape(anchor).getBounds2D();
+        }
         return anchor;
     }    
 }

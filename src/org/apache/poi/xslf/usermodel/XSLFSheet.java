@@ -489,7 +489,7 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
         if(getFollowMasterGraphics() && master != null) master.draw(graphics);
 
         // XXX: DD
-//        graphics.setRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM, new AffineTransform());
+        graphics.setRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM, new AffineTransform());
         for(XSLFShape shape : getShapeList()) {
             if(!canDraw(shape)) continue;
 
@@ -498,7 +498,7 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
 
             // concrete implementations can make sense of this hint,
             // for example PSGraphics2D or PDFGraphics2D would call gsave() / grestore
-//            graphics.setRenderingHint(XSLFRenderingHint.GSAVE, true);
+            graphics.setRenderingHint(XSLFRenderingHint.GSAVE, true);
 
             // apply rotation and flipping
             shape.applyTransform(graphics);
@@ -508,7 +508,7 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
             // restore the coordinate system
             graphics.setTransform(at);
 
-//            graphics.setRenderingHint(XSLFRenderingHint.GRESTORE, true);
+            graphics.setRenderingHint(XSLFRenderingHint.GRESTORE, true);
 
         }
     }

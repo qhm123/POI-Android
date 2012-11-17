@@ -297,30 +297,30 @@ public class XSLFGroupShape extends XSLFShape implements XSLFShapeContainer {
         // anchor of this group relative to the parent shape
         Rectangle2D exterior = getAnchor();
 
-//        AffineTransform tx = (AffineTransform)graphics.getRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM);
-//        AffineTransform tx0 = new AffineTransform(tx);
+        AffineTransform tx = (AffineTransform)graphics.getRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM);
+        AffineTransform tx0 = new AffineTransform(tx);
 
         double scaleX = interior.getWidth() == 0. ? 1.0 : exterior.getWidth() / interior.getWidth();
         double scaleY = interior.getHeight() == 0. ? 1.0 : exterior.getHeight() / interior.getHeight();
 
-//        tx.translate(exterior.getX(), exterior.getY());
-//        tx.scale(scaleX, scaleY);
-//        tx.translate(-interior.getX(), -interior.getY());
+        tx.translate(exterior.getX(), exterior.getY());
+        tx.scale(scaleX, scaleY);
+        tx.translate(-interior.getX(), -interior.getY());
 
         for (XSLFShape shape : getShapes()) {
         	// remember the initial transform and restore it after we are done with the drawing
         	AffineTransform at = graphics.getTransform();
-//            graphics.setRenderingHint(XSLFRenderingHint.GSAVE, true);
+            graphics.setRenderingHint(XSLFRenderingHint.GSAVE, true);
 
             shape.applyTransform(graphics);
         	shape.draw(graphics);
 
             // restore the coordinate system
             graphics.setTransform(at);
-//            graphics.setRenderingHint(XSLFRenderingHint.GRESTORE, true);
+            graphics.setRenderingHint(XSLFRenderingHint.GRESTORE, true);
         }
 
-//        graphics.setRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM, tx0);
+        graphics.setRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM, tx0);
         
     }
 
