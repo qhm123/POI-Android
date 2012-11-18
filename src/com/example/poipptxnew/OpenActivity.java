@@ -73,7 +73,7 @@ public class OpenActivity extends Activity {
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setPageMargin(10);
-		mViewPager.setOffscreenPageLimit(1);
+		mViewPager.setOffscreenPageLimit(0);
 
 		Logger.getLogger("org.teleal.cling").setLevel(Level.FINEST);
 
