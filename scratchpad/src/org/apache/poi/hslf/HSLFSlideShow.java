@@ -67,7 +67,10 @@ import android.util.Log;
  * @author Nick Burch
  */
 public final class HSLFSlideShow extends POIDocument {
-    // For logging
+	
+    private static final String TAG = HSLFSlideShow.class.getSimpleName();
+
+	// For logging
     private POILogger logger = POILogFactory.getLogger(this.getClass());
 
 	// Holds metadata on where things are in our document
@@ -336,6 +339,8 @@ public final class HSLFSlideShow extends POIDocument {
         _pictures = new ArrayList<PictureData>();
 
 		byte[] pictstream;
+		
+		// TODO: 图片太大
 
 		try {
 			DocumentEntry entry = (DocumentEntry)directory.getEntry("Pictures");
@@ -420,6 +425,10 @@ public final class HSLFSlideShow extends POIDocument {
 //						pict.setRawData(newimgdata);
 //					}
 					
+					if (imgsize > 1024 * 1024) {
+						Log.w(TAG, "imgsize > 1024 * 1024");
+						return;
+					}
 					byte[] imgdata = new byte[imgsize];
 					System.arraycopy(pictstream, pos, imgdata, 0, imgdata.length);
 					pict.setRawData(imgdata);

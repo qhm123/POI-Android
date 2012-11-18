@@ -219,7 +219,7 @@ public final class BlockAllocationTableReader {
             try {
                 // Grab the data at the current block offset
                 dataBlock = blockList.remove(currentBlock);
-                System.out.println("dataBlock.getData().length: " + dataBlock.getData().length);
+//                System.out.println("dataBlock.getData().length: " + dataBlock.getData().length);
                 blocks.add(dataBlock);
                 // Now figure out which block we go to next
                 currentBlock = _entries.get(currentBlock);

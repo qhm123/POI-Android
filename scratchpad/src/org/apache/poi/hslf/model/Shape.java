@@ -263,7 +263,6 @@ public abstract class Shape {
         {
             EscherRecord escherRecord = iterator.next();
             if (escherRecord.getRecordId() == recordId) {
-            	Log.d("escherRecord", "escherRecord: " + escherRecord.getClass().getName());
                 return escherRecord;
             }
         }

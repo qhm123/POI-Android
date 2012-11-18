@@ -106,18 +106,18 @@ public class Graphics2D extends Graphics {
 		
 		RectF rf = new RectF();
 		path.computeBounds(rf, true);
-		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
+//		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
 	}
 	
 	public void fill(Shape s) {
-		System.out.println("sShape: " + s.getClass().getName());
+//		System.out.println("sShape: " + s.getClass().getName());
 		PathIterator pi = s.getPathIterator(null);
 		Path path = convertAwtPathToAndroid(pi);
 		// Draw the outline and fill
 		paint.setStyle(Style.FILL_AND_STROKE);
 		RectF rf = new RectF();
 		path.computeBounds(rf, true);
-		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
+//		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
 		canvas.drawPath(path, paint);
 //		canvas.drawRect(rf, paint);
 //		canvas.drawRect(new Rect(0, 0, 300, 150), paint);
