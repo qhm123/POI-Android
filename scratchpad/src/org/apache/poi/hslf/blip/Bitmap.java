@@ -19,8 +19,15 @@ package org.apache.poi.hslf.blip;
 
 import org.apache.poi.hslf.usermodel.PictureData;
 
+import and.awt.BufferedImage;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+
+import com.poi.poiandroid.Utils;
+
 import java.io.IOException;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 /**
  * Represents a bitmap picture data:  JPEG or PNG.
@@ -31,9 +38,34 @@ import java.io.ByteArrayOutputStream;
 public abstract  class Bitmap extends PictureData {
 
     public byte[] getData(){
-        byte[] rawdata = getRawData();
-        byte[] imgdata = new byte[rawdata.length-17];
-        System.arraycopy(rawdata, 17, imgdata, 0, imgdata.length);
+    	Log.d("BitmapPainter", "Start Paint");
+    	InputStream is = getStream();
+    	byte[] imgdata = new byte[imgsize - 17];
+    	try {
+			is.reset();
+			is.skip(rawdataPos + 17);
+	    	is.read(imgdata, 0, imgdata.length);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+//    	final BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+//        BitmapFactory.decodeByteArray(imgdata, 0, imgdata.length, options);
+//
+//        // Calculate inSampleSize
+//        options.inSampleSize = Utils.calculateInSampleSize(options, 480, 800);
+//
+//        // Decode bitmap with inSampleSize set
+//        options.inJustDecodeBounds = false;
+//    	Bitmap bm = BitmapFactory.decodeByteArray(imgdata, 0, imgdata.length, options);
+//    	Log.d("BitmapPainter", "bm: " + bm);
+//    	img = new BufferedImage(bm);
+    	
+    	
+//        byte[] rawdata = getRawData();
+//        byte[] imgdata = new byte[rawdata.length-17];
+//        System.arraycopy(rawdata, 17, imgdata, 0, imgdata.length);
         return imgdata;
     }
 

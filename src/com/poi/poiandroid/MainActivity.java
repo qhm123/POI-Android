@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setPageMargin(10);
-//		mViewPager.setOffscreenPageLimit(0);
+		mViewPager.setOffscreenPageLimit(0);
 
 		Logger.getLogger("org.teleal.cling").setLevel(Level.FINEST);
 
@@ -67,6 +67,8 @@ public class MainActivity extends Activity {
 //		FileInputStream is = new FileInputStream(path);
 //		SlideShow ppt = new SlideShow(is);
 //		is.close();
+		
+		final long cur = System.currentTimeMillis();
 		
 		SlideShow ppt = new SlideShow(new File(path));
 
@@ -92,6 +94,9 @@ public class MainActivity extends Activity {
 
 			@Override
 			public Object instantiateItem(ViewGroup container, int position) {
+				
+				Log.d("TIME", "new SlideShow: " + (System.currentTimeMillis() - cur));
+				
 				ImageView imageView = new ImageView(MainActivity.this);
 				imageView.setLayoutParams(new LayoutParams(
 						LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));

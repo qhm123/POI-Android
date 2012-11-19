@@ -212,8 +212,24 @@ public final class NDocumentInputStream extends DocumentInputStream {
 		long rval = new_offset - _current_offset;
 		
 		// TODO Do this better
-		byte[] skip = new byte[(int)rval];
-		readFully(skip);
+//		byte[] skip = new byte[(int)rval];
+//		readFully(skip);
+		
+		int buffersize = 512 * 1024;
+		byte[] skip = new byte[buffersize];
+		int count = (int) (rval / buffersize);
+		int left = (int) (rval % buffersize);
+		for (int i = 0; i < count; i++) {
+			read(skip, 0, buffersize);
+		}
+		if (left > 0) {
+			read(skip, 0, left);
+		}
+//		while ((count = read(skip, 0, skip.length)) > 0) {
+//			total += count;
+//			if (total - )
+//		}
+
 		return rval;
 	}
 

@@ -62,6 +62,9 @@ public final class Background extends Shape {
                         logger.log(POILogger.WARN, "ImageIO failed to create image. image.type: " + data.getType());
                         return;
                     }
+                    if (img == null) {
+                    	return;
+                    }
                     Image scaledImg = img.getScaledInstance(anchor.width, anchor.height, Image.SCALE_SMOOTH);
                     graphics.drawImage(scaledImg, anchor.x, anchor.y, null);
                     

@@ -50,6 +50,7 @@ import org.apache.poi.poifs.filesystem.DocumentInputStream;
 import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.util.LittleEndian;
+import org.apache.poi.util.LittleEndianInputStream;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
@@ -337,16 +338,19 @@ public final class HSLFSlideShow extends POIDocument {
 	 */
 	private void readPictures() throws IOException {
         _pictures = new ArrayList<PictureData>();
-
-		byte[] pictstream;
+        
+//		byte[] pictstream;
 		
 		// TODO: 图片太大
 
+		DocumentInputStream is = null;
+		int byteLen = 0;
 		try {
 			DocumentEntry entry = (DocumentEntry)directory.getEntry("Pictures");
-			pictstream = new byte[entry.getSize()];
-			DocumentInputStream is = directory.createDocumentInputStream("Pictures");
-			is.read(pictstream);
+			byteLen = entry.getSize();
+//			pictstream = new byte[entry.getSize()];
+			is = directory.createDocumentInputStream("Pictures");
+//			is.read(pictstream);
 		} catch (FileNotFoundException e){
 			// Silently catch exceptions if the presentation doesn't
 			//  contain pictures - will use a null set instead
@@ -355,17 +359,20 @@ public final class HSLFSlideShow extends POIDocument {
 
         int pos = 0;
 		// An empty picture record (length 0) will take up 8 bytes
-        while (pos <= (pictstream.length-8)) {
+        while (pos <= (byteLen-8)) {
             int offset = pos;
 
             // Image signature
-            int signature = LittleEndian.getUShort(pictstream, pos);
+//            int signature = LittleEndian.getUShort(pictstream, pos);
+            int signature = LittleEndian.readUShort(is);
             pos += LittleEndian.SHORT_SIZE;
             // Image type + 0xF018
-            int type = LittleEndian.getUShort(pictstream, pos);
+//            int type = LittleEndian.getUShort(pictstream, pos);
+            int type = LittleEndian.readUShort(is);
             pos += LittleEndian.SHORT_SIZE;
             // Image size (excluding the 8 byte header)
-            int imgsize = LittleEndian.getInt(pictstream, pos);
+//            int imgsize = LittleEndian.getInt(pictstream, pos);
+            int imgsize = LittleEndian.readInt(is);
             pos += LittleEndian.INT_SIZE;
 
             // When parsing the BStoreDelay stream, [MS-ODRAW] says that we
@@ -425,13 +432,16 @@ public final class HSLFSlideShow extends POIDocument {
 //						pict.setRawData(newimgdata);
 //					}
 					
-					if (imgsize > 1024 * 1024) {
-						Log.w(TAG, "imgsize > 1024 * 1024");
-						return;
-					}
-					byte[] imgdata = new byte[imgsize];
-					System.arraycopy(pictstream, pos, imgdata, 0, imgdata.length);
-					pict.setRawData(imgdata);
+//					if (imgsize > 1024 * 1024) {
+//						Log.w(TAG, "imgsize > 1024 * 1024");
+//						return;
+//					}
+					
+//					byte[] imgdata = new byte[imgsize];
+//					System.arraycopy(pictstream, pos, imgdata, 0, imgdata.length);
+//					pict.setRawData(imgdata);
+					
+					pict.setSteram(is, pos, imgsize);
 
                     pict.setOffset(offset);
 					_pictures.add(pict);
@@ -441,6 +451,7 @@ public final class HSLFSlideShow extends POIDocument {
 			}
 
             pos += imgsize;
+            is.skip(imgsize);
         }
 	}
 

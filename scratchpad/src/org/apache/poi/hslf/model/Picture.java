@@ -147,6 +147,7 @@ public class Picture extends SimpleShape {
      * for other types sets the default size of 200x200 pixels.
      */
     public void setDefaultSize(){
+    	Log.d("Picture", "setDefaultSize");
         PictureData pict = getPictureData();
         if (pict  instanceof Bitmap){
             BufferedImage img = null;
@@ -263,7 +264,8 @@ public class Picture extends SimpleShape {
     }
 
     public void draw(Graphics2D graphics){
-        AffineTransform at = graphics.getTransform();
+//        AffineTransform at = graphics.getTransform();
+        graphics.canvas.save();
         ShapePainter.paint(this, graphics);
         
         PictureData data = getPictureData();
@@ -271,6 +273,7 @@ public class Picture extends SimpleShape {
         
         if(data != null) data.draw(graphics, this);
 
-        graphics.setTransform(at);
+//        graphics.setTransform(at);
+        graphics.canvas.restore();
     }
 }

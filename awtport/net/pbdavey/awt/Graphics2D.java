@@ -162,44 +162,33 @@ public class Graphics2D extends Graphics {
 		}		
 		return path;
 	}
-
-	public void translate(int x, int y) {
-		this.transform.translate(x, y);
-	}
 	
 	public void translate(double tx, double ty) {
-		this.transform.translate(tx, ty);
+//		this.transform.translate(tx, ty);
+		canvas.translate((float)tx, (float)ty);
 	}
 	
 	public void rotate(double theta) {
-		this.transform.rotate(theta);
-	}
-	
-	public void rotate(double theta, double x, double y) {
-		this.transform.rotate(theta, x, y);
+//		this.transform.rotate(theta);
+		canvas.rotate((float)theta);
 	}
 	
 	public void scale(double sx, double sy) {
-		this.transform.scale(sx, sy);
-	}
-	
-	public void shear(double shx, double shy) {
-		this.transform.shear(shx, shy);
-	}
-	
-	public void setTransform(AffineTransform Tx) {
-		this.transform = Tx;
-	}
-	
-	public AffineTransform getTransform() {
-		return this.transform;
+//		this.transform.scale(sx, sy);
+		canvas.scale((float)sx, (float)sy);
 	}
 	
 	public void drawImage(Image img, int x, int y, Object o) {
+		if (img == null) {
+			return;
+		}
 		canvas.drawBitmap(img.bm, x, y, paint);
 	}
 	
 	public void drawImage(BufferedImage img, int x, int y, int width, int height, Object o) {
+		if (img == null) {
+			return;
+		}
 		canvas.drawBitmap(img.bm, new Rect(0, 0, img.getWidth(), img.getHeight()), new Rect(x, y, x + width, y + height), paint);
 	}
 }

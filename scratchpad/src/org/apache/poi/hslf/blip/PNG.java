@@ -40,15 +40,21 @@ public final class PNG extends Bitmap {
          byte[] data = super.getData();
           //PNG created on MAC may have a 16-byte prefix which prevents successful reading.
 		  //Just cut it off!.
-		  BufferedImage bi = ImageIO.read(new ByteArrayInputStream(data));
-		  if (bi == null){
-		      byte[] png = new byte[data.length-16];
-		      System.arraycopy(data, 16, png, 0, png.length);
-		      data = png;
-		  }
-		  if (bi != null) {
-			  bi.bm.recycle();
-		  }
+//		  BufferedImage bi = ImageIO.read(new ByteArrayInputStream(data));
+//		  if (bi == null){
+//		      byte[] png = new byte[data.length-16];
+//		      System.arraycopy(data, 16, png, 0, png.length);
+//		      data = png;
+//		  }
+//		  if (bi != null) {
+//			  bi.bm.recycle();
+//		  }
+		if (!ImageIO.canDecode(new ByteArrayInputStream(data))) {
+			byte[] png = new byte[data.length - 16];
+			System.arraycopy(data, 16, png, 0, png.length);
+			data = png;
+		}
+         
          return data;
      }
 

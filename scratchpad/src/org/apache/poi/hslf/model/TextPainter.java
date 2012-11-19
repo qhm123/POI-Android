@@ -96,6 +96,8 @@ public final class TextPainter {
                 continue;
             }
             
+            if (end > at.length() || start > at.length()) {continue;}
+            
             int style = Typeface.NORMAL;
             if (rt[i].isBold() && rt[i].isItalic()) {
             	style = Typeface.BOLD_ITALIC;

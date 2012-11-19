@@ -283,13 +283,16 @@ public class ShapeGroup extends Shape{
 
     public void draw(Graphics2D graphics){
 
-        AffineTransform at = graphics.getTransform();
+//        AffineTransform at = graphics.getTransform();
+        graphics.canvas.save();
 
         Shape[] sh = getShapes();
         for (int i = 0; i < sh.length; i++) {
             sh[i].draw(graphics);
         }
+        
+        graphics.canvas.restore();
 
-        graphics.setTransform(at);
+//        graphics.setTransform(at);
     }
 }

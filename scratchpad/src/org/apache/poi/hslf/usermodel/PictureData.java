@@ -19,6 +19,7 @@ package org.apache.poi.hslf.usermodel;
 
 import net.pbdavey.awt.Graphics2D;
 
+import org.apache.poi.poifs.filesystem.DocumentInputStream;
 import org.apache.poi.util.LittleEndian;
 import org.apache.poi.util.POILogger;
 import org.apache.poi.util.POILogFactory;
@@ -26,6 +27,7 @@ import org.apache.poi.hslf.model.Picture;
 import org.apache.poi.hslf.blip.*;
 import org.apache.poi.hslf.exceptions.HSLFException;
 
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -252,5 +254,19 @@ public abstract class PictureData {
     public static ImagePainter getImagePainter(int type){
         return painters[type];
     }
+
+	public InputStream getStream() {
+		return is;
+	}
+	
+	public int rawdataPos;
+	InputStream is;
+	public int imgsize;
+
+	public void setSteram(DocumentInputStream is, int pos, int imgsize) {
+		this.is = is;
+		this.rawdataPos = pos;
+		this.imgsize = imgsize;
+	}
 
 }

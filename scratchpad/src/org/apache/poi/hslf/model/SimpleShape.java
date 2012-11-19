@@ -314,9 +314,11 @@ public abstract class SimpleShape extends Shape {
     }
 
     public void draw(Graphics2D graphics){
-        AffineTransform at = graphics.getTransform();
+//        AffineTransform at = graphics.getTransform();
+    	graphics.canvas.save();
         ShapePainter.paint(this, graphics);
-        graphics.setTransform(at);
+        graphics.canvas.restore();
+//        graphics.setTransform(at);
     }
 
     /**
