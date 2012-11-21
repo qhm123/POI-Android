@@ -16,6 +16,8 @@
 
 package com.poi.poiandroid;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -506,5 +508,15 @@ class ImageViewTouch extends ImageView {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	AtomicBoolean isCanceled;
+	
+	public void setIsCanceled(AtomicBoolean isCanceled) {
+		this.isCanceled = isCanceled;
+	}
+
+	public AtomicBoolean getCanceled() {
+		return isCanceled;
 	}
 }

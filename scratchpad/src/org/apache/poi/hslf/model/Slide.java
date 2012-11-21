@@ -18,6 +18,7 @@
 package org.apache.poi.hslf.model;
 
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import net.pbdavey.awt.Graphics2D;
 
@@ -34,6 +35,10 @@ import org.apache.poi.hslf.record.RecordTypes;
 import org.apache.poi.hslf.record.SlideAtom;
 import org.apache.poi.hslf.record.TextHeaderAtom;
 import org.apache.poi.hslf.record.SlideListWithText.SlideAtomsSet;
+
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 
 /**
  * This class represents a slide in a PowerPoint Document. It allows
@@ -419,22 +424,57 @@ public final class Slide extends Sheet
     	return new Comment[0];
     }
 
-    public void draw(Graphics2D graphics){
+    public void draw(Graphics2D graphics, AtomicBoolean isCanceled, Handler handler, int position){
+    	
+    	if (isCanceled.get()) {
+    		Log.d("Slide", "Thread.Canceled");
+    		return;
+    	}
+    	
         MasterSheet master = getMasterSheet();
         Background bg = getBackground();
         if(bg != null)bg.draw(graphics);
+        
+        if (isCanceled.get()) {
+    		Log.d("Slide", "Thread.Canceled");
+    		return;
+    	}
 
         if(getFollowMasterObjects()){
             Shape[] sh = master.getShapes();
             for (int i = 0; i < sh.length; i++) {
+//            	if (Thread.currentThread().isInterrupted()) {
+//            		Log.d("Slide", "Thread.interrupted");
+//            		return;
+//            	}
+            	if (isCanceled.get()) {
+            		Log.d("Slide", "Thread.Canceled");
+            		return;
+            	}
+            	
                 if(MasterSheet.isPlaceholder(sh[i])) continue;
 
                 sh[i].draw(graphics);
             }
         }
+        
+        if (isCanceled.get()) {
+    		Log.d("Slide", "Thread.Canceled");
+    		return;
+    	}
 
         Shape[] sh = getShapes();
         for (int i = 0; i < sh.length; i++) {
+//        	if (Thread.currentThread().isInterrupted()) {
+//        		Log.d("Slide", "Thread.interrupted");
+//        		return;
+//        	}
+        	if (isCanceled.get()) {
+        		Log.d("Slide", "Thread.Canceled");
+        		return;
+        	} else {
+        		handler.sendMessage(Message.obtain(handler, 1, i, sh.length, Integer.valueOf(position)));        		
+        	}
         	System.out.println("shape: " + sh[i].getClass().getName());
             sh[i].draw(graphics);
         }

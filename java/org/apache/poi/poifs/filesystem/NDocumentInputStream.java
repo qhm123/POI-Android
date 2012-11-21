@@ -322,4 +322,9 @@ public final class NDocumentInputStream extends DocumentInputStream {
          return data[0];
       return data[0] + 256;
 	}
+   
+   @Override
+	public int position() {
+		return _current_offset;
+	}
 }

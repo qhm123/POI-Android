@@ -86,6 +86,8 @@ public abstract class PictureData {
         PictureData.setImagePainter(Picture.PNG, new BitmapPainter());
         PictureData.setImagePainter(Picture.JPEG, new BitmapPainter());
         PictureData.setImagePainter(Picture.DIB, new BitmapPainter());
+        
+        PictureData.setImagePainter(Picture.WMF, new WMFPaiter());
     }
 
     /**
@@ -255,12 +257,12 @@ public abstract class PictureData {
         return painters[type];
     }
 
-	public InputStream getStream() {
+	public DocumentInputStream getStream() {
 		return is;
 	}
 	
 	public int rawdataPos;
-	InputStream is;
+	DocumentInputStream is;
 	public int imgsize;
 
 	public void setSteram(DocumentInputStream is, int pos, int imgsize) {

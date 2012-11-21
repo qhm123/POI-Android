@@ -18,6 +18,7 @@
 package org.apache.poi.hslf.blip;
 
 import org.apache.poi.hslf.usermodel.PictureData;
+import org.apache.poi.poifs.filesystem.DocumentInputStream;
 
 import and.awt.BufferedImage;
 import android.graphics.BitmapFactory;
@@ -39,11 +40,17 @@ public abstract  class Bitmap extends PictureData {
 
     public byte[] getData(){
     	Log.d("BitmapPainter", "Start Paint");
-    	InputStream is = getStream();
+    	DocumentInputStream is = getStream();
     	byte[] imgdata = new byte[imgsize - 17];
     	try {
-			is.reset();
-			is.skip(rawdataPos + 17);
+    		if (rawdataPos > is.position()) {
+    			Log.d("Bitmap", "rawdataPos > is.position()");
+    			is.skip(rawdataPos - is.position() + 17);
+    		} else {
+				is.reset();
+				is.skip(rawdataPos + 17);
+    		}
+			
 	    	is.read(imgdata, 0, imgdata.length);
 		} catch (IOException e) {
 			e.printStackTrace();

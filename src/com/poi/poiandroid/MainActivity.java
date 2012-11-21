@@ -3,6 +3,14 @@ package com.poi.poiandroid;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +36,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -67,7 +77,7 @@ public class MainActivity extends Activity {
 		
 		setProgressBarVisibility(true);
 		setProgressBarIndeterminate(true);
-		setProgressBarIndeterminateVisibility(true);
+//		setProgressBarIndeterminateVisibility(true);
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setPageMargin(10);
@@ -105,6 +115,8 @@ public class MainActivity extends Activity {
 	}
 	
 	int slideCount = 0;
+	Slide[] slide;
+	SlideShow ppt;
 
 	private void ppt2png(String path) throws IOException {
 //		FileInputStream is = new FileInputStream(path);
@@ -115,17 +127,62 @@ public class MainActivity extends Activity {
 		
 		mProgressDialog.show();
 		
-		SlideShow ppt = new SlideShow(new File(path));
+		ppt = new SlideShow(new File(path));
 
 		final Dimension pgsize = ppt.getPageSize();
 
-		final Slide[] slide = ppt.getSlides();
+		slide = ppt.getSlides();
 		
 		slideCount = slide.length;
 		
 		Log.d("TIME", "new SlideShow: " + (System.currentTimeMillis() - cur));
 		
 		mProgressDialog.dismiss();
+		
+		final ExecutorService es = Executors.newSingleThreadExecutor();
+		
+		final Handler handler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				if (mViewPager == null) {
+					return;
+				}
+				switch (msg.what) {
+				case 0: {
+					Log.d(TAG, "draw finish");
+					View v = (View) msg.obj;
+					v.invalidate();
+					int position = msg.arg1;
+					if (position == mViewPager.getCurrentItem()) {
+//						setProgressBarVisibility(false);
+						setProgress(10000);
+					}
+				}
+					break;
+				case 1: {
+					int progress = msg.arg1;
+					int max = msg.arg2;
+					int p = (int) ((float)progress / max * 10000);
+					int position = (Integer) msg.obj;
+					Log.d(TAG, "update progress: " + progress + ", max: " + max
+							+ ", p: " + p + ", position: " + position);
+					if (position == 1) {
+						setProgressBarIndeterminate(false);
+					}
+					if (position == mViewPager.getCurrentItem()) {
+						if (position != 0 && progress == 0) {
+							setProgressBarIndeterminate(false);
+						}
+						setProgress(p);
+					}
+				}
+					break;
+				default:
+					break;
+				}
+			}
+		};
 
 		mPagerAdapter = new PagerAdapter() {
 
@@ -144,12 +201,19 @@ public class MainActivity extends Activity {
 			}
 
 			@Override
-			public Object instantiateItem(View container, int position) {
+			public Object instantiateItem(View container, final int position) {
 //				ImageView imageView = new ImageView(MainActivity.this);
 //				imageView.setLayoutParams(new LayoutParams(
 //						LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 				
-				ImageViewTouch imageView = new ImageViewTouch(
+				
+				
+				if (position == mViewPager.getCurrentItem()) {
+//					setProgressBarVisibility(true);
+					setProgressBarIndeterminate(true);
+				}
+				
+				final ImageViewTouch imageView = new ImageViewTouch(
 						MainActivity.this);
 				imageView.setLayoutParams(new LayoutParams(
 						LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
@@ -170,10 +234,31 @@ public class MainActivity extends Activity {
 				paint.setFlags(Paint.ANTI_ALIAS_FLAG);
 				canvas.drawPaint(paint);
 
-				Graphics2D graphics2d = new Graphics2D(canvas);
+				final Graphics2D graphics2d = new Graphics2D(canvas);
 				
+				final AtomicBoolean isCanceled = new AtomicBoolean(false);
 				// render
-				slide[position].draw(graphics2d);
+				Runnable runnable = new Runnable() {
+					@Override
+					public void run() {
+						slide[position].draw(graphics2d, isCanceled, handler, position);
+						
+						handler.sendMessage(Message.obtain(handler, 0, position, 0, imageView));
+					}
+				};
+				
+				Future<?> task = es.submit(runnable);
+				imageView.setTag(task);
+				imageView.setIsCanceled(isCanceled);
+				
+//				try {
+//					task.get();
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				} catch (ExecutionException e) {
+//					e.printStackTrace();
+//				}
+				
 
 //				imageView.setImageBitmap(bmp);
 				imageView.setImageBitmapResetBase(bmp, true);
@@ -188,7 +273,11 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void destroyItem(View container, int position, Object object) {
-				ImageView view = (ImageView) object;
+				ImageViewTouch view = (ImageViewTouch) object;
+				
+				view.getCanceled().set(true);
+				Future<?> task = (Future<?>) view.getTag();
+				task.cancel(false);
 
 				((ViewGroup) container).removeView(view);
 
@@ -240,12 +329,19 @@ public class MainActivity extends Activity {
 //			updateZoomButtonsEnabled();
 //			updateShowInfo();
 
-			if (mPreToast != null) {
+//			if (mPreToast != null) {
+//				mPreToast.cancel();
+//			}
+			Log.d(TAG, "onPageSelected: " + position);
+			if (mPreToast == null) {
+				mPreToast = Toast.makeText(MainActivity.this,
+						String.format("%d/%d", position + 1, slideCount),
+						Toast.LENGTH_SHORT);
+			} else {
 				mPreToast.cancel();
+				mPreToast.setText(String.format("%d/%d", position + 1, slideCount));
+				mPreToast.setDuration(Toast.LENGTH_SHORT);
 			}
-			mPreToast = Toast.makeText(MainActivity.this,
-					String.format("%d/%d", position + 1, slideCount),
-					Toast.LENGTH_SHORT);
 			mPreToast.show();
 		}
 
@@ -368,8 +464,8 @@ public class MainActivity extends Activity {
 				imageView.zoomToNoCenterValue(currentScale, currentMiddleX,
 						currentMiddleY);
 			} else if (currentScale < imageView.mMinZoom) {
-				imageView.zoomToNoCenterWithAni(currentScale,
-						imageView.mMinZoom, currentMiddleX, currentMiddleY);
+//				imageView.zoomToNoCenterWithAni(currentScale,
+//						imageView.mMinZoom, currentMiddleX, currentMiddleY);
 				currentScale = imageView.mMinZoom;
 				imageView.zoomToNoCenterValue(currentScale, currentMiddleX,
 						currentMiddleY);
@@ -493,5 +589,21 @@ public class MainActivity extends Activity {
 	public void onStop() {
 		super.onStop();
 		mPaused = true;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		ImageViewTouch imageView = getCurrentImageView();
+		if (imageView != null) {
+			imageView.mBitmapDisplayed.recycle();
+			imageView.clear();
+		}
+		
+		ppt = null;
+		slide = null;
+		mPagerAdapter = null;
+		mViewPager = null;
 	}
 }

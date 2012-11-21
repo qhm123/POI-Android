@@ -38,7 +38,11 @@ public final class WMF extends Metafile {
      */
     public byte[] getData(){
         try {
-            byte[] rawdata = getRawData();
+        	InputStream isis = getStream();
+            byte[] rawdata = new byte[imgsize];
+            isis.reset();
+            isis.skip(rawdataPos);
+            isis.read(rawdata, 0, rawdata.length);
 
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             InputStream is = new ByteArrayInputStream( rawdata );
