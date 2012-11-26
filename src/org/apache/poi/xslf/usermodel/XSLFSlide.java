@@ -17,6 +17,7 @@
 package org.apache.poi.xslf.usermodel;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import net.pbdavey.awt.Graphics2D;
 
@@ -37,6 +38,8 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTGroupShape;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTGroupShapeNonVisual;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTSlide;
 import org.openxmlformats.schemas.presentationml.x2006.main.SldDocument;
+
+import android.os.Handler;
 
 @Beta
 public final class XSLFSlide extends XSLFSheet {
@@ -213,12 +216,12 @@ public final class XSLFSlide extends XSLFSheet {
 
 
     @Override
-    public void draw(Graphics2D graphics){
+    public void draw(Graphics2D graphics, AtomicBoolean isCanceled, Handler handler, int position){
 
         XSLFBackground bg = getBackground();
         if(bg != null) bg.draw(graphics);
 
-        super.draw(graphics);
+        super.draw(graphics, isCanceled, handler, position);
     }
 
 

@@ -15,12 +15,11 @@ import and.awt.Stroke;
 import and.awt.geom.AffineTransform;
 import and.awt.geom.PathIterator;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
-import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.util.Log;
 /**
  * So far it appears that Graphics2D is roughly equivalent to a Canvas with Paint.
@@ -109,26 +108,14 @@ public class Graphics2D extends Graphics {
 		// Draw the outline, don't fill
 		paint.setStyle(Style.STROKE);
 		canvas.drawPath(path, paint);
-		
-		RectF rf = new RectF();
-		path.computeBounds(rf, true);
-		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
 	}
 	
 	public void fill(Shape s) {
-		System.out.println("sShape: " + s.getClass().getName());
 		PathIterator pi = s.getPathIterator(null);
 		Path path = convertAwtPathToAndroid(pi);
 		// Draw the outline and fill
 		paint.setStyle(Style.FILL_AND_STROKE);
-		RectF rf = new RectF();
-		path.computeBounds(rf, true);
-		System.out.println("path rf: " + rf.left + ", " + rf.top + ", " + rf.right + ", " + rf.bottom);
-		canvas.drawPath(path, paint);
-//		canvas.drawRect(rf, paint);
-//		canvas.drawRect(new Rect(0, 0, 300, 150), paint);
-//		paint.setColor(android.graphics.Color.BLACK);
-//		canvas.drawText("haha", 0, 130, paint);
+		canvas.drawPath(path, paint);;
 	}
 
 	private Path convertAwtPathToAndroid(PathIterator pi) {
@@ -169,31 +156,23 @@ public class Graphics2D extends Graphics {
 		return path;
 	}
 
-	public void translate(int x, int y) {
-		this.transform.translate(x, y);
-	}
-	
 	public void translate(double tx, double ty) {
 		this.transform.translate(tx, ty);
+		canvas.translate((float)tx, (float)ty);
 	}
 	
 	public void rotate(double theta) {
 		this.transform.rotate(theta);
-	}
-	
-	public void rotate(double theta, double x, double y) {
-		this.transform.rotate(theta, x, y);
+		canvas.rotate((float)Math.toDegrees(theta));
 	}
 	
 	public void scale(double sx, double sy) {
 		this.transform.scale(sx, sy);
-	}
-	
-	public void shear(double shx, double shy) {
-		this.transform.shear(shx, shy);
+		canvas.scale((float)sx, (float)sy);
 	}
 	
 	public void setTransform(AffineTransform Tx) {
+		// XXX: DD
 		this.transform = Tx;
 	}
 	

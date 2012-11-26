@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
 
 import javax.xml.namespace.QName;
@@ -49,6 +50,8 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTPlaceholder;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTShape;
 
 import and.awt.geom.AffineTransform;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 @Beta
@@ -483,14 +486,23 @@ public abstract class XSLFSheet extends POIXMLDocumentPart implements XSLFShapeC
      * Render this sheet into the supplied graphics object
      *
      * @param graphics
+     * @param position 
+     * @param handler 
+     * @param isCanceled 
      */
-    public void draw(Graphics2D graphics){
+    public void draw(Graphics2D graphics, AtomicBoolean isCanceled, Handler handler, int position){
         XSLFSheet master = getMasterSheet();
-        if(getFollowMasterGraphics() && master != null) master.draw(graphics);
+        if(getFollowMasterGraphics() && master != null) master.draw(graphics, isCanceled, handler, position);
 
-        // XXX: DD
         graphics.setRenderingHint(XSLFRenderingHint.GROUP_TRANSFORM, new AffineTransform());
+        int i = 0;
         for(XSLFShape shape : getShapeList()) {
+        	if (isCanceled.get()) {
+        		Log.d("Slide", "Thread.Canceled");
+        		return;
+        	} else {
+        		handler.sendMessage(Message.obtain(handler, 1, i++, getShapeList().size(), Integer.valueOf(position)));        		
+        	}
             if(!canDraw(shape)) continue;
 
         	// remember the initial transform and restore it after we are done with drawing
