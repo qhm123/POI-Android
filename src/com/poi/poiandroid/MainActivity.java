@@ -49,26 +49,26 @@ public class MainActivity extends Activity {
 
 	private ViewPager mViewPager;
 	private PagerAdapter mPagerAdapter;
-	
+
 	private GestureDetector mGestureDetector;
 	private ScaleGestureDetector mScaleGestureDetector;
 
 	private boolean mPaused;
 	private boolean mOnScale = false;
 	private boolean mOnPagerScoll = false;
-	
+
 	private int slideCount = 0;
 	private Slide[] slide;
 	private SlideShow ppt;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		requestWindowFeature(Window.FEATURE_PROGRESS);
-		
+
 		setContentView(R.layout.activity_main);
-		
+
 		setProgressBarVisibility(true);
 		setProgressBarIndeterminate(true);
 
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 		mViewPager.setOffscreenPageLimit(1);
 		mViewPager.setOnPageChangeListener(mPageChangeListener);
 		setupOnTouchListeners(mViewPager);
-		
+
 		String path = null;
 		Intent i = getIntent();
 		if (i != null) {
@@ -86,28 +86,29 @@ public class MainActivity extends Activity {
 			if (uri != null) {
 				Log.d(TAG, "uri.getPath: " + uri.getPath());
 				path = uri.getPath();
-			}
-		} else {
-			path = "/sdcard/socket1.ppt";
-			File demoFile = new File(path);
-			if (!demoFile.exists()) {
-				InputStream inputStream = getResources().openRawResource(R.raw.socket);
-				try {
-					FileOutputStream fos = new FileOutputStream(path);
-					byte[] buffer = new byte[512 * 1024];
-					int count;
-					while ((count = inputStream.read(buffer)) > 0) {
-						fos.write(buffer, 0, count);
+			} else {
+				path = "/sdcard/socket.ppt";
+				File demoFile = new File(path);
+				if (!demoFile.exists()) {
+					InputStream inputStream = getResources().openRawResource(
+							R.raw.socket);
+					try {
+						FileOutputStream fos = new FileOutputStream(path);
+						byte[] buffer = new byte[512 * 1024];
+						int count;
+						while ((count = inputStream.read(buffer)) > 0) {
+							fos.write(buffer, 0, count);
+						}
+						fos.flush();
+						fos.close();
+						inputStream.close();
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
-					fos.flush();
-					fos.close();
-					inputStream.close();
-				} catch (IOException e) {
-					e.printStackTrace();
 				}
 			}
 		}
-		
+
 		try {
 			setTitle(path);
 			ppt2png(path);
@@ -118,19 +119,19 @@ public class MainActivity extends Activity {
 
 	private void ppt2png(String path) throws IOException {
 		final long cur = System.currentTimeMillis();
-		
+
 		ppt = new SlideShow(new File(path));
 
 		final Dimension pgsize = ppt.getPageSize();
 
 		slide = ppt.getSlides();
-		
+
 		slideCount = slide.length;
-		
+
 		Log.d("TIME", "new SlideShow: " + (System.currentTimeMillis() - cur));
-		
+
 		final ExecutorService es = Executors.newSingleThreadExecutor();
-		
+
 		final Handler handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
@@ -152,7 +153,7 @@ public class MainActivity extends Activity {
 				case 1: {
 					int progress = msg.arg1;
 					int max = msg.arg2;
-					int p = (int) ((float)progress / max * 10000);
+					int p = (int) ((float) progress / max * 10000);
 					int position = (Integer) msg.obj;
 					Log.d(TAG, "update progress: " + progress + ", max: " + max
 							+ ", p: " + p + ", position: " + position);
@@ -194,7 +195,7 @@ public class MainActivity extends Activity {
 				if (position == mViewPager.getCurrentItem()) {
 					setProgressBarIndeterminate(true);
 				}
-				
+
 				final ImageViewTouch imageView = new ImageViewTouch(
 						MainActivity.this);
 				imageView.setLayoutParams(new LayoutParams(
@@ -217,25 +218,27 @@ public class MainActivity extends Activity {
 				canvas.drawPaint(paint);
 
 				final Graphics2D graphics2d = new Graphics2D(canvas);
-				
+
 				final AtomicBoolean isCanceled = new AtomicBoolean(false);
 				// render
 				Runnable runnable = new Runnable() {
 					@Override
 					public void run() {
-						slide[position].draw(graphics2d, isCanceled, handler, position);
-						
-						handler.sendMessage(Message.obtain(handler, 0, position, 0, imageView));
+						slide[position].draw(graphics2d, isCanceled, handler,
+								position);
+
+						handler.sendMessage(Message.obtain(handler, 0,
+								position, 0, imageView));
 					}
 				};
-				
+
 				Future<?> task = es.submit(runnable);
 				imageView.setTag(task);
 				imageView.setIsCanceled(isCanceled);
 				imageView.setImageBitmapResetBase(bmp, true);
 
 				((ViewGroup) container).addView(imageView);
-				
+
 				mCache.put(position, imageView);
 
 				return imageView;
@@ -244,7 +247,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void destroyItem(View container, int position, Object object) {
 				ImageViewTouch view = (ImageViewTouch) object;
-				
+
 				view.getCanceled().set(true);
 				Future<?> task = (Future<?>) view.getTag();
 				task.cancel(false);
@@ -256,7 +259,7 @@ public class MainActivity extends Activity {
 				if (!bitmapDrawable.getBitmap().isRecycled()) {
 					bitmapDrawable.getBitmap().recycle();
 				}
-				
+
 				mCache.remove(position);
 			}
 
@@ -276,20 +279,19 @@ public class MainActivity extends Activity {
 
 		mViewPager.setAdapter(mPagerAdapter);
 	}
-	
+
 	HashMap<Integer, View> mCache = new HashMap<Integer, View>();
-	
+
 	public View getView(int position) {
 		return mCache.get(position);
 	}
-	
+
 	Toast mPreToast;
-	
+
 	ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
 		@Override
 		public void onPageSelected(int position, int prePosition) {
-			ImageViewTouch preImageView = 
-					(ImageViewTouch) getView(prePosition);
+			ImageViewTouch preImageView = (ImageViewTouch) getView(prePosition);
 			if (preImageView != null) {
 				preImageView.setImageBitmapResetBase(
 						preImageView.mBitmapDisplayed.getBitmap(), true);
@@ -302,7 +304,8 @@ public class MainActivity extends Activity {
 						Toast.LENGTH_SHORT);
 			} else {
 				mPreToast.cancel();
-				mPreToast.setText(String.format("%d/%d", position + 1, slideCount));
+				mPreToast.setText(String.format("%d/%d", position + 1,
+						slideCount));
 				mPreToast.setDuration(Toast.LENGTH_SHORT);
 			}
 			mPreToast.show();
@@ -324,9 +327,9 @@ public class MainActivity extends Activity {
 				mOnPagerScoll = false;
 			}
 		}
-		
+
 	};
-	
+
 	public ImageViewTouch getCurrentImageView() {
 		return (ImageViewTouch) getView(mViewPager.getCurrentItem());
 	}
@@ -347,7 +350,7 @@ public class MainActivity extends Activity {
 			ImageViewTouch imageView = getCurrentImageView();
 			if (imageView != null) {
 				imageView.panBy(-distanceX, -distanceY);
-	
+
 				// 超出边界效果去掉这个
 				imageView.center(true, true);
 			}
@@ -409,8 +412,8 @@ public class MainActivity extends Activity {
 				imageView.zoomToNoCenterValue(currentScale, currentMiddleX,
 						currentMiddleY);
 			} else if (currentScale < imageView.mMinZoom) {
-//				imageView.zoomToNoCenterWithAni(currentScale,
-//						imageView.mMinZoom, currentMiddleX, currentMiddleY);
+				// imageView.zoomToNoCenterWithAni(currentScale,
+				// imageView.mMinZoom, currentMiddleX, currentMiddleY);
 				currentScale = imageView.mMinZoom;
 				imageView.zoomToNoCenterValue(currentScale, currentMiddleX,
 						currentMiddleY);
@@ -454,14 +457,14 @@ public class MainActivity extends Activity {
 			return true;
 		}
 	}
-	
+
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent m) {
 		if (mPaused)
 			return true;
 		return super.dispatchTouchEvent(m);
 	}
-	
+
 	private void setupOnTouchListeners(View rootView) {
 		mGestureDetector = new GestureDetector(this, new MyGestureListener(),
 				null, true);
@@ -521,7 +524,6 @@ public class MainActivity extends Activity {
 
 		rootView.setOnTouchListener(rootListener);
 	}
-	
 
 	@Override
 	public void onStart() {
@@ -534,17 +536,17 @@ public class MainActivity extends Activity {
 		super.onStop();
 		mPaused = true;
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		
+
 		ImageViewTouch imageView = getCurrentImageView();
 		if (imageView != null) {
 			imageView.mBitmapDisplayed.recycle();
 			imageView.clear();
 		}
-		
+
 		ppt = null;
 		slide = null;
 		mPagerAdapter = null;
