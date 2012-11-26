@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="app_name">POIPPTXNEW</string>
+    <string name="app_name">POI-PPTX</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">POIPPTXNEW</string>
+    <string name="title_activity_main">POI-PPTX</string>
 
 </resources>
