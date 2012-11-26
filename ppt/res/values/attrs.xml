@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SvgImageView">
+        <attr name="android:src"/> 
+    </declare-styleable>    
+    <declare-styleable name="SvgDrawable">
+        <attr name="android:src"/> 
+        <attr name="android:antialias"/> 
+        <attr name="android:filter"/> 
+        <attr name="android:dither"/> 
+        <attr name="android:gravity"/> 
+    </declare-styleable>    
+</resources>
