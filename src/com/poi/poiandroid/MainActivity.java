@@ -1,18 +1,14 @@
 package com.poi.poiandroid;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import net.pbdavey.awt.Graphics2D;
 
@@ -21,7 +17,6 @@ import org.apache.poi.hslf.usermodel.SlideShow;
 
 import and.awt.Dimension;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -33,7 +28,6 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,8 +47,8 @@ public class MainActivity extends Activity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
 
-	ViewPager mViewPager;
-	PagerAdapter mPagerAdapter;
+	private ViewPager mViewPager;
+	private PagerAdapter mPagerAdapter;
 	
 	private GestureDetector mGestureDetector;
 	private ScaleGestureDetector mScaleGestureDetector;
@@ -62,11 +56,11 @@ public class MainActivity extends Activity {
 	private boolean mPaused;
 	private boolean mOnScale = false;
 	private boolean mOnPagerScoll = false;
-	private boolean mControlsShow = false;
-	private int mPosition;
 	
-	private ProgressDialog mProgressDialog;
-
+	private int slideCount = 0;
+	private Slide[] slide;
+	private SlideShow ppt;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,7 +71,6 @@ public class MainActivity extends Activity {
 		
 		setProgressBarVisibility(true);
 		setProgressBarIndeterminate(true);
-//		setProgressBarIndeterminateVisibility(true);
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setPageMargin(10);
@@ -85,10 +78,8 @@ public class MainActivity extends Activity {
 		mViewPager.setOffscreenPageLimit(1);
 		mViewPager.setOnPageChangeListener(mPageChangeListener);
 		setupOnTouchListeners(mViewPager);
-
-		Logger.getLogger("org.teleal.cling").setLevel(Level.FINEST);
-
-		String path = "/sdcard/socket.ppt";
+		
+		String path = null;
 		Intent i = getIntent();
 		if (i != null) {
 			Uri uri = i.getData();
@@ -96,36 +87,37 @@ public class MainActivity extends Activity {
 				Log.d(TAG, "uri.getPath: " + uri.getPath());
 				path = uri.getPath();
 			}
+		} else {
+			path = "/sdcard/socket1.ppt";
+			File demoFile = new File(path);
+			if (!demoFile.exists()) {
+				InputStream inputStream = getResources().openRawResource(R.raw.socket);
+				try {
+					FileOutputStream fos = new FileOutputStream(path);
+					byte[] buffer = new byte[512 * 1024];
+					int count;
+					while ((count = inputStream.read(buffer)) > 0) {
+						fos.write(buffer, 0, count);
+					}
+					fos.flush();
+					fos.close();
+					inputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
-		mProgressDialog = new ProgressDialog(this);
-		mProgressDialog.setIndeterminate(true);
-		
 		try {
+			setTitle(path);
 			ppt2png(path);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	HashMap<Integer, View> mCache = new HashMap<Integer, View>();
-	
-	public View getView(int position) {
-		return mCache.get(position);
-	}
-	
-	int slideCount = 0;
-	Slide[] slide;
-	SlideShow ppt;
 
 	private void ppt2png(String path) throws IOException {
-//		FileInputStream is = new FileInputStream(path);
-//		SlideShow ppt = new SlideShow(is);
-//		is.close();
-		
 		final long cur = System.currentTimeMillis();
-		
-		mProgressDialog.show();
 		
 		ppt = new SlideShow(new File(path));
 
@@ -136,8 +128,6 @@ public class MainActivity extends Activity {
 		slideCount = slide.length;
 		
 		Log.d("TIME", "new SlideShow: " + (System.currentTimeMillis() - cur));
-		
-		mProgressDialog.dismiss();
 		
 		final ExecutorService es = Executors.newSingleThreadExecutor();
 		
@@ -155,7 +145,6 @@ public class MainActivity extends Activity {
 					v.invalidate();
 					int position = msg.arg1;
 					if (position == mViewPager.getCurrentItem()) {
-//						setProgressBarVisibility(false);
 						setProgress(10000);
 					}
 				}
@@ -202,14 +191,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public Object instantiateItem(View container, final int position) {
-//				ImageView imageView = new ImageView(MainActivity.this);
-//				imageView.setLayoutParams(new LayoutParams(
-//						LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-				
-				
-				
 				if (position == mViewPager.getCurrentItem()) {
-//					setProgressBarVisibility(true);
 					setProgressBarIndeterminate(true);
 				}
 				
@@ -250,24 +232,12 @@ public class MainActivity extends Activity {
 				Future<?> task = es.submit(runnable);
 				imageView.setTag(task);
 				imageView.setIsCanceled(isCanceled);
-				
-//				try {
-//					task.get();
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				} catch (ExecutionException e) {
-//					e.printStackTrace();
-//				}
-				
-
-//				imageView.setImageBitmap(bmp);
 				imageView.setImageBitmapResetBase(bmp, true);
 
 				((ViewGroup) container).addView(imageView);
 				
 				mCache.put(position, imageView);
 
-				// return super.instantiateItem(container, position);
 				return imageView;
 			}
 
@@ -307,6 +277,12 @@ public class MainActivity extends Activity {
 		mViewPager.setAdapter(mPagerAdapter);
 	}
 	
+	HashMap<Integer, View> mCache = new HashMap<Integer, View>();
+	
+	public View getView(int position) {
+		return mCache.get(position);
+	}
+	
 	Toast mPreToast;
 	
 	ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -319,19 +295,6 @@ public class MainActivity extends Activity {
 						preImageView.mBitmapDisplayed.getBitmap(), true);
 			}
 
-			if (getCurrentImageView() != null
-					&& getCurrentImageView().mBitmapDisplayed != null
-					&& getCurrentImageView().mBitmapDisplayed.getBitmap() == null) {
-			}
-
-			mPosition = position;
-
-//			updateZoomButtonsEnabled();
-//			updateShowInfo();
-
-//			if (mPreToast != null) {
-//				mPreToast.cancel();
-//			}
 			Log.d(TAG, "onPageSelected: " + position);
 			if (mPreToast == null) {
 				mPreToast = Toast.makeText(MainActivity.this,
@@ -348,13 +311,11 @@ public class MainActivity extends Activity {
 		@Override
 		public void onPageScrolled(int position, float positionOffset,
 				int positionOffsetPixels) {
-			// Logger.d(TAG, "onPageScrolled");
 			mOnPagerScoll = true;
 		}
 
 		@Override
 		public void onPageScrollStateChanged(int state) {
-			// Logger.d(TAG, "onPageScrollStateChanged: " + state);
 			if (state == ViewPager.SCROLL_STATE_DRAGGING) {
 				mOnPagerScoll = true;
 			} else if (state == ViewPager.SCROLL_STATE_SETTLING) {
@@ -367,8 +328,6 @@ public class MainActivity extends Activity {
 	};
 	
 	public ImageViewTouch getCurrentImageView() {
-//		return (ImageViewTouch) mViewPager.getChildAt(mViewPager
-//				.getCurrentItem());
 		return (ImageViewTouch) getView(mViewPager.getCurrentItem());
 	}
 
@@ -398,17 +357,6 @@ public class MainActivity extends Activity {
 
 		@Override
 		public boolean onSingleTapConfirmed(MotionEvent e) {
-			if (mControlsShow) {
-				// delayHideControls();
-//				hideControls();
-			} else {
-//				updateZoomButtonsEnabled();
-
-//				if (fromLocalFav) {
-//					showControls();
-//				}
-			}
-
 			return true;
 		}
 
@@ -434,7 +382,6 @@ public class MainActivity extends Activity {
 				}
 			}
 
-//			updateZoomButtonsEnabled();
 			return true;
 		}
 	}
@@ -448,8 +395,6 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onScaleEnd(ScaleGestureDetector detector) {
-
-//			updateZoomButtonsEnabled();
 
 			final ImageViewTouch imageView = getCurrentImageView();
 
@@ -514,7 +459,6 @@ public class MainActivity extends Activity {
 	public boolean dispatchTouchEvent(MotionEvent m) {
 		if (mPaused)
 			return true;
-		// delayHideControls();
 		return super.dispatchTouchEvent(m);
 	}
 	

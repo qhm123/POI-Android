@@ -443,10 +443,6 @@ public final class Slide extends Sheet
         if(getFollowMasterObjects()){
             Shape[] sh = master.getShapes();
             for (int i = 0; i < sh.length; i++) {
-//            	if (Thread.currentThread().isInterrupted()) {
-//            		Log.d("Slide", "Thread.interrupted");
-//            		return;
-//            	}
             	if (isCanceled.get()) {
             		Log.d("Slide", "Thread.Canceled");
             		return;
@@ -465,10 +461,6 @@ public final class Slide extends Sheet
 
         Shape[] sh = getShapes();
         for (int i = 0; i < sh.length; i++) {
-//        	if (Thread.currentThread().isInterrupted()) {
-//        		Log.d("Slide", "Thread.interrupted");
-//        		return;
-//        	}
         	if (isCanceled.get()) {
         		Log.d("Slide", "Thread.Canceled");
         		return;

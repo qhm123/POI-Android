@@ -510,7 +510,7 @@ class ImageViewTouch extends ImageView {
 		}
 	}
 
-	AtomicBoolean isCanceled;
+	private AtomicBoolean isCanceled;
 	
 	public void setIsCanceled(AtomicBoolean isCanceled) {
 		this.isCanceled = isCanceled;
