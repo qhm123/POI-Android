@@ -546,6 +546,7 @@
                 libraryManifestFilePathOut="project.library.manifest.file.path"
                 libraryResFolderPathOut="project.library.res.folder.path"
                 libraryBinAidlFolderPathOut="project.library.bin.aidl.folder.path"
+                libraryRFilePathOut="project.library.bin.r.file.path"
                 libraryNativeFolderPathOut="project.library.native.folder.path"
                 jarLibraryPathOut="project.all.jars.path"
                 targetApi="${project.target.apilevel}"
@@ -660,6 +661,7 @@
                     nonConstantId="${android.library}"
                     libraryResFolderPathRefid="project.library.res.folder.path"
                     libraryPackagesRefid="project.library.packages"
+                    libraryRFileRefid="project.library.bin.r.file.path"
                     ignoreAssets="${aapt.ignore.assets}"
                     proguardFile="${out.absolute.dir}/proguard.txt">
                 <res path="${out.res.absolute.dir}" />
@@ -922,6 +924,7 @@
                     resourcefilter="${aapt.resource.filter}"
                     libraryResFolderPathRefid="project.library.res.folder.path"
                     libraryPackagesRefid="project.library.packages"
+                    libraryRFileRefid="project.library.bin.r.file.path"
                     previousBuildType="${build.last.target}"
                     buildType="${build.target}"
                     ignoreAssets="${aapt.ignore.assets}">
